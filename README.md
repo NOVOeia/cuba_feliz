@@ -64,3 +64,13 @@ La página de detalle conserva su diseño y puede tener encabezados, botones y t
 **Importante:** los `items` antiguos de las secciones enlazadas pueden permanecer como respaldo en la base de datos, pero la V5.5 los ignora para renderizar: el origen es siempre la sección maestra publicada. Si la fuente deja de estar publicada, no se renderiza una copia obsoleta.
 
 **Pruebas de validación:** JavaScript comprobado con Node y referencias de contenido verificadas con pruebas unitarias usando datos simulados; el navegador Chromium del entorno de edición denegó navegación automatizada, así que el despliegue y la apertura de modales deben comprobarse en el sitio publicado.
+
+
+## Tipografía oficial restaurada de V4 (aprobación cliente)
+La referencia tipográfica es el archivo original `cuba-feliz-v4.zip` / `cuba-feliz-v4-turquesa.zip` (CSS V4, 13 oct 2026).
+- **Outfit (Google Fonts)**: logotipo, titulares principales y secundarios, tarjetas, citas y frases destacadas. Peso 600 para titulares, 500 para citas, 800 para logotipo.
+- **DM Sans (Google Fonts)**: textos de lectura, navegación, botones, etiquetas, microcopy y formularios.
+- No cambiar la familia tipográfica a Syne, Instrument Serif u otras sin aprobación explícita del cliente.
+- Mantener CSS de la V4 como referencia para espaciado de letras (títulos -0.065em), jerarquía y uso no cursivo de citas destacadas.
+- Las futuras funcionalidades (dashboard, galería, medios y sincronización) deben adaptarse a estas dos familias sin alterar las fuentes de marca.
+
