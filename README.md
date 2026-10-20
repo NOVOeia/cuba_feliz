@@ -74,3 +74,27 @@ La referencia tipográfica es el archivo original `cuba-feliz-v4.zip` / `cuba-fe
 - Mantener CSS de la V4 como referencia para espaciado de letras (títulos -0.065em), jerarquía y uso no cursivo de citas destacadas.
 - Las futuras funcionalidades (dashboard, galería, medios y sincronización) deben adaptarse a estas dos familias sin alterar las fuentes de marca.
 
+
+
+## V5.6 — Restauración de la arquitectura visual del Home V4
+
+Se conserva el contenido actual de Supabase y las funciones V5 (autenticación, páginas, galería y sincronización), pero el Home recupera las **cuatro bandas** presentadas al cliente en V4:
+
+1. Barra morada superior con la frase “La felicidad también se construye entre todos”.
+2. Cabecera crema con logo y menú actual; se mantiene el botón de acceso al portal. No vuelve el enlace retirado de “Meditación andante”.
+3. Hero con fotografía de fondo y título a dos colores: texto blanco + frase destacada amarilla, con la tipografía original Outfit.
+4. Franja amarilla bajo el hero, con icono morado, texto y botón morado hacia **Camina por Cuba**. Este botón no anuncia una emisión en vivo inexistente.
+
+### Cómo editar la combinación de color sin tocar código
+
+Desde el portal: **Inicio → sección Portada → Contenido**:
+- **Título principal**: el texto completo visible.
+- **Palabras del título en color destacado**: copia la parte exacta del título que quieres colorear, por ejemplo “nuestra patria”. El sistema la pinta dentro del mismo encabezado. Las secciones de fondo oscuro usan amarillo; las claras, morado.
+- **Frase de la franja morada superior**: texto del listón superior.
+- **Etiqueta, texto, botón y destino de la franja amarilla**: se gestionan en esta sección y se reflejan en la web al publicar.
+
+La opción «Palabras del título en color destacado» también se encuentra en las demás secciones no sincronizadas. Los títulos de las páginas de detalle vinculadas se editan desde su fuente de contenido, según el mapa de sincronización V5.5.
+
+No sustituir el contenido del cliente por los textos antiguos del prototipo V4; se restaura su estructura, tipografía y lenguaje de color, no las copias antiguas.
+
+**QA:** 4 bloques JavaScript validados con Node y CSS validado sin errores con tinycss2; pendiente confirmación visual en la URL publicada, porque Chromium del entorno de trabajo bloquea páginas locales.
