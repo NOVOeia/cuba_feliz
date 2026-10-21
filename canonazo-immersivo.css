@@ -1,0 +1,157 @@
+
+/* Identidad autónoma: El Cañonazo de la Abundancia — lectura grande y experiencia inmersiva */
+body[data-initiative="meditacion-canonazo-de-las-9"]{
+ --canon-navy:#061d32;--canon-ink:#f9fdff;--canon-gold:#f4d17c;--canon-sea:#27bed0;--canon-coral:#ff8c9d;--canon-paper:#f3f9f7;
+ --deep:#071f35;--accent:#058ca2;--soft:#f0f8f7;--glow:#67d7e5;
+ background:var(--canon-paper);color:#113148
+}
+body[data-initiative="meditacion-canonazo-de-las-9"] .hero{
+ background:radial-gradient(ellipse at 77% 49%,rgba(10,169,179,.46),transparent 55%),linear-gradient(114deg,#05152e 0%,#0b4863 56%,#0a6670 100%)
+}
+body[data-initiative="meditacion-canonazo-de-las-9"] .hero h1 em{color:#f6d187}
+body[data-initiative="meditacion-canonazo-de-las-9"] .hero-art:before{
+ border:1px solid #7ce2dd;box-shadow:0 0 0 42px rgba(25,186,187,.07),0 0 0 83px rgba(249,210,129,.045)
+}
+body[data-initiative="meditacion-canonazo-de-las-9"] .hero-glyph{color:#f1d38d;filter:drop-shadow(0 0 28px rgba(53,209,204,.55))}
+body[data-initiative="meditacion-canonazo-de-las-9"] .site-header{background:#f6faf5}
+body[data-initiative="meditacion-canonazo-de-las-9"] .btn-primary{background:#f6d187;color:#133149}
+body[data-initiative="meditacion-canonazo-de-las-9"] .full-cta{background:linear-gradient(110deg,#0b384a,#0e6869)}
+body[data-initiative="meditacion-canonazo-de-las-9"] .band-soft{background:#e9f5f1}
+body[data-initiative="meditacion-canonazo-de-las-9"] .meditation-instructions article{border:1px solid #b8d7d0;background:white}
+body[data-initiative="meditacion-canonazo-de-las-9"] .meditation-instructions p{font-size:clamp(1.06rem,1.55vw,1.27rem);line-height:1.7;color:#304b57}
+body[data-initiative="meditacion-canonazo-de-las-9"] .meditation-instructions h3{font-size:clamp(1.45rem,2vw,1.85rem)}
+body[data-initiative="meditacion-canonazo-de-las-9"] .meditation-instructions .num{color:#087f89}
+#canon-meditation{isolation:isolate;position:relative;background:#092638;color:#fff}
+.canon-header{padding:clamp(24px,3.5vw,45px) 0 26px;background:linear-gradient(120deg,#061d32,#0c4453)}
+.canon-kicker{color:#f4d17c;font-weight:800;letter-spacing:.18em;font-size:clamp(.75rem,1vw,1rem);text-transform:uppercase;margin-bottom:12px}
+.canon-title{font-family:Outfit,sans-serif;font-size:clamp(2.5rem,4.6vw,4.8rem);font-weight:650;letter-spacing:-.055em;line-height:1.06;margin:0 0 11px}
+.canon-subtitle{color:#d7f0ea;font-size:clamp(1.09rem,1.65vw,1.5rem);max-width:760px;line-height:1.55;margin:0}
+.canon-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;padding:26px 0}
+.canon-duration{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.canon-duration strong{font-size:1rem;letter-spacing:.04em}
+.canon-duration button,.canon-breath-options button{
+ color:#edfdfa;background:transparent;border:1.5px solid rgba(191,240,236,.44);border-radius:50px;padding:12px 17px;font-size:clamp(.95rem,1.24vw,1.12rem);font-weight:750
+}
+.canon-duration button[aria-pressed="true"],.canon-breath-options button[aria-pressed="true"]{background:#f4d17c;color:#062c3a;border-color:#f4d17c}
+.canon-stage{
+ --scene-a:#0e4967;--scene-b:#074153;--scene-c:#07364b;--scene-glow:#26c5d1;--scene-accent:#f4d17c;
+ min-height:min(900px,88svh);
+ position:relative;overflow:hidden;border-radius:32px;border:1px solid rgba(194,250,248,.24);
+ background:radial-gradient(ellipse at 18% 37%,color-mix(in srgb,var(--scene-glow) 28%,transparent),transparent 51%),linear-gradient(127deg,var(--scene-a),var(--scene-b) 62%,var(--scene-c));
+ box-shadow:0 35px 90px rgba(0,12,33,.32);transition:background .8s ease;display:flex;flex-direction:column;padding:clamp(22px,4vw,52px);
+}
+.canon-stage[data-moment="heart"]{--scene-a:#4e214e;--scene-b:#7e315f;--scene-c:#322552;--scene-glow:#f575a6;--scene-accent:#ffd1bc}
+.canon-stage[data-moment="breath"]{--scene-a:#084d64;--scene-b:#086e7c;--scene-c:#0b344a;--scene-glow:#47e4df;--scene-accent:#b8fff0}
+.canon-stage[data-moment="gratitude"]{--scene-a:#633a4b;--scene-b:#84573d;--scene-c:#493554;--scene-glow:#ffcf6f;--scene-accent:#ffe29b}
+.canon-stage[data-moment="cuba"]{--scene-a:#084d65;--scene-b:#08776f;--scene-c:#123d62;--scene-glow:#7edbd5;--scene-accent:#ffdd8e}
+.canon-stage[data-moment="finished"]{--scene-a:#315b4a;--scene-b:#186a70;--scene-c:#183e66;--scene-glow:#f8d179;--scene-accent:#fff0b7}
+.canon-ambient{position:absolute;border-radius:50%;opacity:.18;pointer-events:none;filter:blur(3px);animation:canon-drift 19s ease-in-out infinite alternate}
+.canon-ambient.one{width:440px;height:440px;right:-150px;top:-160px;background:radial-gradient(circle,var(--scene-glow),transparent 68%)}
+.canon-ambient.two{width:520px;height:520px;left:-240px;bottom:-290px;background:radial-gradient(circle,#f4dfac,transparent 70%);animation-delay:-8s}
+.canon-phase-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;position:relative;z-index:2;margin-bottom:clamp(34px,5vw,60px)}
+.canon-phase-item{border:1px solid rgba(255,255,255,.22);background:rgba(5,27,43,.18);border-radius:16px;padding:14px;min-height:77px;display:flex;align-items:center;gap:12px}
+.canon-phase-item .canon-index{display:grid;place-items:center;flex:none;width:35px;height:35px;border:1px solid rgba(255,255,255,.33);border-radius:50%;font-size:.95rem;font-weight:800}
+.canon-phase-item strong{font-size:clamp(.78rem,1vw,.99rem);line-height:1.2;letter-spacing:.025em}
+.canon-phase-item[data-active="true"]{background:rgba(255,255,255,.17);border-color:var(--scene-accent);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.canon-phase-item[data-active="true"] .canon-index{background:var(--scene-accent);border-color:var(--scene-accent);color:#17384d}
+.canon-phase-item[data-complete="true"] .canon-index{background:rgba(176,255,224,.22);border-color:#9af3db;color:#9af3db}
+.canon-content{display:grid;grid-template-columns:minmax(245px,.82fr) minmax(0,1.3fr);align-items:center;gap:clamp(30px,5vw,84px);flex:1;position:relative;z-index:2}
+.canon-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;min-width:0}
+.canon-orb-outer{position:relative;display:grid;place-items:center;width:clamp(180px,25vw,345px);aspect-ratio:1;border-radius:50%;border:1px solid color-mix(in srgb,var(--scene-accent) 55%,transparent);box-shadow:0 0 0 16px rgba(255,255,255,.045),0 0 0 43px rgba(255,255,255,.025),0 0 95px color-mix(in srgb,var(--scene-glow) 34%,transparent)}
+.canon-orb-outer::before,.canon-orb-outer::after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.canon-orb-outer::before{inset:-29px;border:1px dashed rgba(235,255,247,.25);animation:canon-spin 80s linear infinite}
+.canon-orb-outer::after{inset:-8px;border:2px solid transparent;border-top-color:var(--scene-accent);border-bottom-color:rgba(255,255,255,.55);animation:canon-spin 38s linear infinite reverse}
+.canon-orb-inner{width:72%;height:72%;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.30),var(--scene-glow) 34%,rgba(4,36,58,.28) 88%);filter:drop-shadow(0 0 28px color-mix(in srgb,var(--scene-glow) 60%,transparent));transform:scale(1);transition:transform .16s linear,background .7s ease}
+.canon-orb-icon{font-family:Outfit,sans-serif;font-size:clamp(4.5rem,8vw,8.3rem);line-height:1;color:#f8fff8;filter:drop-shadow(0 10px 19px rgba(9,35,56,.35));font-weight:350}
+.canon-orb-inner:not([data-guided="true"]){animation:canon-orbit-breathe 9s ease-in-out infinite}
+.canon-breath-guide{text-align:center;min-height:80px}
+.canon-breath-guide strong{display:block;font-family:Outfit,sans-serif;font-size:clamp(1.65rem,2.25vw,2.45rem);letter-spacing:-.035em}
+.canon-breath-guide span{display:block;color:#d9f6ef;font-size:clamp(.98rem,1.18vw,1.16rem);line-height:1.45;margin-top:5px}
+.canon-breath-options{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:9px;margin-top:9px}
+.canon-breath-options button{font-size:.92rem;padding:9px 13px}
+.canon-copy{min-width:0;align-self:center}
+.canon-scene-kicker{font-size:clamp(.87rem,1.12vw,1.12rem);letter-spacing:.13em;color:var(--scene-accent);text-transform:uppercase;font-weight:800;margin:0 0 15px}
+.canon-scene-heading{font-size:clamp(2.7rem,5vw,5.5rem);line-height:.99;font-weight:650;letter-spacing:-.055em;margin:0 0 25px;overflow-wrap:break-word}
+.canon-cue{font-size:clamp(1.7rem,2.75vw,2.75rem);line-height:1.25;font-weight:580;letter-spacing:-.035em;min-height:3.1em;margin:0 0 28px;max-width:780px;text-wrap:pretty}
+.canon-cue.canon-enter{animation:canon-reveal .45s ease-out both}
+.canon-source-panel{margin:0;background:rgba(2,24,42,.24);border:1px solid rgba(255,255,255,.18);border-left:4px solid var(--scene-accent);padding:19px 21px;border-radius:15px;max-width:830px}
+.canon-source-panel .label{font-size:.83rem;text-transform:uppercase;letter-spacing:.1em;color:#e5f9f1;font-weight:800}
+.canon-source-panel p{color:#edf8f6;font-size:clamp(1.12rem,1.45vw,1.46rem);line-height:1.52;font-weight:420;margin:10px 0 0}
+.canon-stage-footer{position:relative;z-index:2;margin-top:clamp(30px,5vw,65px)}
+.canon-stage-meta{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.canon-time{font-family:Outfit,sans-serif;font-weight:650;letter-spacing:-.05em;font-variant-numeric:tabular-nums;font-size:clamp(2.65rem,4vw,4.4rem);line-height:1;color:#f8e0a0}
+.canon-time-label{color:#cde6e0;font-size:.95rem;font-weight:700;margin-bottom:4px}
+.canon-control-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.canon-control-row button{font-size:clamp(1rem,1.15vw,1.12rem);min-height:51px;min-width:137px}
+.canon-control-row .canon-primary{background:#f6db95;color:#0e3445;border:2px solid #f6db95}
+.canon-control-row .canon-secondary{background:rgba(255,255,255,.075);border:1.5px solid rgba(255,255,255,.45);color:white}
+.canon-track{height:8px;border-radius:20px;background:rgba(255,255,255,.18);overflow:hidden;margin:24px 0 0}
+.canon-track-progress{height:100%;width:0;background:linear-gradient(90deg,#6de2d4,#f9cf72);border-radius:20px;transition:width .15s linear}
+.canon-disclaimer{padding:20px 3px 36px;display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;color:#ccece8;font-size:clamp(.98rem,1.15vw,1.18rem);line-height:1.6}
+.canon-note{max-width:750px}
+.canon-breath-visuals{display:none}
+.canon-stage[data-moment="breath"] .canon-breath-visuals{display:block}
+.canon-stage[data-moment="intro"] .canon-source-panel,.canon-stage[data-moment="finished"] .canon-source-panel{border-color:rgba(251,222,146,.48)}
+.canon-read-guide{background:#f4faf6;color:#0a3447;padding:clamp(68px,8vw,115px) 0}
+.canon-guide-top{max-width:920px;margin-bottom:48px}
+.canon-guide-top h2{font-size:clamp(2.5rem,5vw,5.5rem)}
+.canon-guide-top p{font-size:clamp(1.18rem,1.75vw,1.58rem);color:#305a64}
+.canon-guide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.canon-guide-card{padding:clamp(25px,3vw,39px);border:1px solid #c4ded9;border-radius:24px;background:#fff;box-shadow:0 12px 38px rgba(8,70,77,.06)}
+.canon-guide-card .canon-mini-step{font-size:1rem;color:#007985;font-weight:800;letter-spacing:.13em}
+.canon-guide-card h3{font-size:clamp(2.05rem,2.8vw,3rem);margin:12px 0 17px;color:#123b49}
+.canon-guide-card p{font-size:clamp(1.2rem,1.65vw,1.52rem);line-height:1.66;color:#24505a;margin:0}
+.canon-closing{background:linear-gradient(116deg,#063b51 0%,#09616a 60%,#0f4c6e);color:#fff;padding:clamp(78px,9vw,120px) 0}
+.canon-closing-inner{max-width:980px}
+.canon-closing .eyebrow{color:#f7dc93}
+.canon-closing h2{font-size:clamp(2.8rem,5.2vw,5.65rem);max-width:930px}
+.canon-closing blockquote{border-left:4px solid #f4d17c;padding:12px 0 12px 27px;margin:35px 0;font-size:clamp(1.2rem,2.1vw,2.15rem);line-height:1.5;color:#e8fffb}
+.canon-closing .canon-signature{color:#f5d993;font-family:Outfit,sans-serif;font-size:clamp(1.7rem,2.8vw,3rem)}
+@keyframes canon-spin{to{transform:rotate(360deg)}}
+@keyframes canon-orbit-breathe{0%,100%{transform:scale(.89)}50%{transform:scale(1.04)}}
+@keyframes canon-drift{to{transform:translate(60px,-40px) scale(1.14)}}
+@keyframes canon-reveal{from{opacity:.18;transform:translateY(12px);filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@media(max-width:1050px){.canon-content{gap:35px;grid-template-columns:.77fr 1.23fr}.canon-source-panel p{font-size:1.15rem}.canon-stage{min-height:740px}.canon-phase-item{padding:11px}.canon-phase-item strong{font-size:.83rem}}
+@media(max-width:780px){
+.canon-title{font-size:clamp(2.5rem,8vw,4.4rem)}
+.canon-stage{min-height:0;padding:26px 18px;border-radius:22px}
+.canon-phase-nav{gap:6px;margin-bottom:30px}
+.canon-phase-item{padding:8px 6px;min-height:59px;justify-content:center}
+.canon-phase-item .canon-index{width:30px;height:30px}
+.canon-phase-item strong{display:none}
+.canon-content{grid-template-columns:1fr;gap:20px}
+.canon-visual{gap:14px}
+.canon-orb-outer{width:clamp(152px,34vw,230px);box-shadow:0 0 0 13px rgba(255,255,255,.045),0 0 0 27px rgba(255,255,255,.03)}
+.canon-breath-guide{min-height:48px}
+.canon-breath-guide strong{font-size:1.75rem}
+.canon-scene-heading{font-size:clamp(2.55rem,8vw,4.5rem);margin-bottom:18px}
+.canon-cue{font-size:clamp(1.7rem,4.55vw,2.2rem);min-height:0}
+.canon-copy{text-align:center}
+.canon-source-panel{text-align:left}
+.canon-source-panel p{font-size:1.2rem}
+.canon-stage-meta{justify-content:center}
+.canon-control-row{justify-content:center}
+.canon-stage-footer{margin-top:30px}
+.canon-time{text-align:center}
+.canon-time-label{text-align:center}
+.canon-guide-grid{grid-template-columns:1fr}
+.canon-guide-card p{font-size:1.25rem}
+}
+@media(max-width:450px){
+.canon-header{padding-top:23px}
+.canon-stage{padding:18px 14px}
+.canon-orb-outer{width:153px}
+.canon-orb-icon{font-size:4.4rem}
+.canon-breath-guide span{font-size:1rem}
+.canon-scene-heading{font-size:2.65rem}
+.canon-cue{font-size:1.72rem}
+.canon-source-panel{padding:15px}
+.canon-source-panel p{font-size:1.11rem}
+.canon-phase-nav{margin-bottom:22px}
+.canon-control-row button{flex:1;min-width:0;padding:12px 10px}
+.canon-duration{width:100%;justify-content:center}
+.canon-disclaimer{font-size:1rem}
+}
+@media(prefers-reduced-motion:reduce){
+#canon-meditation *,#canon-meditation *::before,#canon-meditation *::after{animation:none!important;transition:none!important}
+}
