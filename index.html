@@ -618,7 +618,7 @@ body.portal-mode{background:#f8f6f9;color:#21182e}body.portal-mode #app{min-heig
   }
 }
 
-/* V5.21 — Solo franja Camina por Cuba: sección protagonista, contenido a la izquierda y logo grande a la derecha */
+/* V5.21 — Solo franja Camina por Cuba: sección protagonista, logo grande a la izquierda y contenido a la derecha */
 #root .section-content.camina-promo-section{
   min-height:88svh;
   padding:clamp(64px,9vh,118px) 0;
@@ -627,7 +627,7 @@ body.portal-mode{background:#f8f6f9;color:#21182e}body.portal-mode #app{min-heig
 }
 #root .camina-promo-section .camina-promo-grid{
   width:min(calc(100% - 88px),1320px);
-  grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
   align-items:center;
   gap:clamp(32px,4.8vw,82px);
   margin-inline:auto;
@@ -702,7 +702,7 @@ body.portal-mode{background:#f8f6f9;color:#21182e}body.portal-mode #app{min-heig
 }
 @media(max-width:960px){
   #root .camina-promo-section .camina-promo-grid{
-    grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+    grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
     width:calc(100% - 58px);gap:28px;
   }
   #root .camina-promo-section .camina-promo-title{font-size:clamp(32px,4.4vw,48px)}
@@ -1025,13 +1025,13 @@ function secHtml(s,i){if(s.status!=='published'||s.settings?.show_on_page===fals
    const time=String(s.settings?.time_label||'10:00 AM HORA DE CUBA');
    const callToAction=buttons((s.buttons||[]).length?s.buttons:[{label:'Quiero ser parte',href:'#participar',style:'primary'}]);
    inner='<div class="container camina-promo-grid">'
+    +'<div class="camina-promo-logo">'+(logo?'<img src="'+h(logo)+'" alt="Camina por Cuba" loading="eager" decoding="async">':'')+'</div>'
     +'<div class="camina-promo-copy">'
      +'<div class="camina-promo-dateblock"><span class="camina-promo-date">'+h(date)+'</span><span class="camina-promo-time">'+h(time)+'</span></div>'
      +'<h2 class="camina-promo-title">'+lines.map((line,i)=>'<span class="camina-promo-line'+(i===0?'':' yellow')+'">'+h(line)+'</span>').join('')+'</h2>'
      +'<p class="camina-promo-dale">'+h(s.subtitle||'¡Dale!')+'</p>'
      +'<div class="camina-promo-actions">'+callToAction+'</div>'
     +'</div>'
-    +'<div class="camina-promo-logo">'+(logo?'<img src="'+h(logo)+'" alt="Camina por Cuba" loading="eager" decoding="async">':'')+'</div>'
    +'</div>';
   }else{inner=`<div class="container content-shell">${ey}<h2 class="headline">${headlineAccent(s)}</h2>${s.subtitle?`<p class="accent-line">${h(s.subtitle)}</p>`:''}<p class="copy">${h(s.body)}</p>${b}${s.items?.length?cards(s):''}</div>`}
   break;
