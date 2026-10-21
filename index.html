@@ -795,7 +795,7 @@ function cfPurposeCarousel(s){
  const delay=Math.min(15,Math.max(2,Number(s.settings?.manifesto_interval)||5));
  const auto=String(s.settings?.manifesto_autoplay??'true')!=='false';
  return '<div class="cf-manifesto-carousel" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Fotografías del propósito de Cuba Feliz" data-interval="'+delay+'" data-autoplay="'+auto+'">'+
- photos.map((p,i)=>'<img class="cf-manifesto-slide'+(i===0?' is-active':'')+'" src="'+mediaAttr(safeUrl(p.url))+'" alt="Cuba Feliz, fotografía '+(i+1)+' de '+photos.length+'" loading="'+(i===0?'eager':'lazy')+'" decoding="async" aria-hidden="'+(i===0?'false':'true')+'" style="object-position:center '+Math.min(100,Math.max(0,Number(p.focal_y??50)||0))+'%">').join('')+'</div>';
+ photos.map((p,i)=>'<img class="cf-manifesto-slide'+(i===0?' is-active':'')+'" src="'+h(safeUrl(p.url))+'" alt="Cuba Feliz, fotografía '+(i+1)+' de '+photos.length+'" loading="'+(i===0?'eager':'lazy')+'" decoding="async" aria-hidden="'+(i===0?'false':'true')+'" style="object-position:center '+Math.min(100,Math.max(0,Number(p.focal_y??50)||0))+'%">').join('')+'</div>';
 }
 function cfInitPurposeCarousel(){
  const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
