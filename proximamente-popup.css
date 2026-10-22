@@ -1,0 +1,32 @@
+/* Vista "Próximamente" para Casa Luz, Tertulia de Tribu y Rayitos de Sol */
+button.cf-upcoming-trigger{cursor:pointer;font-family:inherit}
+.cf-upcoming-modal{
+  padding:0;width:min(900px,calc(100vw - 32px));max-width:900px;
+  max-height:min(92dvh,830px);overflow:auto;border:0;border-radius:27px;
+  color:#30194c;background:#fffaf5;box-shadow:0 40px 110px rgba(16,6,33,.38)
+}
+.cf-upcoming-modal::backdrop{background:rgba(19,11,40,.77);backdrop-filter:blur(7px)}
+.cf-upcoming-inner{display:grid;grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);min-height:430px;position:relative}
+.cf-upcoming-photo{background:linear-gradient(145deg,#e5d4f4,#f8d7b3);min-height:430px;overflow:hidden}
+.cf-upcoming-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.cf-upcoming-photo--empty{display:grid;place-items:center;color:#652795;font-size:9rem}
+.cf-upcoming-content{padding:clamp(35px,4.5vw,65px) clamp(27px,4vw,56px);align-self:center}
+.cf-upcoming-eyebrow{color:#86629d;font-size:.78rem;font-weight:800;letter-spacing:.14em}
+.cf-upcoming-content h2{font-family:Outfit,sans-serif;font-weight:700;letter-spacing:-.055em;line-height:1.05;font-size:clamp(2.65rem,4.4vw,4.35rem);color:#3b175f;margin:16px 0 19px}
+.cf-upcoming-status{display:inline-flex;align-items:center;gap:9px;border-radius:99px;background:#f5e9b5;color:#533b1b;font-size:1.05rem;font-weight:850;padding:10px 16px;margin-bottom:19px}
+.cf-upcoming-status-dot{width:9px;height:9px;border-radius:50%;background:#c18a1f;box-shadow:0 0 0 4px rgba(193,138,31,.15)}
+.cf-upcoming-description{font-size:clamp(1.07rem,1.45vw,1.27rem);line-height:1.6;color:#59476c;margin:0 0 18px}
+.cf-upcoming-note{font-size:clamp(1.06rem,1.3vw,1.16rem);font-weight:650;line-height:1.55;color:#4c235e;margin:0 0 25px}
+.cf-upcoming-ok{border:0;border-radius:99px;background:#49176d;color:white;font:750 1rem 'DM Sans',sans-serif;padding:16px 21px;cursor:pointer;transition:transform .15s ease}
+.cf-upcoming-ok:hover{transform:translateY(-2px);background:#65338c}
+.cf-upcoming-close{position:absolute;top:15px;right:15px;z-index:3;width:41px;height:41px;border:0;border-radius:50%;background:#fff;color:#38175e;box-shadow:0 3px 13px rgba(0,0,0,.13);font-size:1.8rem;line-height:1;cursor:pointer}
+.cf-upcoming-modal button:focus-visible{outline:3px solid #ca9d34;outline-offset:3px}
+@media(max-width:700px){
+ .cf-upcoming-modal{width:calc(100vw - 26px);border-radius:21px;max-height:93dvh}
+ .cf-upcoming-inner{grid-template-columns:1fr}
+ .cf-upcoming-photo{min-height:190px;height:clamp(190px,32vh,295px)}
+ .cf-upcoming-content{padding:29px 24px 33px}
+ .cf-upcoming-content h2{font-size:clamp(2.3rem,8vw,3.25rem);margin:12px 0 16px}
+ .cf-upcoming-description{font-size:1.08rem}
+}
+@media(prefers-reduced-motion:reduce){.cf-upcoming-ok{transition:none}}
