@@ -169,3 +169,101 @@ body[data-initiative="eligiendo-milagros"] .rt-gallery-wrapper.testimonials{back
 }
 @media(max-width:450px){.rt-gallery-wrapper .gallery-grid{grid-template-columns:1fr}.rt-day-schedule-row{grid-template-columns:1fr;gap:4px}.rt-day-schedule-row .time{font-size:1rem}}
 @media(prefers-reduced-motion:reduce){.rt-hero *, .rt-hero *::before,.rt-hero *::after{animation:none!important;transition:none!important}}
+
+/* Tarjetas de las tres facilitadoras: retratos independientes y administrables */
+body[data-initiative="eligiendo-milagros"] .rt-mentors{
+  align-items:stretch;
+  gap:clamp(16px,2vw,26px);
+}
+body[data-initiative="eligiendo-milagros"] .rt-mentor{
+  display:flex;
+  flex-direction:column;
+  padding:0;
+  overflow:hidden;
+  border-radius:26px;
+  box-shadow:0 15px 44px rgba(93,37,63,.09);
+  background:#fffdfa;
+}
+body[data-initiative="eligiendo-milagros"] .rt-mentor::before{
+  z-index:2;
+  height:5px;
+}
+.rt-mentor-photo{
+  position:relative;
+  width:100%;
+  aspect-ratio:4 / 5;
+  overflow:hidden;
+  background:linear-gradient(145deg,#f3dbcc 0%,#e8c4c6 49%,#cf9caf 100%);
+}
+.rt-mentor-photo img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+}
+.rt-mentor-placeholder{
+  display:none;
+  position:absolute;
+  inset:0;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:15px;
+  color:#713e5d;
+  background:radial-gradient(circle at 50% 35%,rgba(255,255,255,.64),transparent 54%);
+}
+.rt-mentor-photo--empty .rt-mentor-placeholder,
+.rt-mentor-photo[data-failed="true"] .rt-mentor-placeholder{
+  display:flex;
+}
+.rt-mentor-empty-symbol{
+  width:clamp(88px,9vw,132px);
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  border:2px solid rgba(122,63,100,.4);
+  background:rgba(255,255,255,.34);
+  font:650 clamp(3.1rem,5vw,5rem)/1 Outfit,sans-serif;
+  color:#a65b78;
+}
+.rt-mentor-empty-label{
+  padding:8px 17px;
+  border-radius:100px;
+  background:rgba(255,255,255,.73);
+  font-size:clamp(.85rem,1.1vw,.97rem);
+  font-weight:750;
+  letter-spacing:.015em;
+}
+.rt-mentor-info{
+  padding:clamp(26px,2.8vw,40px);
+  flex:1;
+}
+.rt-mentor-kicker{
+  font-weight:800;
+  font-size:.74rem;
+  letter-spacing:.16em;
+  color:#ab6377;
+  margin-bottom:12px;
+}
+body[data-initiative="eligiendo-milagros"] .rt-mentor h3{
+  font-size:clamp(1.75rem,2.4vw,2.45rem);
+  margin-bottom:16px;
+}
+body[data-initiative="eligiendo-milagros"] .rt-mentor p{
+  font-size:clamp(1.05rem,1.3vw,1.22rem);
+  line-height:1.69;
+  color:#634c59;
+  margin:0;
+}
+@media(max-width:980px) and (min-width:701px){
+  body[data-initiative="eligiendo-milagros"] .rt-mentors{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .rt-mentor-info{padding:22px}
+  .rt-mentor-photo{aspect-ratio:3 / 4}
+}
+@media(max-width:700px){
+  body[data-initiative="eligiendo-milagros"] .rt-mentors{grid-template-columns:1fr}
+  .rt-mentor-photo{aspect-ratio:4 / 4.4}
+  .rt-mentor-info{padding:28px}
+}
