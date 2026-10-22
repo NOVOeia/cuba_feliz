@@ -57,7 +57,15 @@ function benefits(){
 }
 function mentors(){
  const mentors=C.items(prefix+'2');
- return '<section class="rt-section rt-section--faint"><div class="shell">'+head('TRES MAESTRAS','El corazón del <em>encuentro.</em>','Conoce las trayectorias de Luzliank, Yonaiky y Verónica.')+'<div class="rt-mentors">'+mentors.map((x,i)=>'<article class="rt-mentor"><div class="rt-mentor-badge" aria-hidden="true">'+e(x.title?.[0]||String(i+1))+'</div><h3>'+e(x.title)+'</h3><p>'+e(x.body)+'</p></article>').join('')+'</div><p class="rt-small-note">Las fotografías de las facilitadoras podrán incorporarse aquí desde el portal administrativo.</p></div></section>';
+ const cards=mentors.map((x,i)=>{
+   const media=x.media||{},photo=(media.type!=='video'?C.url(media.url):'')||'';
+   const pos=['top','center','bottom'].includes(media.position)?media.position:'center';
+   const picture=photo?'<img src="'+e(photo)+'" alt="Fotografía de '+e(x.title)+'" loading="lazy" decoding="async" style="object-position:center '+e(pos)+'" onerror="this.hidden=true;this.parentElement.dataset.failed='+'true'+'">':'';
+   const initial=e(x.title?.[0]||String(i+1));
+   const empty='<span class="rt-mentor-empty-symbol" aria-hidden="true">'+initial+'</span><span class="rt-mentor-empty-label">Fotografía pendiente</span>';
+   return '<article class="rt-mentor"><div class="rt-mentor-photo '+(photo?'':'rt-mentor-photo--empty')+'">'+picture+'<div class="rt-mentor-placeholder">'+empty+'</div></div><div class="rt-mentor-info"><div class="rt-mentor-kicker">FACILITADORA 0'+(i+1)+'</div><h3>'+e(x.title)+'</h3><p>'+e(x.body)+'</p></div></article>';
+ }).join('');
+ return '<section class="rt-section rt-section--faint" id="facilitadoras"><div class="shell">'+head('TRES MAESTRAS','El corazón del <em>encuentro.</em>','Conoce las trayectorias de Luzliank, Yonaiky y Verónica.')+'<div class="rt-mentors">'+cards+'</div></div></section>';
 }
 function agenda(){
  const days=C.items(prefix+'3'),labels=['25 FEB','26 FEB','27 FEB'];
