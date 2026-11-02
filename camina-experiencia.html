@@ -8,12 +8,12 @@
 @media(max-width:760px){.head{padding:10px 0}.back{font-size:12px;padding:11px 12px}.subnav{top:76px}.navlinks{gap:2px}.navlinks a{padding:10px 12px}.layout{grid-template-columns:1fr}.media{order:0!important;aspect-ratio:4/3}.topic{scroll-margin-top:130px;padding:65px 0}.topic h2{font-size:clamp(3.9rem,13vw,5.8rem)}.cta{width:100%;margin:0 0 10px}.secondary{margin-left:0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style></head>
-<body><header class="top"><div class="topline"></div><div class="head wrap"><a class="logo" href="index.html" aria-label="Volver a Cuba Feliz"><img src="assets/cuba-feliz-logo-oficial.png" alt="¡Cuba Feliz! Todo comienza conmigo"></a><a class="back" href="camina-por-cuba.html">← Camina por Cuba</a></div></header>
+<body><header class="top"><div class="topline"></div><div class="head wrap"><a class="logo" href="index.html" aria-label="Volver a Cuba Feliz"><img src="assets/cuba-feliz-logo-oficial.png" alt="¡Cuba Feliz! Todo comienza conmigo"></a><a class="back" href="index.html#pagina/camina-por-cuba">← Camina por Cuba</a></div></header>
 <div class="hero"><div class="wrap"><div class="kicker">CAMINA POR CUBA · PARTICIPA</div><h1>Pequeños pasos.<br><em>Un mismo camino.</em></h1><p>Explora las cuatro formas de sumarte a esta iniciativa. Navega libremente de una a otra sin regresar a la página principal.</p></div></div>
 <nav class="subnav" aria-label="Secciones de Camina por Cuba"><div class="navlinks wrap"><a href="#aprende">Aprende</a><a href="#conecta">Conecta</a><a href="#llega">Llega</a><a href="#aporta">Aporta</a></div></nav>
 <main id="sections"><section class="topic" id="aprende"><div class="wrap layout"><div><span class="number">01 / 04</span><h2>Aprende</h2><p>Cargando contenido...</p></div><div class="media"><div class="missing">Cargando imagen...</div></div></div></section><section class="topic" id="conecta"><div class="wrap layout"><div><span class="number">02 / 04</span><h2>Conecta</h2><p>Cargando contenido...</p></div><div class="media"><div class="missing">Cargando imagen...</div></div></div></section><section class="topic" id="llega"><div class="wrap layout"><div><span class="number">03 / 04</span><h2>Llega</h2><p>Cargando contenido...</p></div><div class="media"><div class="missing">Cargando imagen...</div></div></div></section><section class="topic" id="aporta"><div class="wrap layout"><div><span class="number">04 / 04</span><h2>Aporta</h2><p>Cargando contenido...</p></div><div class="media"><div class="missing">Cargando imagen...</div></div></div></section></main>
 <div class="final"><h2>Todo comienza<br>conmigo.</h2><a class="cta" href="index.html#participar">¡Quiero ser parte!</a></div>
-<footer><div class="wrap"><span>© Cuba Feliz · Todo comienza conmigo</span><a href="camina-por-cuba.html">Volver a Camina por Cuba</a></div></footer>
+<footer><div class="wrap"><span>© Cuba Feliz · Todo comienza conmigo</span><a href="index.html#pagina/camina-por-cuba">Volver a Camina por Cuba</a></div></footer>
 <script>
 (async function(){
  const URL='https://fjhululvenojnvhickln.supabase.co';
@@ -37,7 +37,7 @@
     const img=document.createElement('img');img.src=image;img.alt='Imagen de '+title.textContent;img.loading='lazy';media.replaceChildren(img);
   }else{media.innerHTML='<div class="missing">Imagen próximamente</div>';}
   const btn=document.createElement('a');btn.className='cta';btn.href='index.html#participar';btn.textContent='Quiero participar';left.appendChild(btn);
-  if(key==='aporta'){const extra=document.createElement('a');extra.className='cta secondary';extra.href='gotas-de-felicidad.html';extra.textContent='Conocer las Gotas';left.appendChild(extra);}
+  if(key==='aporta'){const extra=document.createElement('a');extra.className='cta secondary';extra.href='index.html#pagina/gotas-de-felicidad';extra.textContent='Conocer las Gotas';left.appendChild(extra);}
  });
  const links=[...document.querySelectorAll('.navlinks a')];
  const update=()=>{const id=location.hash.slice(1);links.forEach(a=>a.setAttribute('aria-current',a.hash.slice(1)===id?'location':'false'))};window.addEventListener('hashchange',update);update();
