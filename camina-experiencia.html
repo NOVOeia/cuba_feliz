@@ -28,7 +28,7 @@
   const found=await r.json();cards=Array.isArray(found?.[0]?.items)?found[0].items:[];
  }catch(err){document.querySelectorAll('.topic p').forEach(p=>{p.textContent='No se pudo cargar esta información. Inténtalo nuevamente.'});return;}
  labels.forEach((key,i)=>{
-  const s=target.querySelector('#'+key),item=cards.find(c=>c.key===key)||{};
+  const s=target.querySelector('#'+key),sourceKey=key==='llega'?'encuentrate':key,item=cards.find(c=>c.key===sourceKey)||{};
   const title=s.querySelector('h2'),para=s.querySelector('p'),media=s.querySelector('.media'),left=s.querySelector('.layout>div:first-child');
   title.textContent=item.title||key.charAt(0).toUpperCase()+key.slice(1);
   para.textContent=item.body||'Información próximamente.';
