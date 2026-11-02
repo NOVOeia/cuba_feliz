@@ -16,7 +16,7 @@ function setup(form,onCountryChange){
  const select=c=>{input.value=c.name;value.value=c.name;input.setCustomValidity('');close();onCountryChange?.();};
  function draw(){
    const query=norm(input.value);
-   visible=query?list.filter(x=>norm(x.name).includes(query)||norm(x.code)===query).slice(0,30):list.slice(0,35);
+   visible=query?list.filter(x=>norm(x.name).includes(query)||norm(x.code)===query):list;
    if(!visible.length){panel.innerHTML='<p class="country-no-results">No encontramos ese país o territorio.</p>';panel.hidden=false;input.setAttribute('aria-expanded','true');return;}
    panel.innerHTML=visible.map((x,i)=>'<button type="button" role="option" id="joinCountryOption'+i+'" data-country-index="'+i+'" aria-selected="false">'+x.name+'</button>').join('');
    panel.hidden=false;input.setAttribute('aria-expanded','true');
