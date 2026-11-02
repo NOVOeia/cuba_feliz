@@ -1,0 +1,69 @@
+/* Cuba Feliz | Cambios de interfaz aprobados en 4th Draft */
+#joinOverlay .dialog{width:min(700px,calc(100vw - 30px));max-height:94dvh;overflow-y:auto;padding:clamp(25px,4vw,46px);border-radius:26px}
+#joinOverlay .dialog h2{font-size:clamp(2.35rem,4.6vw,4.05rem);line-height:1.04;letter-spacing:-.055em}
+#joinOverlay .dialog>p{font-size:clamp(1.08rem,1.5vw,1.24rem);line-height:1.55}
+#joinOverlay .dialog form{display:grid;gap:13px}
+#joinOverlay .dialog form>label{margin:0}
+#joinOverlay .join-country-field{position:relative}
+#joinOverlay .join-country-field input[type="search"]{width:100%;border:1px solid #d7c4de;border-radius:11px;background:#fff;color:#321648;min-height:51px;padding:13px 16px}
+#joinOverlay .country-results{position:absolute;top:calc(100% - 3px);left:0;right:0;max-height:260px;overflow-y:auto;background:#fff;border:1px solid #cdb9d8;border-radius:0 0 12px 12px;z-index:20;box-shadow:0 15px 30px #32164820}
+#joinOverlay .country-results[hidden]{display:none}
+#joinOverlay .country-results button{display:block;width:100%;border:0;border-bottom:1px solid #f1ecf0;background:#fff;color:#321648;text-align:left;font-size:1rem;padding:12px 15px;cursor:pointer}
+#joinOverlay .country-results button[aria-selected=true],#joinOverlay .country-results button:hover{background:#f0e7f7}
+#joinOverlay .country-no-results{padding:13px;color:#806b87}
+#joinOverlay .join-interests{border:1px solid #e1d1e4;border-radius:17px;padding:19px;margin:8px 0 4px}
+#joinOverlay .join-interests legend{font-size:clamp(1.16rem,2vw,1.45rem);color:#42146c;font-weight:800;padding:0 8px}
+#joinOverlay .join-options{display:grid;gap:10px}
+#joinOverlay .join-option{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;align-items:start;padding:12px 14px;border-radius:12px;border:1px solid #e1d5e4;background:#fffdfb;cursor:pointer;font-size:clamp(1rem,1.3vw,1.15rem);font-weight:650;line-height:1.4}
+#joinOverlay .join-option:has(input:checked){background:#fcf3cc;border-color:#c9a337}
+#joinOverlay .join-option input{appearance:auto;accent-color:#512174;width:21px;height:21px;margin:1px 0 0}
+#joinOverlay .join-help{font-size:.94rem;color:#6d5677;margin:9px 0 0}
+#joinOverlay .join-submit{width:100%;font-size:clamp(1.55rem,2.7vw,2.1rem);min-height:68px;justify-content:center;gap:18px;background:#40166b;color:#fff}
+#joinOverlay .join-submit:hover{background:#59228a}
+#root .v4-live-rail .v4-live-text h3{font-size:clamp(1.28rem,2.05vw,2.22rem);text-wrap:balance}
+#root .v4-live-rail .v4-live-text small{font-size:clamp(.8rem,1.1vw,1rem)}
+#root .v4-live-rail .cf-btn{font-size:clamp(1rem,1.18vw,1.22rem);padding:16px 25px;min-height:58px;white-space:normal;max-width:390px;text-align:center;justify-content:center}
+#root #proposito .headline{font-size:clamp(3.1rem,4.8vw,5.7rem);text-wrap:balance}
+#root #proposito .accent-line{font-size:clamp(1.44rem,2vw,2rem);line-height:1.3;font-weight:750;color:#24152e!important}
+#root #proposito .accent-line .cf-purpose-emphasis{display:block;color:#a47405}
+#root #proposito .copy{font-size:clamp(1.12rem,1.48vw,1.4rem);line-height:1.75}
+#root #proposito .button-group .cf-btn{min-height:64px;font-size:clamp(1.05rem,1.5vw,1.3rem);white-space:normal;padding:16px 26px}
+#root .camina-promo-dateblock{text-align:center;justify-items:center}
+#root .camina-promo-date{font-size:clamp(1.65rem,2.6vw,2.95rem)}
+#root .camina-promo-time{font-size:clamp(1rem,1.5vw,1.43rem)}
+#root .camina-promo-section .camina-promo-actions .cf-btn{background:#fff!important;border:2px solid #fff!important;color:#33164c!important;min-height:70px;font-size:clamp(1.13rem,1.75vw,1.6rem);font-weight:850;padding:17px 30px;white-space:normal;max-width:min(100%,610px);text-align:center;justify-content:center}
+#root .camina-promo-section .camina-promo-actions .btn-arrow{color:#33164c!important}
+#root #camina .walk-right-column .copy{font-size:clamp(1.14rem,1.44vw,1.36rem);line-height:1.7;text-wrap:pretty;max-width:690px}
+#root #camina .walk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;align-items:stretch}
+#root #camina .walk-card{display:flex;flex-direction:column;min-width:0;border-radius:17px;overflow:hidden}
+#root #camina .walk-card .walk-image{height:clamp(125px,12vw,183px);min-height:0}
+#root #camina .walk-card .walk-body{padding:20px 16px 18px;display:flex;flex-direction:column;gap:11px;flex:1}
+#root #camina .walk-card h3{font-size:clamp(1.42rem,1.84vw,2rem);margin:0}
+#root #camina .walk-card p{font-size:clamp(1.06rem,1.13vw,1.2rem);line-height:1.53;margin:0;flex:1;text-wrap:pretty}
+#root #camina .walk-card .button-group{margin-top:10px}
+#root #camina .walk-card .cf-btn{font-size:clamp(.95rem,1.05vw,1.1rem);min-height:51px;white-space:normal;padding:11px 12px;gap:8px}
+#root #iniciativas .intro-center{text-align:center}
+#root #iniciativas .headline{font-size:clamp(3rem,5.15vw,5.5rem);line-height:1.07;letter-spacing:-.055em;text-align:center;margin-inline:auto;max-width:920px;text-wrap:balance}
+#root #iniciativas .cf-init-line{display:block}
+#root #iniciativas .cf-init-line--emphasis{color:#632c93}
+#root #iniciativas .content-card h3{font-size:clamp(1.26rem,1.65vw,1.72rem)}
+#root #iniciativas .content-card p{font-size:clamp(1.02rem,1.16vw,1.2rem);line-height:1.6;text-wrap:pretty}
+@media(max-width:960px){#root #camina .walk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#root #camina .walk-card .walk-image{height:200px}}
+@media(max-width:620px){
+ #joinOverlay .dialog{padding:25px 20px}
+ #joinOverlay .join-interests{padding:14px}
+ #joinOverlay .join-option{padding:12px 10px}
+ #root .v4-live-rail .v4-live-text h3{font-size:clamp(1.16rem,4.6vw,1.55rem)}
+ #root .v4-live-rail .cf-btn{max-width:100%;font-size:1rem}
+ #root #proposito .headline{font-size:clamp(2.65rem,9vw,3.8rem)}
+ #root #proposito .copy{font-size:1.15rem}
+ #root .camina-promo-section .camina-promo-actions .cf-btn{width:100%;max-width:100%;font-size:1.14rem;padding:17px 19px}
+ #root #camina .walk-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ #root #camina .walk-card .walk-image{height:135px}
+ #root #camina .walk-card .walk-body{padding:14px 12px;gap:9px}
+ #root #camina .walk-card h3{font-size:1.35rem}
+ #root #camina .walk-card p{font-size:1rem;line-height:1.46}
+ #root #camina .walk-card .cf-btn{font-size:.95rem;min-height:46px;padding:11px 10px}
+ #root #iniciativas .headline{font-size:clamp(2.5rem,8vw,3.4rem)}
+}
+@media(max-width:370px){#root #camina .walk-grid{grid-template-columns:1fr}#root #camina .walk-card .walk-image{height:185px}}
