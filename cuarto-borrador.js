@@ -48,3 +48,85 @@ function setup(form,onCountryChange){
 }
 window.CF_COUNTRIES={count:list.length,setup,list};
 })();
+
+/* Registro Cuba Feliz: correo obligatorio, respuestas cerradas en desplegables y validación integral. */
+(function(){
+'use strict';
+function enhance(){
+ const country=document.getElementById('joinCountrySearch');
+ const form=country?.closest('form');
+ if(!form||form.dataset.cfRequiredEnhanced==='true')return;
+ form.dataset.cfRequiredEnhanced='true';
+ const countryValue=form.querySelector('[name="country"]');
+ if(country){country.required=true;country.setAttribute('aria-required','true');}
+ if(countryValue)countryValue.setAttribute('data-cf-required-country','true');
+ let email=form.querySelector('input[type="email"],input[name="email"],input[name="correo"],input[name="correo_electronico"]');
+ if(!email){
+   const wrap=document.createElement('div');wrap.className='form-field cf-email-field';
+   const label=document.createElement('label');label.htmlFor='joinRequiredEmail';label.textContent='Correo electrónico *';
+   email=document.createElement('input');email.id='joinRequiredEmail';email.name='email';email.type='email';email.autocomplete='email';email.placeholder='nombre@ejemplo.com';
+   wrap.append(label,email);
+   const anchor=country.closest('#joinCountryField')||country.parentElement;
+   if(anchor?.parentNode)anchor.parentNode.insertBefore(wrap,anchor);
+   else form.prepend(wrap);
+ } else {
+   email.type='email';if(!email.name)email.name='email';
+ }
+ email.required=true;email.setAttribute('aria-required','true');
+ email.autocomplete='email';
+ const processed=new Set();
+ form.querySelectorAll('input[type="radio"][name]').forEach(radio=>{
+   const name=radio.name;
+   if(processed.has(name))return;processed.add(name);
+   const group=[...form.querySelectorAll('input[type="radio"]')].filter(el=>el.name===name);
+   if(group.length<2)return;
+   const fieldset=group[0].closest('fieldset');
+   if(!fieldset||!group.every(el=>fieldset.contains(el)))return;
+   const choices=group.map(el=>{
+     const lbl=el.closest('label')|| (el.id?fieldset.querySelector('label[for="'+CSS.escape(el.id)+'"]'):null);
+     return {radio:el,text:(lbl?.textContent||el.value||'').trim()};
+   }).filter(x=>x.text);
+   if(choices.length!==group.length)return;
+   const select=document.createElement('select');
+   select.className='cf-answer-select';select.required=true;
+   select.setAttribute('aria-label',fieldset.querySelector('legend')?.textContent?.trim()||'Selecciona una respuesta');
+   const initial=document.createElement('option');initial.value='';initial.textContent='Selecciona una opción';initial.disabled=true;initial.selected=!group.some(x=>x.checked);select.append(initial);
+   choices.forEach(x=>{const option=document.createElement('option');option.value=x.radio.value;option.textContent=x.text;option.selected=x.radio.checked;select.append(option);});
+   const holder=document.createElement('div');holder.className='cf-radio-dropdown';holder.append(select);
+   fieldset.append(holder);
+   group.forEach(el=>{
+     const container=el.closest('label')||el;
+     container.style.display='none';el.required=false;
+   });
+   select.addEventListener('change',()=>{
+     const active=group.find(el=>el.value===select.value);
+     if(active){active.checked=true;active.dispatchEvent(new Event('change',{bubbles:true}));}
+   });
+ });
+ function requireAll(){
+   form.querySelectorAll('input,select,textarea').forEach(el=>{
+     if(el.disabled||['hidden','submit','button','reset','file','checkbox','radio'].includes(el.type)||el.type==='search'&&el!==country)return;
+     if(el.offsetParent===null&&el!==country)return;
+     el.required=true;el.setAttribute('aria-required','true');
+   });
+   [...new Set([...form.querySelectorAll('input[type="radio"][name]')].map(el=>el.name))].forEach(name=>{
+     const arr=[...form.querySelectorAll('input[type="radio"]')].filter(el=>el.name===name);
+     if(!arr.every(el=>el.closest('fieldset')?.querySelector('.cf-radio-dropdown'))&&arr.length)arr[0].required=true;
+   });
+ }
+ requireAll();
+ form.addEventListener('submit',event=>{
+   requireAll();
+   if(country&&!countryValue?.value.trim()){country.setCustomValidity('Selecciona un país de la lista.');}
+   else country?.setCustomValidity('');
+   if(!form.checkValidity()){
+     event.preventDefault();event.stopImmediatePropagation();form.reportValidity();
+   }
+ },true);
+ country?.addEventListener('input',()=>country.setCustomValidity(''));
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',enhance);
+else enhance();
+const watcher=new MutationObserver(enhance);
+watcher.observe(document.documentElement,{childList:true,subtree:true});
+})();
