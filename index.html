@@ -1271,7 +1271,7 @@ function homeRail(s){
    ? 'El sábado 14 de noviembre,<br>todos los cubanos avanzando juntos.'
    : h(headline);
  const label=settings.rail_button||'Conocer Camina por Cuba';
- const href=safeUrl(settings.rail_href||'camina-por-cuba.html')||'camina-por-cuba.html';
+ const href='#participar'; // El botón de inscripción abre siempre el formulario «Quiero ser parte».
  return `<div class="v4-live-rail" aria-label="Camina por Cuba"><div class="container v4-live-inner"><div class="v4-live-copy"><span class="v4-live-icon" aria-hidden="true">${window.CF_ASTERISK_SVG}</span><div class="v4-live-text"><small>${h(eyebrow)}</small><h3>${formattedHeadline}</h3></div></div><a class="cf-btn" href="${h(href)}">${h(label)} <span class="btn-arrow">↗</span></a></div></div>`;
 }
 
