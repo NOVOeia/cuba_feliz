@@ -112,5 +112,6 @@ let pending=false;
 const observer=new MutationObserver(()=>{if(pending)return;pending=true;queueMicrotask(()=>{pending=false;const side=document.querySelector('.admin-app .sidebar');if(!side)return;const absent=!side.querySelector('#cfEntry');if(absent){mount();if(!once){once=true;show('home')}else if(current!=='editor')show(current)}})});
 observer.observe(document.body,{childList:true,subtree:true});
 document.addEventListener('DOMContentLoaded',()=>{mount();publicWhatsapp()});
-if(document.readyState!=='loading'){mount();publicWhatsapp()}\nsetTimeout(publicWhatsapp,1500);
+if(document.readyState!=='loading'){mount();publicWhatsapp()}
+setTimeout(publicWhatsapp,1500);
 })();
