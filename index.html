@@ -1233,9 +1233,12 @@ function homeRail(s){
  const settings=s.settings||{};
  const eyebrow=settings.rail_eyebrow||'TU MOMENTO DE CONEXIÓN · ACCESO DIRECTO';
  const headline=settings.rail_text||'Una meditación para compartir el presente.';
+ const formattedHeadline=/^El sábado 14 de noviembre,\\s*todos los cubanos avanzando juntos\\.$/i.test(headline.trim())
+   ? 'El sábado 14 de noviembre,<br>todos los cubanos avanzando juntos.'
+   : h(headline);
  const label=settings.rail_button||'Conocer Camina por Cuba';
  const href=safeUrl(settings.rail_href||'camina-por-cuba.html')||'camina-por-cuba.html';
- return `<div class="v4-live-rail" aria-label="Camina por Cuba"><div class="container v4-live-inner"><div class="v4-live-copy"><span class="v4-live-icon" aria-hidden="true">${window.CF_ASTERISK_SVG}</span><div class="v4-live-text"><small>${h(eyebrow)}</small><h3>${h(headline)}</h3></div></div><a class="cf-btn" href="${h(href)}">${h(label)} <span class="btn-arrow">↗</span></a></div></div>`;
+ return `<div class="v4-live-rail" aria-label="Camina por Cuba"><div class="container v4-live-inner"><div class="v4-live-copy"><span class="v4-live-icon" aria-hidden="true">${window.CF_ASTERISK_SVG}</span><div class="v4-live-text"><small>${h(eyebrow)}</small><h3>${formattedHeadline}</h3></div></div><a class="cf-btn" href="${h(href)}">${h(label)} <span class="btn-arrow">↗</span></a></div></div>`;
 }
 
 function walkFeatureVideo(s){
