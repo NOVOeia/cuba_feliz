@@ -13,6 +13,21 @@ const css=document.createElement('style');css.textContent=`
 .cf-business .cf-tag{display:inline-block;padding:4px 8px;border-radius:18px;background:#f0e7f5;font-size:11px;margin:2px}
 .cf-business .cf-warning{background:#fff5d5;border-radius:10px;padding:14px}.cf-business .cf-detail{margin-top:22px;background:white;padding:22px;border:1px solid #e2d8e8;border-radius:14px}
 @media(max-width:720px){.cf-business{padding:16px}.cf-entry{grid-template-columns:1fr 1fr}}
+
+/* Business area uses the entire content column, never the two-column page editor grid */
+.admin-app .editor-layout.cf-business-layout{display:block!important;grid-template-columns:minmax(0,1fr)!important;width:100%;max-width:none;min-width:0;overflow:visible}
+.admin-app .work-area:has(.cf-business-layout){min-width:0}
+.cf-business-layout .cf-business{width:min(100%,1320px);max-width:1320px;margin:0 auto;padding:clamp(18px,2.5vw,36px);box-sizing:border-box}
+.cf-business-layout .cf-bcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:16px}
+.cf-business-layout .cf-bcard{min-width:0;box-shadow:0 3px 12px rgba(49,22,75,.045)}
+.cf-business-layout .cf-btabs{position:relative;display:flex;flex-wrap:wrap;gap:8px}
+.cf-business-layout .cf-table{width:100%;max-width:100%;overflow-x:auto}
+.cf-business-layout .cf-table table{min-width:680px}
+.cf-business-layout .cf-detail{width:100%;min-width:0;box-sizing:border-box}
+.cf-business-layout .cf-bcard input,.cf-business-layout .cf-bcard textarea{width:100%;box-sizing:border-box}
+.cf-entry{flex-shrink:0}
+@media(max-width:1100px){.cf-business-layout .cf-bcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.cf-business-layout .cf-bcards{grid-template-columns:1fr}.cf-business-layout .cf-business{padding:16px}.cf-entry button{min-width:0}}
 `;document.head.appendChild(css);
 let current='chooser',once=false;
 const api=()=>window.CF_BIZ_API;
@@ -39,7 +54,7 @@ function frame(section,html){
  if(!document.querySelector('.admin-app'))return;
  mount();
  const top=document.querySelector('.topbar');if(top)top.innerHTML='<div><div class="breadcrumb">GESTIONAR CUBA FELIZ</div><h1>Centro de gestión</h1></div><div class="top-actions"><button id="cfBackEditor" class="control outlined" type="button">✎ Editar sitio web</button></div>';
- const layout=document.querySelector('.editor-layout');if(!layout)return;
+ const layout=document.querySelector('.editor-layout');if(!layout)return;layout.classList.add('cf-business-layout');
  const tabs=[['home','Resumen'],['community','Comunidad'],['whatsapp','WhatsApp'],['gotas','Gotas y Stripe']];
  layout.innerHTML='<div class="cf-business"><div class="cf-btabs">'+tabs.map(([id,label])=>'<button type="button" data-cf-tab="'+id+'" class="'+(id===section?'selected':'')+'">'+label+'</button>').join('')+'</div>'+html+'</div>';
  document.getElementById('cfBackEditor').onclick=()=>{current='editor';a.draw()};
