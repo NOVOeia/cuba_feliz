@@ -1233,7 +1233,7 @@ function homeRail(s){
  const settings=s.settings||{};
  const eyebrow=settings.rail_eyebrow||'TU MOMENTO DE CONEXIÓN · ACCESO DIRECTO';
  const headline=settings.rail_text||'Una meditación para compartir el presente.';
- const formattedHeadline=/^El sábado 14 de noviembre,\\s*todos los cubanos avanzando juntos\\.$/i.test(headline.trim())
+ const formattedHeadline=headline.trim().startsWith('El sábado 14 de noviembre,')&&headline.includes('todos los cubanos avanzando juntos.')
    ? 'El sábado 14 de noviembre,<br>todos los cubanos avanzando juntos.'
    : h(headline);
  const label=settings.rail_button||'Conocer Camina por Cuba';
