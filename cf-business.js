@@ -101,7 +101,10 @@ async function publicWhatsapp(){
  try{const s=(await a.query('cf_public_settings','select=whatsapp_number,whatsapp_message,whatsapp_enabled,whatsapp_floating&id=eq.main'))[0];if(!s)return;
  const existing=document.getElementById('cfPublicWhatsapp');if(existing)existing.remove();
  const digits=(s.whatsapp_number||'').replace(/\D/g,'');
- if(!s.whatsapp_enabled||!s.whatsapp_floating||digits.length<8||digits.length>15)return;
+ if(!s.whatsapp_enabled||digits.length<8||digits.length>15)return;
+ const nav=document.querySelector('.site-header .nav-actions');
+ if(nav&&!document.getElementById('cfHeaderWhatsapp')){const headerLink=document.createElement('a');headerLink.id='cfHeaderWhatsapp';headerLink.href='https://wa.me/'+digits+'?text='+encodeURIComponent(s.whatsapp_message||'Hola, quiero saber más sobre Cuba Feliz.');headerLink.target='_blank';headerLink.rel='noopener noreferrer';headerLink.textContent='WhatsApp';headerLink.style.cssText='color:#31164b;border:1px solid #31164b;border-radius:9px;padding:8px 13px;text-decoration:none;font-weight:700';nav.appendChild(headerLink)}
+ if(!s.whatsapp_floating)return;
  const l=document.createElement('a');l.id='cfPublicWhatsapp';l.textContent='WhatsApp · Contáctanos';l.href='https://wa.me/'+digits+'?text='+encodeURIComponent(s.whatsapp_message);l.target='_blank';l.rel='noopener noreferrer';l.style.cssText='position:fixed;bottom:22px;right:18px;background:#31164b;color:#fff;border:2px solid #f5ca48;padding:14px 19px;border-radius:40px;z-index:9000;font:700 13px DM Sans,sans-serif;text-decoration:none';document.body.appendChild(l);
  }catch(e){console.warn('WhatsApp no disponible',e)}
 }
@@ -109,5 +112,5 @@ let pending=false;
 const observer=new MutationObserver(()=>{if(pending)return;pending=true;queueMicrotask(()=>{pending=false;const side=document.querySelector('.admin-app .sidebar');if(!side)return;const absent=!side.querySelector('#cfEntry');if(absent){mount();if(!once){once=true;show('home')}else if(current!=='editor')show(current)}})});
 observer.observe(document.body,{childList:true,subtree:true});
 document.addEventListener('DOMContentLoaded',()=>{mount();publicWhatsapp()});
-if(document.readyState!=='loading'){mount();publicWhatsapp()}
+if(document.readyState!=='loading'){mount();publicWhatsapp()}\nsetTimeout(publicWhatsapp,1500);
 })();
