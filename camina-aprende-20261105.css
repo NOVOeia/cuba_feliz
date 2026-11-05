@@ -1,0 +1,28 @@
+
+/* FAQ y aviso legal de Aprende, adaptados a conexiones lentas y móvil. */
+#root .cf-aprende-info{background:#f9f6f0;padding:65px 0 70px;color:#31174b}
+#root .cf-aprende-info__inner{max-width:1000px}
+#root .cf-aprende-info__heading{margin-bottom:28px}
+#root .cf-aprende-info__eyebrow{font-size:11px;letter-spacing:.16em;font-weight:800;color:#824ca2}
+#root .cf-aprende-info__heading h2,#root .cf-aprende-legal h2{font:800 clamp(30px,4vw,48px)/1.08 'Outfit',sans-serif;letter-spacing:-.045em;color:#321648;margin:13px 0 14px}
+#root .cf-aprende-info__heading p,#root .cf-aprende-legal__inner>div>p{font-size:16px;line-height:1.65;color:#624b70;margin:0}
+#root .cf-aprende-info__accordions{border-top:1px solid #d9cde1}
+#root .cf-aprende-info__item{border-bottom:1px solid #d9cde1}
+#root .cf-aprende-info__item summary{padding:21px 8px;display:flex;align-items:center;justify-content:space-between;gap:17px;cursor:pointer;list-style:none;color:#321648;font:800 clamp(15px,1.7vw,19px)/1.35 'Outfit',sans-serif}
+#root .cf-aprende-info__item summary::-webkit-details-marker{display:none}
+#root .cf-aprende-info__item summary:focus-visible,#root .cf-aprende-legal__details summary:focus-visible{outline:3px solid #edca4e;outline-offset:3px}
+#root .cf-aprende-info__chevron{width:11px;height:11px;border-right:2px solid #512a69;border-bottom:2px solid #512a69;transform:rotate(45deg);flex-shrink:0;margin-right:6px;transition:transform .18s}
+#root .cf-aprende-info__item[open] .cf-aprende-info__chevron{transform:rotate(225deg)}
+#root .cf-aprende-info__answer{padding:0 18px 24px 8px;max-width:900px}
+#root .cf-aprende-info__answer p{font:400 15px/1.75 'DM Sans',sans-serif;color:#483550;margin:0 0 13px;white-space:pre-wrap}
+#root .cf-aprende-legal{padding:55px 0 75px;background:white;color:#321648}
+#root .cf-aprende-legal__inner{max-width:1000px}
+#root .cf-aprende-legal__details{border:1px solid #ddd3e4;border-radius:16px;background:#fbf9fc;overflow:hidden;margin-top:25px}
+#root .cf-aprende-legal__details summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:15px;padding:22px 25px;color:#35164f;font:800 17px/1.35 'Outfit',sans-serif}
+#root .cf-aprende-legal__details summary::-webkit-details-marker{display:none}
+#root .cf-aprende-legal__details summary span{font-size:25px;color:#79528b}
+#root .cf-aprende-legal__details[open] summary span{transform:rotate(45deg)}
+#root .cf-aprende-legal__content{padding:4px 25px 28px;border-top:1px solid #e8e1ea}
+#root .cf-aprende-legal__content h3{font-size:20px;line-height:1.4;color:#321648;margin:20px 0}
+#root .cf-aprende-legal__content p{font:400 15px/1.75 'DM Sans',sans-serif;color:#493452;margin:0 0 18px}
+@media(max-width:650px){#root .cf-aprende-info{padding:40px 0 46px}#root .cf-aprende-info__item summary{padding:18px 4px;font-size:16px}#root .cf-aprende-legal{padding:38px 0 55px}#root .cf-aprende-legal__details summary{padding:18px}#root .cf-aprende-legal__content{padding:4px 18px 24px}}
