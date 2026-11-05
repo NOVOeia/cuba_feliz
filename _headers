@@ -21,3 +21,9 @@
 
 /index.html
   Cache-Control: public, max-age=0, must-revalidate
+
+/camina-interior-20261105.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/site-public-camina-20261105.js
+  Cache-Control: public, max-age=31536000, immutable

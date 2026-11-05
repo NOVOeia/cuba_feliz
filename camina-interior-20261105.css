@@ -1,0 +1,127 @@
+
+/* Promo compacta exclusiva de Aprende / Conecta / Llega. No altera el Home. */
+#root .section-content.camina-promo-section.camina-promo-inner.cf-camina-compact-banner {
+ min-height:0!important;height:auto!important;
+ padding:26px 0 28px!important;display:block!important;
+}
+#root .cf-camina-compact-banner .camina-promo-grid {
+ width:min(1120px,calc(100% - 48px))!important;
+ display:grid!important;grid-template-columns:180px minmax(0,1fr)!important;
+ align-items:center!important;gap:30px!important;margin:0 auto!important;
+}
+#root .cf-camina-compact-banner .camina-promo-logo img {
+ width:100%!important;max-width:180px!important;
+ max-height:220px!important;height:auto!important;object-fit:contain!important;
+}
+#root .cf-camina-compact-banner .camina-promo-copy {
+ max-width:none!important;min-width:0!important;text-align:left!important;
+ display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
+ column-gap:26px!important;align-items:center!important;
+}
+#root .cf-camina-compact-banner .camina-promo-dateblock {
+ grid-column:1!important;margin:0 0 6px!important;gap:1px!important;
+}
+#root .cf-camina-compact-banner .camina-promo-date {
+ font-size:clamp(19px,2.1vw,27px)!important;line-height:1.22!important;
+ text-shadow:none!important;filter:none!important;
+}
+#root .cf-camina-compact-banner .camina-promo-time {
+ font-size:12px!important;line-height:1.3!important;
+}
+#root .cf-camina-compact-banner .camina-promo-dateblock:after{display:none!important}
+#root .cf-camina-compact-banner .camina-promo-title {
+ grid-column:1!important;max-width:570px!important;
+ font-size:clamp(19px,2.15vw,27px)!important;line-height:1.15!important;
+ margin:6px 0!important;
+}
+#root .cf-camina-compact-banner .camina-promo-title .camina-promo-line {
+ display:inline!important;width:auto!important;
+}
+#root .cf-camina-compact-banner .camina-promo-title .camina-promo-line:not(:last-child):after{content:" "}
+#root .cf-camina-compact-banner .camina-promo-dale {
+ grid-column:2!important;grid-row:1 / span 2!important;
+ font-size:clamp(26px,3vw,38px)!important;
+ line-height:1!important;text-align:center!important;margin:0!important;
+ transform:none!important;width:auto!important;
+}
+#root .cf-camina-compact-banner .camina-promo-actions {
+ grid-column:2!important;grid-row:3!important;
+ margin:7px 0 0!important;justify-content:center!important;width:auto!important;
+}
+#root .cf-camina-compact-banner .camina-promo-actions .button-group{width:auto!important}
+#root .cf-camina-compact-banner .camina-promo-actions .cf-btn {
+ min-height:38px!important;padding:8px 14px!important;
+ font-size:11px!important;line-height:1.25!important;
+ max-width:270px!important;text-align:center!important;
+}
+/* Invitación copiable */
+#root .cf-conecta-invitation{padding:54px 0 65px;background:#faf7f1;color:#301747}
+#root .cf-conecta-invitation__layout{
+ display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+ align-items:start;gap:clamp(22px,4vw,58px);
+}
+#root .cf-conecta-invitation__eyebrow{font-size:12px;font-weight:800;letter-spacing:.15em;color:#7a4b95}
+#root .cf-conecta-invitation__intro h2{
+ font:800 clamp(28px,3.5vw,46px)/1.1 'Outfit',sans-serif;
+ margin:14px 0 18px;color:#321648;letter-spacing:-.035em;
+}
+#root .cf-conecta-invitation__intro p{font-size:16px;line-height:1.7;margin:0 0 15px;color:#513a61}
+#root .cf-conecta-invitation__intro .cf-conecta-invitation__hint{
+ font-weight:700;color:#321648;
+}
+#root .cf-conecta-invitation__card{
+ border:1px solid rgba(49,22,75,.16);background:#fff;
+ box-shadow:0 10px 28px rgba(28,13,47,.08);
+ border-radius:19px;padding:22px;
+}
+#root .cf-conecta-invitation__card label{
+ display:block;font-size:14px;font-weight:800;
+ color:#321648;margin:0 0 12px;
+}
+#root #cf-conecta-message{
+ display:block;box-sizing:border-box;width:100%;min-height:290px;resize:vertical;
+ border:1px solid #ddd4e5;border-radius:10px;
+ padding:17px;font:400 14px/1.65 'DM Sans',sans-serif;
+ color:#33243d;background:#fcfafc;white-space:pre-wrap;
+}
+#root .cf-conecta-invitation__actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px}
+#root .cf-conecta-invitation__copy{
+ border:0;border-radius:999px;background:#321648;color:white;
+ padding:13px 23px;font:800 14px/1.3 'Outfit',sans-serif;
+ cursor:pointer;display:inline-flex;gap:10px;align-items:center;
+}
+#root .cf-conecta-invitation__copy:hover{background:#562878}
+#root .cf-conecta-invitation__copy:focus-visible{outline:3px solid #f4ce51;outline-offset:3px}
+#root .cf-conecta-invitation__status{font-size:13px;font-weight:700;color:#4e2665}
+@media(max-width:800px){
+ #root .cf-camina-compact-banner .camina-promo-copy{
+  display:block!important;text-align:left!important;
+ }
+ #root .cf-camina-compact-banner .camina-promo-dale{
+  display:inline-block!important;margin:5px 16px 0 0!important;
+ }
+ #root .cf-camina-compact-banner .camina-promo-actions{
+  display:inline-flex!important;margin:12px 0 0!important;
+ }
+ #root .cf-conecta-invitation__layout{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ #root .section-content.camina-promo-section.camina-promo-inner.cf-camina-compact-banner{padding:19px 0 21px!important}
+ #root .cf-camina-compact-banner .camina-promo-grid{
+  display:grid!important;width:calc(100% - 32px)!important;
+  grid-template-columns:94px minmax(0,1fr)!important;
+  gap:15px!important;text-align:left!important;
+ }
+ #root .cf-camina-compact-banner .camina-promo-logo img{
+  max-width:94px!important;max-height:140px!important;
+ }
+ #root .cf-camina-compact-banner .camina-promo-title{font-size:17px!important}
+ #root .cf-camina-compact-banner .camina-promo-date{font-size:17px!important}
+ #root .cf-camina-compact-banner .camina-promo-time{font-size:10px!important}
+ #root .cf-camina-compact-banner .camina-promo-dale{font-size:25px!important}
+ #root .cf-camina-compact-banner .camina-promo-actions{display:block!important}
+ #root .cf-camina-compact-banner .camina-promo-actions .cf-btn{min-height:36px!important;font-size:10px!important}
+ #root .cf-conecta-invitation{padding:38px 0 46px}
+ #root .cf-conecta-invitation__card{padding:14px}
+ #root #cf-conecta-message{min-height:280px;font-size:13px}
+}
