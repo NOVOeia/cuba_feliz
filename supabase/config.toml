@@ -1,0 +1,7 @@
+# Configuración mínima para la CLI de Supabase (solo Edge Functions).
+project_id = "fjhululvenojnvhickln"
+
+# La función se protege con el secreto compartido x-webhook-secret
+# (CF_WEBHOOK_SECRET), no con el JWT de Supabase, porque la llama un trigger.
+[functions.ghl-sync-lead]
+verify_jwt = false

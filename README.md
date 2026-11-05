@@ -98,3 +98,61 @@ La opción «Palabras del título en color destacado» también se encuentra en 
 No sustituir el contenido del cliente por los textos antiguos del prototipo V4; se restaura su estructura, tipografía y lenguaje de color, no las copias antiguas.
 
 **QA:** 4 bloques JavaScript validados con Node y CSS validado sin errores con tinycss2; pendiente confirmación visual en la URL publicada, porque Chromium del entorno de trabajo bloquea páginas locales.
+
+
+## Integración GHL — formulario «Quiero ser parte» → subcuenta «CUBA FELIZ»
+
+Cada inscripción guardada en `public.cf_leads` se envía a GoHighLevel (API v2) sin webhook entrante premium:
+
+```
+Formulario → cf_leads (INSERT) → trigger pg_net → Edge Function ghl-sync-lead → GHL
+                                                    ├─ POST /contacts/upsert  (nombre, correo, teléfono, País, Origen, Intereses)
+                                                    ├─ POST /contacts/{id}/tags
+                                                    └─ oportunidad «Cuba Feliz – Comunidad» → «Nuevo inscrito»
+```
+
+Etiquetas: `cf-inscrito`; `cf-cuba` si el país es Cuba, si no `cf-exterior`; `cf-int-<interés>` por cada interés (meditacion, aprender, eligiendo, voluntariado, newsletter, aportar); `cf-consentimiento` solo si `consent = true`. Las etiquetas se **agregan** (no se borran las que ya tenga el contacto, p. ej. `cf-gotasfeliz`). Si el contacto ya tiene una oportunidad en el pipeline no se crea otra.
+
+La fila nunca se pierde: el trigger es asíncrono y, si GHL falla, el error queda en `cf_leads.ghl_sync_error` y en la tabla `public.cf_ghl_sync_log`.
+
+Archivos: `supabase/functions/ghl-sync-lead/` (función), `supabase/migrations/20261105120000_cf_leads_ghl_sync.sql` (columnas `ghl_*`, bitácora y trigger), `supabase/config.toml` (`verify_jwt = false` para esta función; se protege con un secreto compartido).
+
+### 1. Crear el Private Integration Token en GHL
+1. Entra a la subcuenta **CUBA FELIZ** (no a la agencia) → **Settings → Private Integrations → Create new Integration**.
+2. Nombre: `Supabase – Cuba Feliz`. Permisos (scopes):
+   - `contacts.write` y `contacts.readonly`
+   - `opportunities.write` y `opportunities.readonly`
+3. Copia el token (empieza por `pit-`). Solo se muestra una vez. **No lo pegues en el repositorio, en issues ni en chats.**
+
+### 2. Cargar los secrets en Supabase
+Genera un secreto compartido aleatorio para el webhook (por ejemplo con `openssl rand -hex 32`) y cárgalo junto al token:
+
+```bash
+supabase secrets set --project-ref fjhululvenojnvhickln GHL_PIT=pit-xxxx GHL_LOCATION_ID=3icsVf8NEAhkEMSakJpd CF_WEBHOOK_SECRET=<secreto-aleatorio>
+```
+
+(O en el panel: **Edge Functions → Secrets**.) `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY` ya están disponibles en la función.
+
+Guarda **el mismo** secreto compartido en Vault para que el trigger lo envíe (SQL Editor):
+
+```sql
+select vault.create_secret('<secreto-aleatorio>', 'cf_ghl_webhook_secret');
+```
+
+### 3. Desplegar
+```bash
+supabase functions deploy ghl-sync-lead --project-ref fjhululvenojnvhickln --no-verify-jwt
+```
+Después aplica la migración (`supabase db push` o pega el SQL en el SQL Editor). Es idempotente.
+
+### 4. Probar y reintentar
+- Haz una inscripción de prueba en el sitio y revisa: `select * from cf_ghl_sync_log order by created_at desc limit 5;`
+- Respuestas HTTP del trigger: `select * from net._http_response order by created desc limit 5;`
+- Logs de la función: panel de Supabase → Edge Functions → ghl-sync-lead → Logs.
+- Reintentar una fila que falló:
+  ```bash
+  curl -X POST https://fjhululvenojnvhickln.supabase.co/functions/v1/ghl-sync-lead -H "Content-Type: application/json" -H "x-webhook-secret: <secreto-aleatorio>" -d '{"type":"RESYNC","lead_id":"<id de cf_leads>"}'
+  ```
+- Pruebas de la lógica de mapeo: `deno test supabase/functions/ghl-sync-lead/lib_test.ts`
+
+**Rotar el token:** crea uno nuevo en Private Integrations, actualiza `GHL_PIT` con `supabase secrets set` y elimina el anterior en GHL.
