@@ -1,0 +1,19 @@
+
+/* Llega: mapa primero, texto debajo y visor a pantalla completa. */
+#root .cf-llega-page .cf-llega-page__map{display:flex!important;flex-direction:column!important;gap:24px!important;align-items:stretch!important}
+#root .cf-llega-page .cf-llega-page__map .cf-llega-map-frame{width:100%!important;max-width:1150px;margin:0 auto}
+#root .cf-llega-page .cf-llega-page__map .cf-llega-page__map-text{width:100%;max-width:1080px;margin:0 auto}
+#root .cf-llega-page .cf-llega-page__map .cf-llega-page__map-text h3{margin:10px 0 20px}
+#root .cf-llega-page .cf-llega-page__map .cf-llega-page__map-text p{font-size:clamp(18px,1.5vw,21px)!important;line-height:1.8!important;margin:0 0 17px}
+#root .cf-llega-page .cf-llega-page__map-image-link{position:relative;display:block;width:100%;padding:0;border:0;background:#f3eef4;cursor:zoom-in;text-align:left}
+#root .cf-llega-page .cf-llega-page__map-image-link img{display:block;width:100%;height:auto;max-height:none;object-fit:contain}
+#root .cf-llega-page .cf-llega-page__zoom-hint{position:absolute;right:17px;bottom:17px;padding:9px 15px;border-radius:99px;background:rgba(50,22,72,.92);color:white;font-weight:800;font-size:14px;box-shadow:0 3px 15px #0003}
+#root .cf-llega-page .cf-llega-page__map-image-link:focus-visible{outline:4px solid #f5ca48;outline-offset:-4px}
+#cfLlegaMapModal{position:fixed;inset:0;width:min(96vw,1480px);height:min(94dvh,960px);max-width:none;max-height:none;margin:auto;padding:0;border:0;border-radius:14px;background:#fff;box-shadow:0 20px 70px #0008;overflow:hidden}
+#cfLlegaMapModal::backdrop{background:rgba(16,8,25,.86)}
+#cfLlegaMapModal .cf-llega-map-modal__top{display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:64px;padding:10px 16px;background:#321648;color:#fff;font:800 clamp(16px,2vw,21px)/1.2 'Outfit',sans-serif}
+#cfLlegaMapModal .cf-llega-map-modal__top button{width:46px;height:46px;flex:none;border:1px solid #ffffff80;background:#fff;color:#321648;border-radius:50%;cursor:pointer;font-size:23px;font-weight:800}
+#cfLlegaMapModal .cf-llega-map-modal__top button:focus-visible{outline:3px solid #f5ca48;outline-offset:3px}
+#cfLlegaMapModal .cf-llega-map-modal__image{height:calc(100% - 64px);overflow:auto;display:flex;align-items:center;justify-content:center;background:#f6f3f5}
+#cfLlegaMapModal .cf-llega-map-modal__image img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+@media(max-width:640px){#cfLlegaMapModal{width:100vw;height:100dvh;border-radius:0}#cfLlegaMapModal .cf-llega-map-modal__image{align-items:flex-start}#cfLlegaMapModal .cf-llega-map-modal__image img{width:100%;height:auto;max-height:none}#root .cf-llega-page .cf-llega-page__map .cf-llega-page__map-text p{font-size:18px!important}#root .cf-llega-page .cf-llega-page__zoom-hint{font-size:12px;bottom:10px;right:10px}}
