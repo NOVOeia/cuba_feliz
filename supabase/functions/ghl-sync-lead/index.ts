@@ -73,6 +73,16 @@ async function ghl(step: string, method: string, path: string, body?: unknown): 
   }
 }
 
+/** Si GHL rechazó la oportunidad por duplicada (OPPORTUNITY_NO_DUPLICATE), devuelve el ID existente. */
+function duplicateOpportunityId(err: unknown): string | undefined {
+  if (!(err instanceof GhlError) || err.status !== 400) return undefined;
+  const b = err.body as any;
+  const code = b?.code ?? b?.error?.code ?? b?.errorCode;
+  if (code !== "OPPORTUNITY_NO_DUPLICATE") return undefined;
+  const id = b?.meta?.existingId ?? b?.error?.meta?.existingId;
+  return typeof id === "string" && id ? id : undefined;
+}
+
 async function log(leadId: unknown, status: "ok" | "error", step: string, httpStatus: number | null, detail: unknown) {
   const { error } = await supabase.from("cf_ghl_sync_log").insert({
     lead_id: leadId == null ? null : String(leadId),
@@ -114,17 +124,26 @@ async function syncLead(lead: Lead) {
   let opportunityId: string | undefined = found?.opportunities?.[0]?.id;
   let opportunityCreated = false;
   if (!opportunityId) {
-    const opp = await ghl("opportunities.create", "POST", "/opportunities/", {
-      locationId,
-      pipelineId: GHL_IDS.pipeline.id,
-      pipelineStageId: GHL_IDS.pipeline.stageNuevoInscrito,
-      contactId,
-      name: opportunityName(lead),
-      status: "open",
-      source: lead.source || "cuba-feliz",
-    });
-    opportunityId = opp?.opportunity?.id ?? opp?.id;
-    opportunityCreated = true;
+    try {
+      const opp = await ghl("opportunities.create", "POST", "/opportunities/", {
+        locationId,
+        pipelineId: GHL_IDS.pipeline.id,
+        pipelineStageId: GHL_IDS.pipeline.stageNuevoInscrito,
+        contactId,
+        name: opportunityName(lead),
+        status: "open",
+        source: lead.source || "cuba-feliz",
+      });
+      opportunityId = opp?.opportunity?.id ?? opp?.id;
+      opportunityCreated = true;
+    } catch (err) {
+      // Dos inscripciones casi simultáneas que GHL une en el mismo contacto
+      // (mismo correo o teléfono): la búsqueda previa no ve la oportunidad
+      // recién creada y GHL rechaza el duplicado. Es un éxito: usamos la existente.
+      const existingId = duplicateOpportunityId(err);
+      if (!existingId) throw err;
+      opportunityId = existingId;
+    }
   }
 
   return { contactId, contactIsNew: upsert?.new === true, tags, opportunityId, opportunityCreated };

@@ -1,6 +1,6 @@
 // deno test supabase/functions/ghl-sync-lead/lib_test.ts
 import { assertEquals } from "jsr:@std/assert@1";
-import { buildTags, buildUpsertBody, GHL_IDS, safeEqual, splitName } from "./lib.ts";
+import { buildTags, buildUpsertBody, countryCode, GHL_IDS, safeEqual, splitName } from "./lib.ts";
 
 Deno.test("etiquetas: Cuba, intereses y consentimiento", () => {
   assertEquals(
@@ -30,6 +30,16 @@ Deno.test("upsert: campos personalizados por ID", () => {
     { id: GHL_IDS.fields.origen, field_value: "cuba-feliz-v6" },
     { id: GHL_IDS.fields.intereses, field_value: ["aprender"] },
   ]);
+});
+
+Deno.test("país: nombre en español → ISO-2 en el upsert", () => {
+  assertEquals(countryCode("Colombia"), "CO");
+  assertEquals(countryCode("cuba"), "CU");
+  assertEquals(countryCode("Estados Unidos"), "US");
+  assertEquals(countryCode("España"), "ES");
+  assertEquals(countryCode("Atlántida"), "");
+  assertEquals(buildUpsertBody({ email: "a@x.com", country: "Colombia" }, "LOC").country, "CO");
+  assertEquals("country" in buildUpsertBody({ email: "a@x.com", country: "Atlántida" }, "LOC"), false);
 });
 
 Deno.test("splitName y safeEqual", () => {
