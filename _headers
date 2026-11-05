@@ -36,3 +36,9 @@
 
 /camina-aprende-20261105.css
   Cache-Control: public, max-age=31536000, immutable
+
+/site-public-llega-20261105.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/camina-llega-20261105.css
+  Cache-Control: public, max-age=31536000, immutable

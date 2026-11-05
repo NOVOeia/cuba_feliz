@@ -1,0 +1,16 @@
+
+#root .cf-llega-map-section{padding:58px 0 72px;background:#fbf7f1;color:#35164f}
+#root .cf-llega-map-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(24px,4vw,55px);align-items:center}
+#root .cf-llega-map-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;color:#824ca2}
+#root .cf-llega-map-copy h2{font:800 clamp(30px,3.6vw,48px)/1.08 'Outfit',sans-serif;letter-spacing:-.04em;margin:12px 0 22px}
+#root .cf-llega-map-copy p{font:400 15px/1.72 'DM Sans',sans-serif;color:#574565;margin:0 0 15px}
+#root .cf-llega-map-copy .cf-llega-map-lead{font-size:17px;color:#35164f}
+#root .cf-llega-map-copy .cf-llega-map-warning{font-size:13px;font-weight:700;color:#7f4c4c}
+#root .cf-llega-map-link{display:inline-flex;border-radius:30px;background:#35164f;color:#fff;padding:14px 22px;margin-top:8px;text-decoration:none;font-weight:800;font-size:13px}
+#root .cf-llega-map-link:hover{background:#5b2b7a}
+#root .cf-llega-map-link:focus-visible{outline:3px solid #efcc4b;outline-offset:3px}
+#root .cf-llega-map-frame{border-radius:19px;overflow:hidden;background:#ebe6ee;border:1px solid #d6ccdb;box-shadow:0 10px 30px rgba(34,18,45,.08)}
+#root .cf-llega-map-frame iframe{width:100%;height:380px;display:block;border:0;background:#f3f0f2}
+#root .cf-llega-map-caption{padding:13px 18px;background:#fff;color:#4d335f;font-size:13px;font-weight:700}
+@media(max-width:800px){#root .cf-llega-map-section{padding:42px 0 50px}#root .cf-llega-map-layout{grid-template-columns:1fr}#root .cf-llega-map-frame iframe{height:310px}}
+@media(max-width:470px){#root .cf-llega-map-frame iframe{height:280px}#root .cf-llega-map-copy h2{font-size:31px}}
