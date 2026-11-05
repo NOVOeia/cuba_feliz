@@ -42,3 +42,9 @@
 
 /camina-llega-20261105.css
   Cache-Control: public, max-age=31536000, immutable
+
+/cuarto-borrador-contacto-20261105.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/site-public-contacto-20261105.js
+  Cache-Control: public, max-age=31536000, immutable
