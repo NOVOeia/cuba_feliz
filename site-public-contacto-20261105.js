@@ -178,21 +178,15 @@ const CF_CONECTA_INVITACION="¡Hola a todos! 🇨🇺\n\nQuiero invitarlos a for
 // Preguntas y aviso legal entregados por el cliente: contenido completo y accesible.
 
 function cfLlegaMeetingPoint(){
- const lat=23.14607,lon=-82.35663; // Parque de La Punta: referencia provisional
- const box='-82.36163,23.14307,-82.35163,23.14907';
- const source='https://www.openstreetmap.org/export/embed.html?bbox='+encodeURIComponent(box)+'&layer=mapnik&marker='+lat+'%2C'+lon;
- const directions='https://www.google.com/maps/search/?api=1&query='+lat+'%2C'+lon;
- return '<section class="cf-llega-map-section" id="punto-de-encuentro" aria-labelledby="cf-llega-map-title">'
- +'<div class="container cf-llega-map-layout"><div class="cf-llega-map-copy">'
- +'<span class="cf-llega-map-kicker">LLEGA · CAMINA POR CUBA</span>'
- +'<h2 id="cf-llega-map-title">Encuentra nuestro punto de encuentro</h2>'
- +'<p class="cf-llega-map-lead">Te esperamos en la zona de La Punta, junto al Malecón de La Habana, para compartir una experiencia de meditación andante.</p>'
- +'<p><strong>Referencia provisional:</strong> Parque de La Punta, La Habana. Próximamente confirmaremos el punto exacto de reunión y las indicaciones para llegar.</p>'
- +'<p><strong>Antes de salir:</strong> descarga y prueba el audio de la meditación, carga tu teléfono y lleva audífonos. Procura llegar con anticipación para ubicar a los organizadores.</p>'
- +'<p class="cf-llega-map-warning">Este marcador es orientativo: la ubicación definitiva del evento está pendiente de confirmación.</p>'
- +'<a class="cf-llega-map-link" href="'+h(directions)+'" target="_blank" rel="noopener noreferrer">Ver ubicación de referencia ↗</a>'
- +'</div><div class="cf-llega-map-frame"><iframe src="'+h(source)+'" title="Mapa de referencia provisional: Parque de La Punta en La Habana" loading="lazy" referrerpolicy="no-referrer"></iframe>'
- +'<div class="cf-llega-map-caption">📍 Parque de La Punta · referencia provisional</div></div></div></section>';
+const rows=[['8:30 a 9:15 a. m.','Asistencia gratuita de los Coach para descargar o transferir el audio. Llevan camisetas rosadas identificadas con Cuba Feliz y Camina por Cuba.'],['9:30 a. m.','Llegada de participantes con el audio descargado y probado.'],['9:45 a. m.','Ceremonia de apertura.'],['10:00 a. m.','Inicio sincronizado de la meditación andante.'],['11:00 a. m.','Ceremonia de clausura y regalo de gratitud.'],['11:15 a. m.','Celebración gratuita en el parque de La Punta: música, baile y merienda.']];
+const items=['Ropa cómoda y calzado adecuado para caminar.','Teléfono o dispositivo propio y audífonos.','Meditación descargada y probada antes de salir.','Dispositivo con suficiente batería y notificaciones en silencio.','Mochila para tus pertenencias y una botella pequeña de agua.'];
+const map='https://www.openstreetmap.org/export/embed.html?bbox=-82.362%2C23.142%2C-82.349%2C23.152&layer=mapnik&marker=23.14607%2C-82.35663';
+return '<section id="punto-de-encuentro" class="cf-llega-page"><div class="container">'
++'<div class="cf-llega-page__intro"><span class="cf-llega-map-kicker">LLEGA · CAMINA POR CUBA</span><h2>Nos vemos en La Punta, La Habana</h2><p>¡Bienvenidos, bienvenidas y bienvenides a Camina por Cuba en La Punta! Conoce el programa y las indicaciones para el sábado 14 de noviembre de 2026.</p><p>¿Preguntas? <a href="https://wa.me/5363935812" target="_blank" rel="noopener noreferrer">Escríbenos por WhatsApp al +53 63935812 ↗</a></p></div>'
++'<div class="cf-llega-page__map"><div><h3>¿Dónde nos encontramos?</h3><p><strong>Inicio y ceremonias:</strong> zona del Castillo de San Salvador de La Punta, junto al Malecón de La Habana.</p><p><strong>Entradas:</strong> desde el Paseo del Prado o el Malecón, según el mapa de los organizadores.</p><p><strong>Recorrido:</strong> caminaremos por el Malecón en dirección al Cristo de La Habana. Aproximadamente a mitad de la meditación regresaremos, a nuestro ritmo, para terminar cerca del punto de inicio.</p><p><small>Este mapa interactivo orienta hacia La Punta. Para el punto exacto de reunión, sigue las indicaciones del equipo de camisetas rosadas.</small></p></div><div class="cf-llega-map-frame"><iframe loading="lazy" title="Mapa de referencia del parque de La Punta y Malecón de La Habana" src="'+h(map)+'"></iframe><div class="cf-llega-map-caption">Parque La Punta · inicio de Camina por Cuba</div></div></div>'
++'<div class="cf-llega-page__schedule"><h3>Programa · sábado 14 de noviembre</h3><div class="cf-llega-page__events">'+rows.map(x=>'<article><strong>'+h(x[0])+'</strong><p>'+h(x[1])+'</p></article>').join('')+'</div></div>'
++'<div class="cf-llega-page__bring"><div><h3>¿Qué debes llevar?</h3><ul>'+items.map(x=>'<li>'+h(x)+'</li>').join('')+'</ul></div><aside><h3>Ayuda y accesorios</h3><p>Si necesitas ayuda de los Coach o deseas adquirir accesorios, llega antes de las <strong>9:15 a. m.</strong></p><p>Audífonos: <strong>300 CUP</strong>. Si no puedes pagarlos, el equipo podrá prestarte unos. Tapaojos opcionales: <strong>200 CUP</strong>.</p><p>Los tapaojos se utilizan solo durante las fases de quietud; <strong>retíralos antes de caminar</strong>.</p><p>La ayuda de los Coach y la participación en el encuentro son gratuitas.</p></aside></div>'
++'</div></section>';
 }
 
 function cfAprendeInformation(){
