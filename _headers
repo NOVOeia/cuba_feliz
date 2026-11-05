@@ -1,0 +1,23 @@
+/site-core-20261105.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/site-shell-20261105.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/site-api-20261105.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/site-public-20261105.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/site-admin-20261105.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/cuba-habana.jpg
+  Cache-Control: public, max-age=86400
+
+/assets/casa-luz-photo.jpg
+  Cache-Control: public, max-age=86400
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
