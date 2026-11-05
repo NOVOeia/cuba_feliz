@@ -111,7 +111,7 @@ Formulario → cf_leads (INSERT) → trigger pg_net → Edge Function ghl-sync-l
                                                     └─ oportunidad «Cuba Feliz – Comunidad» → «Nuevo inscrito»
 ```
 
-Etiquetas: `cf-inscrito`; `cf-cuba` si el país es Cuba, si no `cf-exterior`; `cf-int-<interés>` por cada interés (meditacion, aprender, eligiendo, voluntariado, newsletter, aportar); `cf-consentimiento` solo si `consent = true`. Las etiquetas se **agregan** (no se borran las que ya tenga el contacto, p. ej. `cf-gotasfeliz`). Si el contacto ya tiene una oportunidad en el pipeline no se crea otra.
+Etiquetas: `cf-inscrito`; `cf-cuba` si el país es Cuba, si no `cf-exterior`; `cf-int-<interés>` por cada interés (meditacion, aprender, eligiendo, voluntariado, newsletter, aportar); `cf-consentimiento` solo si `consent = true`. Las etiquetas se **agregan** (no se borran las que ya tenga el contacto, p. ej. `cf-gotasfeliz`). Si el contacto ya tiene una oportunidad en el pipeline no se crea otra (si GHL responde `OPPORTUNITY_NO_DUPLICATE` porque dos inscripciones simultáneas se unieron en el mismo contacto, se usa la existente y no se marca error). El país también se envía al campo estándar `country` de GHL como código ISO-2 (CO, CU, ES…), con el mismo catálogo del selector del formulario.
 
 La fila nunca se pierde: el trigger es asíncrono y, si GHL falla, el error queda en `cf_leads.ghl_sync_error` y en la tabla `public.cf_ghl_sync_log`.
 

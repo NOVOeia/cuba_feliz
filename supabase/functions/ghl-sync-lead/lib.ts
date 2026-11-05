@@ -56,6 +56,39 @@ export function validInterests(lead: Lead): { valid: string[]; unknown: string[]
   return { valid, unknown };
 }
 
+// Mismo catálogo ISO 3166-1 y mismos nombres en español que el selector del
+// formulario (cuarto-borrador.js), para traducir el nombre guardado en
+// cf_leads.country al código de dos letras que espera el campo estándar
+// `country` de GHL (si no se envía, GHL pone el país por defecto de la subcuenta).
+const ISO_CODES = ("AWAFAOAIAXALADAEARAMASAQTFAGAUATAZBIBEBJBQBFBDBGBHBSBABLBYBZBMBOBRBBBNBTBVBWCFCACCCHCLCNCICMCDCGCKCOKMCVCRCUCWCXKYCYCZDEDJDMDKDODZECEGEREHESEEETFIFJFKFRFOFMGAGBGEGGGHGIGNGPGMGWGQGRGDGLGTGFGUGYHKHMHNHRHTHUIDIMINIOIEIRIQISILITJMJEJOJPKZKEKGKHKIKNKRKWLALBLRLYLCLILKLSLTLULVMOMFMAMCMDMGMVMXMHMKMLMTMMMEMNMPMZMRMSMQMUMWMYYTNANCNENFNGNINUNLNONPNRNZOMPKPAPNPEPHPWPGPLPRKPPTPYPSPFQARERORURWSASDSNSGGSSHSJSBSLSVSMSOPMRSSSSTSRSKSISESZSXSCSYTCTDTGTHTJTKTMTLTOTTTNTRTVTWTZUGUAUMUYUSUZVAVCVEVGVIVNVUWFWSYEZAZMZW"
+  .match(/.{2}/g) ?? []).concat("XK");
+const COUNTRY_OVERRIDES: Record<string, string> = {
+  US: "Estados Unidos", GB: "Reino Unido", CZ: "Chequia", TW: "Taiwán", HK: "Hong Kong",
+  MO: "Macao", PR: "Puerto Rico", PS: "Palestina", VA: "Ciudad del Vaticano", XK: "Kosovo",
+};
+let countryIndex: Map<string, string> | null = null;
+function buildCountryIndex(): Map<string, string> {
+  const idx = new Map<string, string>();
+  let names: Intl.DisplayNames | null = null;
+  try {
+    names = new Intl.DisplayNames(["es"], { type: "region" });
+  } catch { /* sin ICU: solo overrides y códigos */ }
+  for (const code of ISO_CODES) {
+    for (const n of [COUNTRY_OVERRIDES[code], names?.of(code), code]) {
+      if (n && !idx.has(fold(n))) idx.set(fold(n), code);
+    }
+  }
+  return idx;
+}
+
+/** Código ISO-2 del país (por nombre en español o código); "" si no se reconoce. */
+export function countryCode(country: unknown): string {
+  const c = clean(country);
+  if (!c) return "";
+  countryIndex ??= buildCountryIndex();
+  return countryIndex.get(fold(c)) ?? "";
+}
+
 export function buildTags(lead: Lead): string[] {
   const tags = ["cf-inscrito", isCuba(lead.country) ? "cf-cuba" : "cf-exterior"];
   for (const i of validInterests(lead).valid) tags.push(`cf-int-${i}`);
@@ -89,6 +122,8 @@ export function buildUpsertBody(lead: Lead, locationId: string): Record<string, 
   if (firstName) body.name = [firstName, lastName].filter(Boolean).join(" ");
   if (email) body.email = email;
   if (phone) body.phone = phone;
+  const iso = countryCode(country);
+  if (iso) body.country = iso;
   return body;
 }
 
