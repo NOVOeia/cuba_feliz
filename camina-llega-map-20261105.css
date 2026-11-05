@@ -1,0 +1,37 @@
+#root .cf-llega-page{padding:58px 0 72px;background:#faf7f1;color:#321648}
+#root .cf-llega-page .container{max-width:1160px}
+#root .cf-llega-page h2{font:800 clamp(32px,4vw,52px)/1.1 'Outfit',sans-serif;margin:10px 0 15px;color:#321648}
+#root .cf-llega-page h3{font:800 clamp(24px,2.7vw,34px)/1.2 'Outfit',sans-serif;margin:0 0 18px;color:#321648}
+#root .cf-llega-page p,#root .cf-llega-page li{line-height:1.75;color:#544363}
+#root .cf-llega-page__intro{margin-bottom:42px;max-width:860px}
+#root .cf-llega-page__intro p{font-size:17px}
+#root .cf-llega-page a{color:#2a8176;font-weight:800}
+#root .cf-llega-page__map{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(22px,4vw,55px);align-items:center}
+#root .cf-llega-page__schedule{margin-top:58px}
+#root .cf-llega-page__events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#root .cf-llega-page__events article{padding:20px 22px;border:1px solid #e7dfeb;background:#fff;border-radius:16px}
+#root .cf-llega-page__events strong{display:block;font:800 18px 'Outfit',sans-serif;color:#321648}
+#root .cf-llega-page__events p{font-size:14px;margin:8px 0 0}
+#root .cf-llega-page__bring{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:58px}
+#root .cf-llega-page__bring ul{padding-left:23px}
+#root .cf-llega-page__bring li{padding-bottom:9px}
+#root .cf-llega-page__bring aside{background:#eee8f3;border-radius:18px;padding:25px}
+#root .cf-llega-page__bring aside p{font-size:14px}
+@media(max-width:800px){#root .cf-llega-page{padding:40px 0 50px}#root .cf-llega-page__map,#root .cf-llega-page__bring{grid-template-columns:1fr}#root .cf-llega-page__events{grid-template-columns:1fr}#root .cf-llega-page__schedule,#root .cf-llega-page__bring{margin-top:40px}}
+
+/* Ajustes de legibilidad y mapa original solicitados por el cliente. */
+#root .cf-llega-page{font-size:18px}
+#root .cf-llega-page .cf-llega-page__intro p{font-size:clamp(18px,1.55vw,21px)!important;line-height:1.8!important}
+#root .cf-llega-page .cf-llega-page__map p{font-size:clamp(17px,1.35vw,20px)!important;line-height:1.8!important}
+#root .cf-llega-page .cf-llega-page__map p small{font-size:clamp(16px,1.2vw,18px)!important;line-height:1.65!important}
+#root .cf-llega-page .cf-llega-page__events article p{font-size:clamp(17px,1.2vw,19px)!important;line-height:1.7!important}
+#root .cf-llega-page .cf-llega-page__events article strong{font-size:clamp(19px,1.45vw,22px)!important}
+#root .cf-llega-page .cf-llega-page__bring li{font-size:clamp(17px,1.25vw,19px)!important;line-height:1.75!important}
+#root .cf-llega-page .cf-llega-page__bring aside p{font-size:clamp(17px,1.25vw,19px)!important;line-height:1.75!important}
+#root .cf-llega-page .cf-llega-map-caption{font-size:16px!important;line-height:1.5}
+#root .cf-llega-page .cf-llega-page__map-image-link{display:block;cursor:zoom-in}
+#root .cf-llega-page .cf-llega-page__map-image{display:block;width:100%;height:auto;max-height:none;object-fit:contain;background:#f0edf1}
+#root .cf-llega-page .cf-llega-map-frame{overflow:hidden}
+#root .cf-llega-page .cf-llega-page__map{grid-template-columns:minmax(0,0.65fr) minmax(0,1.35fr);gap:28px;align-items:start}
+@media(max-width:960px){#root .cf-llega-page .cf-llega-page__map{grid-template-columns:1fr}#root .cf-llega-page .cf-llega-page__map-image{width:100%}}
+@media(max-width:650px){#root .cf-llega-page{font-size:17px}#root .cf-llega-page .cf-llega-page__map p{font-size:18px!important}#root .cf-llega-page .cf-llega-page__events article{padding:22px}#root .cf-llega-page .cf-llega-page__map-image-link{overflow-x:auto}}
