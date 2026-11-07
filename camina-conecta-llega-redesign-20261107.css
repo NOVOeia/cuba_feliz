@@ -1,0 +1,56 @@
+/* Conecta / Llega — rediseño solicitado 7 Nov 2026. */
+/* CONECTA: explicación arriba, junto a la imagen existente. */
+#root .cf-section.section-split:has(+ .cf-conecta-invitation) .split-grid{grid-template-columns:minmax(0,.91fr) minmax(0,1.09fr);gap:clamp(30px,4vw,62px);align-items:center}
+#root .cf-section.section-split:has(+ .cf-conecta-invitation) .split-grid>.reveal:last-child{min-width:0;padding:8px 0}
+#root .cf-section.section-split:has(+ .cf-conecta-invitation) .headline{font-size:clamp(52px,5.2vw,79px);line-height:1.05;margin:0 0 14px}
+#root .cf-conecta-upper-intro{max-width:620px}
+#root .cf-conecta-upper-intro h3{font:800 clamp(25px,2.35vw,35px)/1.18 'Outfit',sans-serif;margin:12px 0 15px;color:#321648;letter-spacing:-.025em}
+#root .cf-conecta-upper-intro p{font:400 clamp(17px,1.3vw,19px)/1.7 'DM Sans',sans-serif;color:#4a355e;margin:0 0 15px}
+#root .cf-conecta-upper-intro .cf-conecta-upper-hint{font-weight:700;color:#321648}
+#root .cf-conecta-upper-cta{margin:22px 0 0}
+#root .cf-conecta-upper-cta button.cf-btn{min-height:52px;padding:14px 24px;font-size:15px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:14px}
+#root .cf-conecta-invitation--message{padding:44px 0 72px;background:#faf7f1}
+#root .cf-conecta-invitation--message .container{max-width:1050px}
+#root .cf-conecta-invitation--message .cf-conecta-invitation__card{padding:clamp(22px,3vw,35px);box-shadow:0 8px 26px rgba(50,22,72,.06)}
+#root .cf-conecta-invitation--message .cf-conecta-invitation__card label{font-size:clamp(17px,1.4vw,21px);margin-bottom:17px}
+#root .cf-conecta-invitation--message #cf-conecta-message{min-height:310px;font-size:clamp(15px,1.15vw,17px);line-height:1.75;padding:20px}
+#root .cf-conecta-invitation--message .cf-conecta-invitation__copy{font-size:15px;padding:15px 24px}
+/* LLEGA: portada textual, mapa protagonista y contacto al final. */
+#root .cf-llega-page{padding:clamp(34px,5vw,72px) 0 75px}
+#root .cf-llega-page__intro--new{max-width:1080px;text-align:center;margin:0 auto 32px;padding:0}
+#root .cf-llega-page__intro--new h1{font:800 clamp(52px,7vw,95px)/1.05 'Outfit',sans-serif;color:#321648;margin:8px 0 9px;letter-spacing:-.055em}
+#root .cf-llega-page__intro--new h2{font:800 clamp(29px,4vw,49px)/1.14 'Outfit',sans-serif;color:#321648;margin:10px 0 17px;letter-spacing:-.035em}
+#root .cf-llega-page__intro--new p{font-size:clamp(17px,1.45vw,20px);margin:0 auto;max-width:820px;line-height:1.7}
+#root .cf-llega-page .cf-llega-page__map{margin-top:12px}
+#root .cf-llega-page .cf-llega-map-frame{max-width:1160px;border-radius:18px;overflow:hidden}
+#root .cf-llega-page .cf-llega-map-caption{font-size:clamp(16px,1.35vw,19px)!important;line-height:1.65!important;text-align:center;padding:18px 20px;background:#fff;color:#321648;font-weight:700}
+#root .cf-llega-page__schedule{margin-top:62px}
+#root .cf-llega-page__schedule h3{font-size:clamp(28px,3vw,41px);margin-bottom:23px}
+#root .cf-llega-page__events{gap:18px}
+#root .cf-llega-page__events article{padding:25px 28px;border-radius:17px}
+#root .cf-llega-page__bring{margin-top:59px}
+#root .cf-llega-page__contact{margin:58px auto 0;padding:clamp(25px,4vw,47px);background:#eee8f3;border:1px solid #dfd1e9;border-radius:22px;text-align:center;max-width:920px}
+#root .cf-llega-page__contact h3{font:800 clamp(28px,3vw,39px)/1.17 'Outfit',sans-serif;color:#321648;margin:0 0 12px}
+#root .cf-llega-page__contact p{font-size:clamp(16px,1.3vw,19px);margin:0 auto 24px;max-width:680px}
+#root .cf-llega-page__contact-link{display:inline-flex;align-items:center;justify-content:center;min-height:55px;padding:15px 26px;border-radius:999px;background:#321648;color:#fff!important;font-size:clamp(15px,1.4vw,18px);font-weight:800;text-decoration:none}
+#root .cf-llega-page__contact-link:hover{background:#562973}
+#root .cf-llega-page__contact-link:focus-visible{outline:3px solid #f5ca48;outline-offset:4px}
+@media(max-width:850px){
+ #root .cf-section.section-split:has(+ .cf-conecta-invitation) .split-grid{grid-template-columns:1fr;gap:25px}
+ #root .cf-section.section-split:has(+ .cf-conecta-invitation) .visual-photo{max-width:560px}
+ #root .cf-section.section-split:has(+ .cf-conecta-invitation) .headline{font-size:clamp(45px,9vw,66px)}
+ #root .cf-conecta-invitation--message{padding:30px 0 50px}
+ #root .cf-llega-page__schedule{margin-top:42px}
+ #root .cf-llega-page__bring{margin-top:40px}
+}
+@media(max-width:550px){
+ #root .cf-conecta-upper-intro h3{font-size:25px}
+ #root .cf-conecta-upper-intro p{font-size:17px}
+ #root .cf-conecta-upper-cta button.cf-btn{font-size:14px;padding:14px 17px}
+ #root .cf-conecta-invitation--message .cf-conecta-invitation__card{padding:15px}
+ #root .cf-conecta-invitation--message #cf-conecta-message{min-height:300px;font-size:15px;padding:14px}
+ #root .cf-llega-page__intro--new{margin-bottom:25px}
+ #root .cf-llega-page__intro--new h1{font-size:57px}
+ #root .cf-llega-page__contact{margin-top:40px;padding:25px 17px}
+ #root .cf-llega-page__contact-link{font-size:15px;padding:14px 15px;width:100%}
+}
