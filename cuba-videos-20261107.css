@@ -1,0 +1,12 @@
+/* Aprende: reproductor sin carga de video hasta pulsar. */
+#root .cf-aprende-video-trigger{position:relative;display:block;width:100%;height:100%;min-height:250px;padding:0;border:0;background:#241039;overflow:hidden;cursor:pointer;border-radius:inherit}
+#root .cf-aprende-video-trigger img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+#root .cf-aprende-video-trigger .cf-aprende-playmark,.cf-upcoming-playmark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border:2.5px solid rgba(255,255,255,.97);border-radius:50%;background:rgba(30,15,42,.24);display:grid;place-items:center;pointer-events:none}
+#root .cf-aprende-video-trigger .cf-aprende-playmark span,.cf-upcoming-playmark span{display:block;width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:18px solid #fff;margin-left:5px}
+#root .cf-aprende-video-trigger:focus-visible,.cf-upcoming-play-trigger:focus-visible{outline:4px solid #f5ca48;outline-offset:-5px}
+#root .cf-aprende-inline-video{display:block;width:100%;height:100%;min-height:300px;object-fit:contain;background:#130d1a;border-radius:inherit}
+.cf-upcoming-modal .cf-upcoming-photo--video{position:relative;min-height:380px}
+.cf-upcoming-modal .cf-upcoming-play-trigger{display:block;position:relative;width:100%;height:100%;min-height:380px;border:0;padding:0;background:#21182e;cursor:pointer}
+.cf-upcoming-modal .cf-upcoming-play-trigger img{width:100%;height:100%;object-fit:cover;display:block}
+.cf-upcoming-modal .cf-upcoming-video{display:block;width:100%;height:100%;min-height:380px;object-fit:contain;background:#120b18}
+@media(max-width:700px){.cf-upcoming-modal .cf-upcoming-photo--video,.cf-upcoming-modal .cf-upcoming-play-trigger,.cf-upcoming-modal .cf-upcoming-video{min-height:240px}.cf-upcoming-playmark,#root .cf-aprende-video-trigger .cf-aprende-playmark{width:62px;height:62px}}
