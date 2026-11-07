@@ -1,0 +1,13 @@
+/* Galerías de Plétora y Eligiendo Milagros: mosaico liviano, sin imagen enorme. */
+body[data-initiative="pletora"] .rt-gallery-wrapper:not(.testimonials),
+body[data-initiative="eligiendo-milagros"] .rt-gallery-wrapper:not(.testimonials){padding:clamp(42px,5vw,70px) 0;background:#f9f5ef}
+body[data-initiative="eligiendo-milagros"] .rt-gallery-wrapper:not(.testimonials){background:#f9eded}
+.rt-gallery-wrapper:not(.testimonials) .gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;align-items:stretch}
+.rt-gallery-wrapper:not(.testimonials) .gallery-card,
+.rt-gallery-wrapper:not(.testimonials) .gallery-card:nth-child(5n+1){grid-row:auto;border-radius:16px}
+.rt-gallery-wrapper:not(.testimonials) .gallery-card img,
+.rt-gallery-wrapper:not(.testimonials) .gallery-card:nth-child(5n+1) img{height:clamp(180px,19vw,300px);width:100%;object-fit:cover}
+.rt-gallery-wrapper:not(.testimonials) .gallery-card .gallery-caption{min-height:0;padding:12px 16px;font-size:14px;line-height:1.45}
+.rt-gallery-wrapper:not(.testimonials) .gallery-card:focus-visible{outline:3px solid #f5ca48;outline-offset:4px}
+@media(max-width:780px){.rt-gallery-wrapper:not(.testimonials) .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}}
+@media(max-width:480px){.rt-gallery-wrapper:not(.testimonials) .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.rt-gallery-wrapper:not(.testimonials) .gallery-card img,.rt-gallery-wrapper:not(.testimonials) .gallery-card:nth-child(5n+1) img{height:190px}.rt-gallery-wrapper:not(.testimonials) .gallery-card .gallery-caption{padding:9px 11px;font-size:12px}}
