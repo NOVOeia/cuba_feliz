@@ -1,0 +1,7 @@
+/* Home Camina: botón principal centrado bajo las cuatro tarjetas. */
+#root .section-walk .cf-walk-main-cta{display:flex;justify-content:center;align-items:center;width:100%;margin:34px auto 12px;padding:0 16px}
+#root .section-walk .cf-walk-main-cta .button-group{display:flex;justify-content:center;align-items:center;width:100%;max-width:none;margin:0 auto}
+#root .section-walk .cf-walk-main-cta .cf-btn{display:inline-flex;align-items:center;justify-content:center;gap:22px;width:auto;min-width:min(100%,330px);min-height:62px;padding:18px 36px;font-size:clamp(16px,1.4vw,20px);font-weight:800;text-align:center;border-radius:999px}
+#root .section-walk .cf-walk-main-cta .cf-btn span{white-space:normal}
+#root #preguntas-frecuentes{scroll-margin-top:100px}
+@media(max-width:600px){#root .section-walk .cf-walk-main-cta{margin:28px auto 10px}#root .section-walk .cf-walk-main-cta .cf-btn{min-width:min(100%,310px);min-height:58px;padding:16px 24px;font-size:17px}#root #preguntas-frecuentes{scroll-margin-top:75px}}
