@@ -353,6 +353,7 @@ function render(page,sections){const detailTitle=sections.find(s=>s.section_key=
      await publicInsert('cf_leads',{full_name:String(formData.get('full_name')||'').trim(),country:c.value,email:String(formData.get('email')||'').trim(),phone:String(formData.get('phone')||'').trim(),interest:legacyInterest,interests,consent:false,source:'cuba-feliz-v6'});
      m.textContent='Gracias. Recibimos tu solicitud y las opciones que seleccionaste.';
      f.reset();countryControl?.clear();sync();
+     if(interests.includes('meditacion')){closeJoin();openMeditacionPopup();}
    }catch(err){m.textContent='No pudimos registrar tu solicitud. Revisa los campos e inténtalo nuevamente.';}
    finally{submit.disabled=false;}
  };
@@ -397,6 +398,32 @@ function render(page,sections){const detailTitle=sections.find(s=>s.section_key=
 }
 function openJoin(){document.getElementById('joinOverlay').classList.add('open');document.getElementById('joinOverlay').setAttribute('aria-hidden','false');document.body.classList.add('no-scroll');document.querySelector('#joinForm input').focus()}
 function closeJoin(){document.getElementById('joinOverlay').classList.remove('open');document.getElementById('joinOverlay').setAttribute('aria-hidden','true');document.body.classList.remove('no-scroll')}
+
+// Pop-up «Descarga tu meditación»: se abre tras «¡Dale!» cuando la persona eligió la Meditación.
+function openMeditacionPopup(){
+  const url='descargar-meditacion.html';
+  if(typeof HTMLDialogElement!=='function'){window.location.href=url;return;}
+  if(!document.getElementById('cfMedStyle')){
+    const s=document.createElement('style');s.id='cfMedStyle';
+    s.textContent='.cf-med-modal{border:0;padding:0;width:min(680px,calc(100vw - 24px));height:min(92vh,900px);max-height:none;border-radius:20px;background:#faf8f3;box-shadow:0 24px 60px rgba(33,24,46,.35);overflow:hidden}'
+      +'.cf-med-modal::backdrop{background:rgba(33,24,46,.6)}'
+      +'.cf-med-modal__bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 18px;background:#321648;color:#fff;font:700 14px/1.3 "DM Sans",Arial,sans-serif}'
+      +'.cf-med-modal__bar a{color:#f5ca48;font-weight:700;font-size:13px}'
+      +'.cf-med-modal__close{flex:none;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:22px;line-height:1;cursor:pointer}'
+      +'.cf-med-modal__close:hover{background:rgba(255,255,255,.28)}'
+      +'.cf-med-modal iframe{display:block;width:100%;height:calc(100% - 56px);border:0;background:#faf8f3}';
+    document.head.appendChild(s);
+  }
+  const d=document.createElement('dialog');d.className='cf-med-modal';d.setAttribute('aria-label','Descarga tu meditación');
+  d.innerHTML='<div class="cf-med-modal__bar"><span>¡Gracias por inscribirte! Aquí está tu meditación</span><span style="display:flex;align-items:center;gap:12px"><a href="'+url+'" target="_blank" rel="noopener">Abrir en otra pestaña</a><button type="button" class="cf-med-modal__close" aria-label="Cerrar">×</button></span></div><iframe src="'+url+'" title="Descarga tu meditación"></iframe>';
+  document.body.appendChild(d);
+  d.querySelector('.cf-med-modal__close').onclick=()=>d.close();
+  d.addEventListener('click',e=>{if(e.target===d)d.close();});
+  d.addEventListener('close',()=>{d.remove();document.body.classList.remove('no-scroll');},{once:true});
+  document.body.classList.add('no-scroll');
+  d.showModal();
+}
+
 // Las paginas comparten secciones maestras; no se guardan copias independientes.
 function resolveSharedSections(available,requested){
  const byId=new Map(available.map(s=>[s.id,s]));
