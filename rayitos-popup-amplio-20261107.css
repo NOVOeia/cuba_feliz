@@ -1,0 +1,117 @@
+/* Rayitos de Sol: modal amplio y portada íntegra, sin cortes.
+   Estilos aislados para no modificar Casa Luz ni Tertulia. */
+.cf-upcoming-modal.cf-rayitos-modal{
+  width:min(1360px,calc(100vw - 48px));
+  max-width:1360px;
+  max-height:calc(100dvh - 36px);
+  border-radius:25px;
+  overflow:auto;
+  background:#fffaf5;
+}
+.cf-rayitos-modal .cf-upcoming-inner{
+  display:grid;
+  grid-template-columns:minmax(0,1.22fr) minmax(390px,.78fr);
+  min-height:0;
+  align-items:stretch;
+}
+.cf-rayitos-modal .cf-upcoming-photo.cf-upcoming-photo--video{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  min-height:0;
+  height:auto;
+  background:#f8f1e9;
+  overflow:visible;
+}
+.cf-rayitos-modal .cf-upcoming-play-trigger{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:0;
+  width:100%;
+  height:auto;
+  min-height:0;
+  background:transparent;
+  border-radius:15px;
+  overflow:hidden;
+}
+.cf-rayitos-modal .cf-upcoming-play-trigger img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:calc(100dvh - 115px);
+  object-fit:contain;
+  object-position:center;
+}
+.cf-rayitos-modal .cf-upcoming-video{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:calc(100dvh - 115px);
+  min-height:0;
+  aspect-ratio:auto;
+  object-fit:contain;
+  background:#1b1421;
+  border-radius:15px;
+}
+.cf-rayitos-modal .cf-upcoming-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-self:stretch;
+  padding:clamp(46px,5vw,75px) clamp(34px,4.3vw,66px);
+}
+.cf-rayitos-modal .cf-upcoming-content h2{
+  margin:18px 0 22px;
+  font-size:clamp(3rem,4.1vw,4.8rem);
+  line-height:1.06;
+}
+.cf-rayitos-modal .cf-upcoming-description{
+  font-size:clamp(1.12rem,1.45vw,1.34rem);
+  line-height:1.7;
+  margin-bottom:24px;
+}
+.cf-rayitos-modal .cf-upcoming-note{
+  font-size:1.05rem;
+  line-height:1.65;
+  margin-bottom:28px;
+}
+.cf-rayitos-modal .cf-upcoming-close{
+  position:sticky;
+  float:right;
+  margin:16px 16px -57px 0;
+  top:16px;
+  right:16px;
+  z-index:10;
+  width:48px;
+  height:48px;
+}
+.cf-rayitos-modal .cf-upcoming-playmark{background:rgba(38,20,51,.34)}
+@media(max-width:900px){
+  .cf-upcoming-modal.cf-rayitos-modal{
+    width:calc(100vw - 24px);
+    max-width:none;
+    max-height:95dvh;
+  }
+  .cf-rayitos-modal .cf-upcoming-inner{display:flex;flex-direction:column}
+  .cf-rayitos-modal .cf-upcoming-photo.cf-upcoming-photo--video{
+    height:auto;
+    min-height:0;
+    padding:18px;
+  }
+  .cf-rayitos-modal .cf-upcoming-play-trigger{height:auto;min-height:0}
+  .cf-rayitos-modal .cf-upcoming-play-trigger img{max-height:64dvh;object-fit:contain}
+  .cf-rayitos-modal .cf-upcoming-video{min-height:0;max-height:64dvh}
+  .cf-rayitos-modal .cf-upcoming-content{padding:26px clamp(22px,5vw,40px) 35px}
+  .cf-rayitos-modal .cf-upcoming-content h2{font-size:clamp(2.6rem,7vw,3.7rem)}
+}
+@media(max-width:480px){
+  .cf-upcoming-modal.cf-rayitos-modal{width:calc(100vw - 12px);max-height:97dvh;border-radius:18px}
+  .cf-rayitos-modal .cf-upcoming-photo.cf-upcoming-photo--video{padding:12px}
+  .cf-rayitos-modal .cf-upcoming-play-trigger img{max-height:56dvh}
+  .cf-rayitos-modal .cf-upcoming-video{max-height:56dvh}
+  .cf-rayitos-modal .cf-upcoming-content{padding:22px 22px 31px}
+  .cf-rayitos-modal .cf-upcoming-description{font-size:1.08rem;line-height:1.65}
+}
