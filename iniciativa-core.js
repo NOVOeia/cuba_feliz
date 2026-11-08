@@ -47,7 +47,7 @@ try{
    matched.add(asset.object_key);
    return {...item,media:{...(item.media||{}),url:asset.public_url,type:asset.content_type?.startsWith('video/')?'video':'image'},sort_order:asset.sort_order};
   });
-  const extra=library.filter(x=>!matched.has(x.object_key)&&!(x.content_type?.startsWith('video/')&&String(x.category||'').toLowerCase()==='testimonios')).map(x=>({
+  const extra=library.filter(x=>!matched.has(x.object_key)&&['fotografias','galeria','videos-actividades'].includes(String(x.category||'').toLowerCase())).map(x=>({
    title:x.title||x.file_name||'Fotografía',body:'',
    media:{type:x.content_type?.startsWith('video/')?'video':'image',url:x.public_url,position:'center'},
    sort_order:x.sort_order
