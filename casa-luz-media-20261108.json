@@ -1,0 +1,603 @@
+{
+  "renders": [
+    {
+      "title": "Render un potencial del frente del proyecto",
+      "url": "assets/casa-luz/renders/render-01.jpg",
+      "type": "render",
+      "id": "15KVJdCvU-SGaxRGTVAAtodIuiR9Zp0Ru"
+    },
+    {
+      "title": "Render vista desde aula #2",
+      "url": "assets/casa-luz/renders/render-02.jpg",
+      "type": "render",
+      "id": "1zdG5E6fDYDvFe3C4UUIWsTYp1tHBuwbd"
+    },
+    {
+      "title": "Render vista estanque con cascada",
+      "url": "assets/casa-luz/renders/render-03.jpg",
+      "type": "render",
+      "id": "1Cn_ZmgmWSvXtLF1EmZXDxNM09RbmBMpR"
+    },
+    {
+      "title": "Render vista del estanque al restaurante",
+      "url": "assets/casa-luz/renders/render-04.jpg",
+      "type": "render",
+      "id": "1zVLZ7RN8KDeVjy3yCEeyneGJB5EXSriU"
+    },
+    {
+      "title": "Render segundo piso casa matriz",
+      "url": "assets/casa-luz/renders/render-05.jpg",
+      "type": "render",
+      "id": "1_DCtMWuOJnh7p-ILUYs4bGawC8E4UNkr"
+    },
+    {
+      "title": "Render vista escaleras del patio y fuente estanque",
+      "url": "assets/casa-luz/renders/render-06.jpg",
+      "type": "render",
+      "id": "1w7YxwBv7DnZIKxjYwiXIHcn3SNVMIDIv"
+    },
+    {
+      "title": "Render vista del estanque a aula #1",
+      "url": "assets/casa-luz/renders/render-07.jpg",
+      "type": "render",
+      "id": "1f4Yc0IA-odL9KMgJUxo3eB7UiifWyhe1"
+    },
+    {
+      "title": "Render entrada casa matriz",
+      "url": "assets/casa-luz/renders/render-08.jpg",
+      "type": "render",
+      "id": "1BYQAOy9WYcV25RNK3_TdbHdf32mbnKe-"
+    },
+    {
+      "title": "Render habitaciones para maestros",
+      "url": "assets/casa-luz/renders/render-09.jpg",
+      "type": "render",
+      "id": "1A6yttqnl6R9LlMgk-_VkN0Ug4DkPC2wr"
+    },
+    {
+      "title": "Render habitaciones para retiros",
+      "url": "assets/casa-luz/renders/render-10.jpg",
+      "type": "render",
+      "id": "1r1sH_AAmmHIGXL7-c-uC_Qx1RiC6iHMJ"
+    },
+    {
+      "title": "Render Aula #2 y patio estanque",
+      "url": "assets/casa-luz/renders/render-11.jpg",
+      "type": "render",
+      "id": "1uoyrlty1xMBgrKfVULi_J76_DIkKiES2"
+    }
+  ],
+  "photos": [
+    {
+      "title": "Const. Piscina a Estanque con cascadas y fuente VII Equipo",
+      "url": "assets/casa-luz/obra/foto-01.jpg",
+      "type": "photo",
+      "group": "estanque",
+      "id": "1Wjs-LO_TX7_R1pGSp4IaPHeMlPmhKZ4N"
+    },
+    {
+      "title": "Const. Piscina a Estanque con cascadas y fuente I",
+      "url": "assets/casa-luz/obra/foto-02.jpg",
+      "type": "photo",
+      "group": "estanque",
+      "id": "1rcLWSzmsg62Y14_zIAAqFZBnjE7B4PXM"
+    },
+    {
+      "title": "Const. Piscina a Estanque con cascadas y fuente III",
+      "url": "assets/casa-luz/obra/foto-03.jpg",
+      "type": "photo",
+      "group": "estanque",
+      "id": "1lcv87ZgOqL1VXdwaY2mOdyqAPycgUVTE"
+    },
+    {
+      "title": "Const. Piscina a Estanque con cascadas y fuente IV",
+      "url": "assets/casa-luz/obra/foto-04.jpg",
+      "type": "photo",
+      "group": "estanque",
+      "id": "1HiOAagDM_NnWpKckH6bgir99-9ccoBDO"
+    },
+    {
+      "title": "Const. Piscina a Estanque con cascadas y fuente VI",
+      "url": "assets/casa-luz/obra/foto-05.jpg",
+      "type": "photo",
+      "group": "estanque",
+      "id": "1ogUPICp3tD7RHi99CaXJoqjY25YOOMdW"
+    },
+    {
+      "title": "Const. Piscina a Estanque con cascadas y fuente II",
+      "url": "assets/casa-luz/obra/foto-06.jpg",
+      "type": "photo",
+      "group": "estanque",
+      "id": "17Yby1Iaaon1c59-VD-Z_gA8cWUaK9TOd"
+    },
+    {
+      "title": "Const. Piscina a Estanque con cascadas y fuente V",
+      "url": "assets/casa-luz/obra/foto-07.jpg",
+      "type": "photo",
+      "group": "estanque",
+      "id": "1PU0cxQbFOKil8DIkZwB2yc6rprPBXWQH"
+    },
+    {
+      "title": "Const. Demolicion cisterna ya escombros fuera",
+      "url": "assets/casa-luz/obra/foto-08.jpg",
+      "type": "photo",
+      "group": "transformacion",
+      "id": "10KkTUntVP2RuWmtUtDnf8FXTyWkC3dF8"
+    },
+    {
+      "title": "Const. Muro 2 casi terminando III",
+      "url": "assets/casa-luz/obra/foto-09.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1HR6ALEaZbjkiXcWos0DWhcQBu_1c1w9p"
+    },
+    {
+      "title": "Const. Muro 2 casi terminando II",
+      "url": "assets/casa-luz/obra/foto-10.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1yn5Kpj3-3t4e7s1Q9Vs83G_9syyc4IIx"
+    },
+    {
+      "title": "Const. Muro 2 casi terminando I",
+      "url": "assets/casa-luz/obra/foto-11.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1Ux25H8e7ac86I2L7cTDVWf5FCfzFMqMf"
+    },
+    {
+      "title": "Const. Demolicion piso patio II",
+      "url": "assets/casa-luz/obra/foto-12.jpg",
+      "type": "photo",
+      "group": "transformacion",
+      "id": "1ZAMA7oqq3tRVA075AYYggzalQ1F2BW2s"
+    },
+    {
+      "title": "Const. Demolicion piso patio I",
+      "url": "assets/casa-luz/obra/foto-13.jpg",
+      "type": "photo",
+      "group": "transformacion",
+      "id": "1cNuXf0_vE4VtXurMhga2ranL3HukH1-N"
+    },
+    {
+      "title": "Const. Plomeria nueva casetilla para bomba",
+      "url": "assets/casa-luz/obra/foto-14.jpg",
+      "type": "photo",
+      "group": "instalaciones",
+      "id": "1h-LYY1iRiVg5EEkBM2DTEcyFE6Bbk1VR"
+    },
+    {
+      "title": "Const. Plomeria nueva entrada de agua",
+      "url": "assets/casa-luz/obra/foto-15.jpg",
+      "type": "photo",
+      "group": "instalaciones",
+      "id": "11uP02oXV82WK-nWL541-KWQGkkjfKSTU"
+    },
+    {
+      "title": "Const. Demo ampirol llegando frente la casa",
+      "url": "assets/casa-luz/obra/foto-16.jpg",
+      "type": "photo",
+      "group": "otros",
+      "id": "1r4su5pF2cVvcksk5lHEQMDe5_-r4QHgd"
+    },
+    {
+      "title": "Const. Casa Luz numeros de entrada",
+      "url": "assets/casa-luz/obra/foto-17.jpg",
+      "type": "photo",
+      "group": "otros",
+      "id": "1VimFBEPMqTzGCZ-TKErrm7lbGYGIl2mt"
+    },
+    {
+      "title": "Const. Plomeria nueva bomba",
+      "url": "assets/casa-luz/obra/foto-18.jpg",
+      "type": "photo",
+      "group": "instalaciones",
+      "id": "1YtzhZ8ClTqiC4Yo-I5Lu82slzmhhUSRY"
+    },
+    {
+      "title": "Const. Muro 1 casi terminado - fuera I",
+      "url": "assets/casa-luz/obra/foto-19.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1JHGwmXyMZ887URCPaUqKYIZn3sKdWepR"
+    },
+    {
+      "title": "Const. Muro 2 constructor M",
+      "url": "assets/casa-luz/obra/foto-20.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1D2xdZa_6mA4_xagD_z1OhJpRzdd3Supn"
+    },
+    {
+      "title": "Const. Demolicion pared comedor futuro V",
+      "url": "assets/casa-luz/obra/foto-21.jpg",
+      "type": "photo",
+      "group": "transformacion",
+      "id": "1G_-MU8HVx_HepAWq0xdFb2J8YcrLFcTZ"
+    },
+    {
+      "title": "Const. Muro 2 comienzo firme IV",
+      "url": "assets/casa-luz/obra/foto-22.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1Pn_h4bJA_EZ6DKS-zbRnpjThKaHhOgZh"
+    },
+    {
+      "title": "Const. Demolicion pared comedor futuro IV",
+      "url": "assets/casa-luz/obra/foto-23.jpg",
+      "type": "photo",
+      "group": "transformacion",
+      "id": "1Zuhqcgg7vb0pJshU_-qxXaLTt3cmYXcr"
+    },
+    {
+      "title": "Const. Demolicion pared comedor futuro III",
+      "url": "assets/casa-luz/obra/foto-24.jpg",
+      "type": "photo",
+      "group": "transformacion",
+      "id": "19KQaGuzdsliYYiCPYfgCeZn-Rv047UBo"
+    },
+    {
+      "title": "Const. Demolicion pared comedor futuro II",
+      "url": "assets/casa-luz/obra/foto-25.jpg",
+      "type": "photo",
+      "group": "transformacion",
+      "id": "15eh1h_SnO001YA--6DhEsWxV6kA8Yuzj"
+    },
+    {
+      "title": "Const. Demolicion pared comedor futuro I",
+      "url": "assets/casa-luz/obra/foto-26.jpg",
+      "type": "photo",
+      "group": "transformacion",
+      "id": "1nK_g90NH5tQyhkTM2WcRkFRJSWicICle"
+    },
+    {
+      "title": "Const. Muro 2 constructor J",
+      "url": "assets/casa-luz/obra/foto-27.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1m3TMPXxXWrgSQPhKDMUFjbwqlsixBsuS"
+    },
+    {
+      "title": "Const. Muro 2 comienzo firme III",
+      "url": "assets/casa-luz/obra/foto-28.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1bt8-tJk2M2OI0dwJlqzFcXCw1ErWOxgv"
+    },
+    {
+      "title": "Const. Muro 2 comienzo firme II",
+      "url": "assets/casa-luz/obra/foto-29.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1TM7-zpncNKcIUg-179kMvy7LqZfUz8e_"
+    },
+    {
+      "title": "Const. Muro 2 Materiales",
+      "url": "assets/casa-luz/obra/foto-30.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1f_TVWJl-t9TRL415XDNzh56Tm2cbyXeN"
+    },
+    {
+      "title": "Const. Muro 2 comienzo firme",
+      "url": "assets/casa-luz/obra/foto-31.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1ooOjkg1SoVX0bRcVDAT0yKFppQ7gnX_R"
+    },
+    {
+      "title": "Const. Demolicion cisterna que filtra",
+      "url": "assets/casa-luz/obra/foto-32.jpg",
+      "type": "photo",
+      "group": "transformacion",
+      "id": "1xlnDHrqUsHUvbliFII7CyRyuUujaCxYR"
+    },
+    {
+      "title": "Const. Muro 2 Ingeniera y Constructor",
+      "url": "assets/casa-luz/obra/foto-33.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1rbcoJNi6PCRY5O4Ug3ULfoEmMLhyjsRm"
+    },
+    {
+      "title": "Const. Prueba de carga Bolsa",
+      "url": "assets/casa-luz/obra/foto-34.jpg",
+      "type": "photo",
+      "group": "instalaciones",
+      "id": "1CKdO4MGkLBY4fUZpgQIdTynpzEtTCSnS"
+    },
+    {
+      "title": "Const. Misc. Feliz equipo de const",
+      "url": "assets/casa-luz/obra/foto-35.jpg",
+      "type": "photo",
+      "group": "equipo",
+      "id": "1lJtItUmuDrqVJHSQO92di3qPihpfad6J"
+    },
+    {
+      "title": "Const. Elec arreglado circuitos",
+      "url": "assets/casa-luz/obra/foto-36.jpg",
+      "type": "photo",
+      "group": "instalaciones",
+      "id": "1CyDz2mmMqI4pjSLKYQ6BCv2at0-jUWYY"
+    },
+    {
+      "title": "Const. Muro 1 poso dren frances final",
+      "url": "assets/casa-luz/obra/foto-37.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1N4LqQWmn4FKYEtfWL_HvXzoEbCP6bgnA"
+    },
+    {
+      "title": "Const. Prueba de carga sensores",
+      "url": "assets/casa-luz/obra/foto-38.jpg",
+      "type": "photo",
+      "group": "instalaciones",
+      "id": "1R5bvac7blMSTHXLdMUH0J9uAV6_M4rrd"
+    },
+    {
+      "title": "Const. Muro 1 Materiales III",
+      "url": "assets/casa-luz/obra/foto-39.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1azSM2jsks0XaLIq7XWZXffNSmAkBugtg"
+    },
+    {
+      "title": "Const. Muro 1 poso de drenaje dren frances",
+      "url": "assets/casa-luz/obra/foto-40.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "171VHEa9O7k71lXdarhKLaKvAnaeTq9Qc"
+    },
+    {
+      "title": "Const. Elec Panel electrico antes de cambios",
+      "url": "assets/casa-luz/obra/foto-41.jpg",
+      "type": "photo",
+      "group": "instalaciones",
+      "id": "145jruUnRwUiAzpA-a2B1o7cFTxhdN7yL"
+    },
+    {
+      "title": "Const. Elec Administradora y Ing Electrico",
+      "url": "assets/casa-luz/obra/foto-42.jpg",
+      "type": "photo",
+      "group": "instalaciones",
+      "id": "1VHdCvMdJFvUqqOC9cA4ARw4G1OP5QD0W"
+    },
+    {
+      "title": "Const. Muro 1 casi terminado - dentro",
+      "url": "assets/casa-luz/obra/foto-43.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1mLm_qTAkC8g4P5R_IeeyRAuXQ9UPiSA_"
+    },
+    {
+      "title": "Const. Muro 1 casi terminado - fuera II",
+      "url": "assets/casa-luz/obra/foto-44.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1sMci86-J9Pn_UrhMwu3vmWiALLZTOiVm"
+    },
+    {
+      "title": "Const. Muro 1 Materiales II",
+      "url": "assets/casa-luz/obra/foto-45.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1E5uVZk5OzhGOmp1uAfwjHOjGUdlRG4AB"
+    },
+    {
+      "title": "Cont. Muro 1 encofrado",
+      "url": "assets/casa-luz/obra/foto-46.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1ECb290BxVr_qoBA6mrBqXYkkrLOAHges"
+    },
+    {
+      "title": "Const. Muro 1 Ingenieros y Constructor",
+      "url": "assets/casa-luz/obra/foto-47.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1b4_H3xBu7xfByAXd5zAIXkivDaRBK1ZD"
+    },
+    {
+      "title": "Const. Muro 1 Cons hablando Ing",
+      "url": "assets/casa-luz/obra/foto-48.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "11K9uj1hrh8wd1dKYEaa8UGjjgREB2H0l"
+    },
+    {
+      "title": "Const. Muro 1 Materiales",
+      "url": "assets/casa-luz/obra/foto-49.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1N7hogOUmLdY1pZ318bvkBP76aXT3tGkq"
+    },
+    {
+      "title": "Const. Muro 1 Jefa",
+      "url": "assets/casa-luz/obra/foto-50.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1H4buGgD6M_deVr71x1fDQ5pBJJ6_BTJP"
+    },
+    {
+      "title": "Const. Muro 1 cabillas",
+      "url": "assets/casa-luz/obra/foto-51.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1mDoO9Fs8GzMqmBZsXBCqjiCcDjbjnYvx"
+    },
+    {
+      "title": "Const. Muro 1 pasando cemento",
+      "url": "assets/casa-luz/obra/foto-52.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1dvvBoNWKPQyK5K4iWitr3BNowTEmq29r"
+    },
+    {
+      "title": "Const. Bello y tablas",
+      "url": "assets/casa-luz/obra/foto-53.jpg",
+      "type": "photo",
+      "group": "otros",
+      "id": "1hYjOg3_vRh3RQs_NnRLujzqeiLGPeRsD"
+    },
+    {
+      "title": "Const. Muro 1 llegan cabillas",
+      "url": "assets/casa-luz/obra/foto-54.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1Cs2zteKzg_2quftOqx4JriH1_UlkR8hS"
+    },
+    {
+      "title": "Const. Muro 1 Vero y equipo",
+      "url": "assets/casa-luz/obra/foto-55.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1qT2Y-9HHaMkVU0WVGyDrlS89PJTU39l2"
+    },
+    {
+      "title": "Const. Muro 1 deciciones para el firme",
+      "url": "assets/casa-luz/obra/foto-56.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1_eA3flxbBxRUN9owa4VBPFKP13v04TBA"
+    },
+    {
+      "title": "Const. Muro 1 explicando planos y avances",
+      "url": "assets/casa-luz/obra/foto-57.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1kIiF8neejgprotSm6GgNgOWPxvG9-4wG"
+    },
+    {
+      "title": "Const. Muro 1 avanzando equipo",
+      "url": "assets/casa-luz/obra/foto-58.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "153PWIAPYF_mteMmC3L282k24ynvhQZlQ"
+    },
+    {
+      "title": "Const. Muro 1 Firmando Contrato de construcion",
+      "url": "assets/casa-luz/obra/foto-59.jpg",
+      "type": "photo",
+      "group": "muros",
+      "id": "1itA7cv_BxN3J8j509bNuWlicYmABCGLU"
+    },
+    {
+      "title": "Const. Plomeria arreglo entrada de agua tanque",
+      "url": "assets/casa-luz/obra/foto-60.jpg",
+      "type": "photo",
+      "group": "instalaciones",
+      "id": "1qp6qQGNO4KjGaovhmsu-zFnTkYstR8RC"
+    },
+    {
+      "title": "2025 1110 Trabajo En Equipo Presencial - equipo arqui e ing I",
+      "url": "assets/casa-luz/obra/foto-61.jpg",
+      "type": "photo",
+      "group": "equipo",
+      "id": "1vYwV9eZWzhOzXhKIL6ANf4VOxXYGBPAF"
+    },
+    {
+      "title": "2025 1110 Trabajo En Equipo Presencial - equipo arqui e ing II",
+      "url": "assets/casa-luz/obra/foto-62.jpg",
+      "type": "photo",
+      "group": "equipo",
+      "id": "19WEvJP1BAfJ-LuWgHSweygGt3A1JJZ44"
+    },
+    {
+      "title": "2025 0717 Trabajo En Equipo Presencial - foto grupo arquitectos",
+      "url": "assets/casa-luz/obra/foto-63.jpg",
+      "type": "photo",
+      "group": "equipo",
+      "id": "1woq9PrhdzZckaFuHG5UkIQ4CBIWnWXHe"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Const. Muro 2 ampirol y calle frente Casa Luz",
+      "id": "1Wd2LqxjOgadSaaMNv0QBwQNxPGi4WC3O",
+      "type": "video",
+      "url": "https://drive.google.com/file/d/1Wd2LqxjOgadSaaMNv0QBwQNxPGi4WC3O/preview",
+      "link": "https://drive.google.com/file/d/1Wd2LqxjOgadSaaMNv0QBwQNxPGi4WC3O/view"
+    },
+    {
+      "title": "Const. Muro 2 escombros fuera",
+      "id": "1-ATdXMMcoO8HnO7HNSYaqo2SLptd0-Au",
+      "type": "video",
+      "url": "https://drive.google.com/file/d/1-ATdXMMcoO8HnO7HNSYaqo2SLptd0-Au/preview",
+      "link": "https://drive.google.com/file/d/1-ATdXMMcoO8HnO7HNSYaqo2SLptd0-Au/view"
+    },
+    {
+      "title": "Const. Muro 2 equipo terminando",
+      "id": "1ApcKXxx8sX7KMm_iKUxnVVxE_rQyk81_",
+      "type": "video",
+      "url": "https://drive.google.com/file/d/1ApcKXxx8sX7KMm_iKUxnVVxE_rQyk81_/preview",
+      "link": "https://drive.google.com/file/d/1ApcKXxx8sX7KMm_iKUxnVVxE_rQyk81_/view"
+    },
+    {
+      "title": "Cont. Demolicion cisterna escombros fuera",
+      "id": "1CfL0LuF0y0l0BsLS7TzL3dHmcAK5bx1h",
+      "type": "video",
+      "url": "https://drive.google.com/file/d/1CfL0LuF0y0l0BsLS7TzL3dHmcAK5bx1h/preview",
+      "link": "https://drive.google.com/file/d/1CfL0LuF0y0l0BsLS7TzL3dHmcAK5bx1h/view"
+    },
+    {
+      "title": "Const Descolchando por filtracion y cambios pendientes",
+      "id": "1bK40_zDPxrw_TwqiLkdQbYKyEclg1X0i",
+      "type": "video",
+      "url": "https://drive.google.com/file/d/1bK40_zDPxrw_TwqiLkdQbYKyEclg1X0i/preview",
+      "link": "https://drive.google.com/file/d/1bK40_zDPxrw_TwqiLkdQbYKyEclg1X0i/view"
+    },
+    {
+      "title": "Const. Plomeria presuradora y turbina habitaciones",
+      "id": "1tbwiQom88MGrkxHetITlhGsSXKyFS6R5",
+      "type": "video",
+      "url": "https://drive.google.com/file/d/1tbwiQom88MGrkxHetITlhGsSXKyFS6R5/preview",
+      "link": "https://drive.google.com/file/d/1tbwiQom88MGrkxHetITlhGsSXKyFS6R5/view"
+    },
+    {
+      "title": "Const. Muro 1 sacando roca cocoa",
+      "id": "1NL81YNo663Xm-Kg8HPdeW5fMhn-b3iuz",
+      "type": "video",
+      "url": "https://drive.google.com/file/d/1NL81YNo663Xm-Kg8HPdeW5fMhn-b3iuz/preview",
+      "link": "https://drive.google.com/file/d/1NL81YNo663Xm-Kg8HPdeW5fMhn-b3iuz/view"
+    },
+    {
+      "title": "Const. Muro 1 el comienzo duro",
+      "id": "1bFh9px7khlLSAwcrEmAVKJjoMJoEUsDu",
+      "type": "video",
+      "url": "https://drive.google.com/file/d/1bFh9px7khlLSAwcrEmAVKJjoMJoEUsDu/preview",
+      "link": "https://drive.google.com/file/d/1bFh9px7khlLSAwcrEmAVKJjoMJoEUsDu/view"
+    }
+  ],
+  "plans": [
+    {
+      "title": "plano5",
+      "url": "assets/casa-luz/planos/plano5.pdf",
+      "type": "plan",
+      "id": "1TILOrF_Q4ERSD25uSSshsMDRpf9oBn3H"
+    },
+    {
+      "title": "plano4",
+      "url": "assets/casa-luz/planos/plano4.pdf",
+      "type": "plan",
+      "id": "1h3lC-wXdLwF0M9O008Ab5SvCjpaNJj_C"
+    },
+    {
+      "title": "plano3",
+      "url": "assets/casa-luz/planos/plano3.pdf",
+      "type": "plan",
+      "id": "1bx9f82WPlKYVa-nHh-QuZD9zWT8B8ugR"
+    },
+    {
+      "title": "plano2",
+      "url": "assets/casa-luz/planos/plano2.pdf",
+      "type": "plan",
+      "id": "1bGJD2pDIf70Aj_lJ78YQNAjV4_6j48dM"
+    }
+  ],
+  "metadata": {
+    "total": 88,
+    "source": "Google Drive Casa Luz",
+    "updated": "2026-11-08",
+    "note": "Videos en vista previa de Drive; su visualización pública depende de permisos del propietario."
+  }
+}
