@@ -1,0 +1,88 @@
+/* Cuba Feliz — photo galleries: natural proportions, six previews, immersive viewer. */
+body[data-initiative="pletora"] .cf-retreat-gallery,
+body[data-initiative="eligiendo-milagros"] .cf-retreat-gallery{
+  padding:clamp(50px,6vw,84px) 0;
+  background:#faf7f2;color:#351c45;
+}
+body[data-initiative="eligiendo-milagros"] .cf-retreat-gallery{background:#fbf0f0}
+.cf-retreat-gallery .shell{max-width:1260px}
+.cf-retreat-gallery-heading{
+ display:flex;align-items:end;justify-content:space-between;gap:32px;margin-bottom:31px
+}
+.cf-retreat-gallery-kicker{display:block;font-size:12px;font-weight:800;letter-spacing:.18em;color:#86628a;margin-bottom:14px}
+.cf-retreat-gallery h2{font:800 clamp(31px,3.5vw,48px)/1.12 'Outfit',sans-serif;color:#351648;margin:0 0 14px;letter-spacing:-.035em}
+.cf-retreat-gallery-heading p{font:400 clamp(16px,1.4vw,19px)/1.6 'DM Sans',sans-serif;max-width:690px;color:#554762;margin:0}
+.cf-retreat-photo-count{flex:none;display:inline-flex;padding:11px 18px;border-radius:999px;background:#eee3f2;color:#351648;font-size:14px;font-weight:800}
+.cf-retreat-gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.cf-retreat-gallery-card{
+ appearance:none;border:1px solid #e2d6df;border-radius:20px;padding:0;
+ background:#fff;overflow:hidden;text-align:left;cursor:zoom-in;
+ box-shadow:0 7px 24px rgba(36,15,49,.055);
+ transition:transform .18s ease,box-shadow .18s ease
+}
+.cf-retreat-gallery-card:hover{transform:translateY(-4px);box-shadow:0 13px 32px rgba(36,15,49,.12)}
+.cf-retreat-gallery-card:focus-visible{outline:4px solid #f5ca48;outline-offset:4px}
+.cf-retreat-gallery-image{
+ display:flex;align-items:center;justify-content:center;position:relative;
+ aspect-ratio:4/3;overflow:hidden;background:#efe9ea
+}
+body[data-initiative="pletora"] .cf-retreat-gallery-image{background:#f0eae3}
+.cf-retreat-gallery-image img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+.cf-retreat-gallery-video-mark{font-size:20px;font-weight:800;color:#351648}
+.cf-retreat-gallery-label{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;background:#fff;color:#351648}
+.cf-retreat-gallery-label strong{font-size:15px;line-height:1.35}
+.cf-retreat-gallery-label>span{font-size:12px;color:#8a607b;font-weight:800;white-space:nowrap}
+.cf-retreat-gallery-all{display:flex;justify-content:center;align-items:center;gap:16px;margin:28px auto 0;background:#351648;color:#fff;border:0;border-radius:999px;font:800 16px 'DM Sans',sans-serif;padding:16px 27px;cursor:pointer}
+.cf-retreat-gallery-all:focus-visible{outline:3px solid #f5ca48;outline-offset:4px}
+.cf-retreat-gallery-bottom{text-align:center;font-size:14px;color:#756778;margin:25px 0 0}
+/* Full gallery navigation: no cropped faces, keeps full image in view. */
+.cf-retreat-lightbox{
+ position:fixed;inset:0;margin:auto;width:min(96vw,1440px);height:min(94dvh,1000px);
+ max-width:none;max-height:none;overflow:hidden;padding:0;
+ border:0;border-radius:22px;background:#17101d;color:#fff;
+ box-shadow:0 25px 85px rgba(0,0,0,.5)
+}
+.cf-retreat-lightbox::backdrop{background:rgba(13,7,21,.9)}
+.cf-retreat-lightbox-toolbar{
+ display:flex;justify-content:space-between;align-items:center;
+ padding:12px 23px;gap:15px;min-height:65px;
+ font:700 clamp(14px,1.4vw,19px) 'Outfit',sans-serif;
+}
+.cf-retreat-lightbox-close{flex:none;background:#fff;color:#351648;border:0;border-radius:50%;width:46px;height:46px;font-size:24px;cursor:pointer}
+.cf-retreat-lightbox-close:focus-visible,.cf-retreat-lightbox-arrow:focus-visible,.cf-retreat-lightbox-mini:focus-visible{outline:3px solid #f5ca48;outline-offset:3px}
+.cf-retreat-lightbox-stage{
+ height:calc(100% - 174px);min-height:0;display:grid;
+ grid-template-columns:74px minmax(0,1fr) 74px;align-items:stretch
+}
+.cf-retreat-lightbox-arrow{display:grid;place-items:center;border:0;color:#fff;background:transparent;font-size:70px;cursor:pointer;line-height:1}
+.cf-retreat-lightbox-arrow:hover{background:#ffffff17}
+.cf-retreat-lightbox-media{height:100%;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center}
+.cf-retreat-lightbox-photo{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;display:block}
+.cf-retreat-lightbox-bottom{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:10px 30px;color:#f2edf3;min-height:45px}
+.cf-retreat-lightbox-caption{font-size:15px;font-weight:600}
+.cf-retreat-lightbox-counter{font-size:15px;font-weight:800;white-space:nowrap}
+.cf-retreat-lightbox-neighbors{display:flex;justify-content:center;gap:9px;height:64px;padding:0 20px 10px;overflow:hidden}
+.cf-retreat-lightbox-mini{display:grid;place-items:center;width:56px;min-width:56px;height:54px;padding:2px;border:2px solid transparent;border-radius:7px;background:#3a3140;cursor:pointer}
+.cf-retreat-lightbox-mini.is-active{border-color:#f5ca48}
+.cf-retreat-lightbox-mini img{width:100%;height:100%;object-fit:contain;display:block}
+@media(max-width:850px){
+ .cf-retreat-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+ .cf-retreat-gallery-heading{align-items:start;flex-direction:column;gap:15px}
+ .cf-retreat-lightbox{width:100vw;height:100dvh;border-radius:0}
+ .cf-retreat-lightbox-stage{grid-template-columns:48px minmax(0,1fr) 48px}
+ .cf-retreat-lightbox-arrow{font-size:50px}
+}
+@media(max-width:520px){
+ .cf-retreat-gallery-grid{gap:9px}
+ .cf-retreat-gallery-card{border-radius:12px}
+ .cf-retreat-gallery-image{aspect-ratio:3/4}
+ .cf-retreat-gallery-label{padding:11px;display:block}
+ .cf-retreat-gallery-label strong{font-size:13px}
+ .cf-retreat-gallery-label>span{display:block;margin-top:5px}
+ .cf-retreat-lightbox-toolbar{padding:10px 12px;min-height:56px}
+ .cf-retreat-lightbox-stage{height:calc(100% - 165px);grid-template-columns:43px minmax(0,1fr) 43px}
+ .cf-retreat-lightbox-close{width:40px;height:40px}
+ .cf-retreat-lightbox-bottom{padding:9px 16px}
+ .cf-retreat-lightbox-caption,.cf-retreat-lightbox-counter{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){.cf-retreat-gallery-card{transition:none}}
