@@ -28,3 +28,15 @@
 .r2-actions .danger{background:#a72944}
 .r2-empty{text-align:center;padding:35px;color:#6d567e;background:#faf7fc;border-radius:12px}
 @media(max-width:720px){.r2-overlay{padding:8px}.r2-head{padding:18px}.r2-content{padding:14px}.r2-asset{grid-template-columns:1fr}.r2-preview{height:200px}.r2-asset-fields{grid-template-columns:1fr 1fr}.r2-asset-fields label:first-child{grid-column:1/-1}}
+
+/* Prevent long asset names and form inputs from widening the modal */
+.r2-modal,.r2-content,.r2-list,.r2-asset,.r2-asset-fields{min-width:0;box-sizing:border-box}
+.r2-content{overflow-x:hidden}
+.r2-asset-fields{width:100%;min-width:0;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(70px,95px)}
+.r2-asset-fields label{min-width:0}
+.r2-asset-fields input{box-sizing:border-box;width:100%;min-width:0}
+.r2-asset-fields .r2-check input{width:auto}
+.r2-upload label{max-width:100%;min-width:0}
+.r2-upload input[type=file]{width:min(100%,285px);box-sizing:border-box}
+@media(max-width:720px){.r2-asset-fields{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media(max-width:450px){.r2-asset-fields{grid-template-columns:minmax(0,1fr)}.r2-asset-fields label:first-child{grid-column:auto}}
