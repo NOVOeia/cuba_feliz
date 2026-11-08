@@ -73,6 +73,36 @@ async function init(){
   const res=await fetch('casa-luz-media-20261108.json',{cache:'force-cache'});if(!res.ok)throw new Error('Catálogo no disponible');
   const catalog=await res.json();
   data={renders:catalog.renders||[],photos:catalog.photos||[],videos:catalog.videos||[],plans:catalog.plans||[]};
+  try{
+   const response=await fetch('https://fjhululvenojnvhickln.supabase.co/rest/v1/cf_media_assets?collection=eq.casa-luz&published=eq.true&select=object_key,public_url,title,file_name,category,content_type,sort_order&order=sort_order.asc',{
+    headers:{apikey:'sb_publishable_GbK3GUex9INr7lnigL05Nw_gaAGppHY',Accept:'application/json'},cache:'no-store'
+   });
+   if(response.ok){
+    const assets=await response.json();
+    const byKey=new Map(assets.map(x=>[x.object_key,x]));
+    const used=new Set();
+    for(const group of ['renders','photos','plans']){
+     data[group]=data[group].map(item=>{
+      const old=String(item.url||'');
+      if(!old.startsWith('assets/casa-luz/'))return item;
+      const objectKey='casa-luz/archivo/'+old.slice('assets/casa-luz/'.length);
+      const asset=byKey.get(objectKey);
+      if(!asset)return item;
+      used.add(objectKey);
+      return {...item,url:asset.public_url};
+     });
+    }
+    for(const asset of assets){
+     if(used.has(asset.object_key))continue;
+     const isPdf=asset.content_type==='application/pdf';
+     const isImage=String(asset.content_type||'').startsWith('image/');
+     const addition={title:asset.title||asset.file_name||'Archivo',url:asset.public_url,
+      type:isPdf?'plan':'photo',group:['estanque','muros','instalaciones','transformacion','equipo','otros'].includes(asset.category)?asset.category:'otros'};
+     if(isPdf)data.plans.push(addition);
+     else if(isImage)data.photos.push(addition);
+    }
+   }
+  }catch(error){console.warn('Biblioteca R2 no disponible; se mantienen los medios originales',error)}
   renderArchitect();renderFilters();renderPhotos();renderVideos();
  }catch(error){console.error('Casa Luz - catálogo',error);const message='No pudimos cargar la galería. Actualiza la página para volver a intentarlo.';['#cl-render-grid','#cl-photo-grid','#cl-video-grid','#cl-plans'].forEach(selector=>{const area=$(selector);if(area)area.textContent=message})}
 }
