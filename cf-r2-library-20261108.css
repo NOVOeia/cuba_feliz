@@ -1,0 +1,30 @@
+/* Biblioteca Multimedia de Cuba Feliz — panel independiente R2 */
+.r2-overlay{position:fixed;inset:0;z-index:2147483000;background:rgba(24,9,37,.78);display:flex;align-items:center;justify-content:center;padding:20px;font-family:"DM Sans",sans-serif}
+.r2-modal{width:min(1050px,100%);max-height:min(92vh,960px);background:#fff;border-radius:22px;box-shadow:0 18px 70px rgba(15,6,25,.28);color:#31164b;display:flex;flex-direction:column;overflow:hidden}
+.r2-head{background:#31164b;color:#fff;display:flex;justify-content:space-between;gap:20px;padding:24px 28px}
+.r2-head small{font-weight:800;letter-spacing:.14em;color:#f5ca48}
+.r2-head h2{font-size:clamp(23px,3vw,32px);margin:6px 0}
+.r2-head p{color:#e7d9ef;margin:0;font-size:14px}
+#r2-close{background:transparent;border:1px solid #ffffff60;color:#fff;border-radius:50%;font-size:30px;width:40px;height:40px;cursor:pointer}
+.r2-content{padding:24px 28px;overflow:auto}
+.r2-upload{display:flex;gap:15px;align-items:end;flex-wrap:wrap;padding:18px;border-radius:14px;background:#f7f2fa}
+.r2-upload label,.r2-asset-fields label{display:flex;flex-direction:column;font-weight:700;font-size:13px;gap:6px;min-width:160px}
+.r2-upload input,.r2-upload select,.r2-asset input{font:inherit;border:1px solid #d8cbe2;border-radius:9px;padding:10px;background:#fff;color:#31164b;max-width:100%}
+.r2-upload button,.r2-actions button{border:0;border-radius:9px;padding:11px 14px;background:#411b62;color:#fff;font-weight:700;cursor:pointer}
+.r2-upload button:disabled,.r2-actions button:disabled{opacity:.5;cursor:wait}
+.r2-message{font-weight:600;font-size:13px;min-height:19px;color:#27583d}
+.r2-message.error{color:#aa2631}
+.r2-note{color:#685879;font-size:13px;line-height:1.5;margin:18px 0}
+.r2-list{display:grid;gap:15px}
+.r2-asset{display:grid;grid-template-columns:160px minmax(0,1fr);gap:20px;border:1px solid #e9dfee;border-radius:14px;padding:16px}
+.r2-preview{height:140px;background:#f5eff9;display:grid;place-items:center;overflow:hidden;border-radius:12px;color:#69537e}
+.r2-preview img{height:100%;width:100%;object-fit:contain}
+.r2-asset-fields{display:grid;grid-template-columns:1fr 1fr 95px;gap:11px;align-items:end}
+.r2-asset-fields .r2-check{flex-direction:row;align-items:center;min-width:0;font-size:12px}
+.r2-asset-fields .r2-url,.r2-asset-fields .r2-actions{grid-column:1/-1}
+.r2-url{font-size:12px;overflow-wrap:anywhere;color:#6e5c7d}
+.r2-url a{color:#532a86}
+.r2-actions{display:flex;gap:8px;flex-wrap:wrap}
+.r2-actions .danger{background:#a72944}
+.r2-empty{text-align:center;padding:35px;color:#6d567e;background:#faf7fc;border-radius:12px}
+@media(max-width:720px){.r2-overlay{padding:8px}.r2-head{padding:18px}.r2-content{padding:14px}.r2-asset{grid-template-columns:1fr}.r2-preview{height:200px}.r2-asset-fields{grid-template-columns:1fr 1fr}.r2-asset-fields label:first-child{grid-column:1/-1}}
