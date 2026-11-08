@@ -54,7 +54,7 @@ function bind(){
   if(event.target.closest('#cl-more-photos')){visibleCount+=6;renderPhotos();return}
   const vid=event.target.closest('[data-video]');
   if(vid){const i=Number(vid.dataset.video),v=data.videos[i],stage=$('#cl-video-stage-'+i);
-   const frame=document.createElement('iframe');frame.src=v.url;frame.title=v.title;frame.loading='lazy';frame.referrerPolicy='strict-origin-when-cross-origin';frame.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';frame.setAttribute('allowfullscreen','');stage.replaceChildren(frame);return}
+   if(/\.(mp4|webm)(?:[?#]|$)/i.test(v.url)){const el=document.createElement('video');el.src=v.url;el.controls=true;el.playsInline=true;el.preload='metadata';el.style.width='100%';stage.replaceChildren(el);el.play().catch(()=>{});}else{const frame=document.createElement('iframe');frame.src=v.url;frame.title=v.title;frame.loading='lazy';frame.referrerPolicy='strict-origin-when-cross-origin';frame.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';frame.setAttribute('allowfullscreen','');stage.replaceChildren(frame)}return}
  });
  const dialog=$('#cl-lightbox');
  $('#cl-modal-close').addEventListener('click',()=>dialog.close());
@@ -93,6 +93,7 @@ async function init(){
      });
     }
     for(const asset of assets){
+     if(asset.content_type?.startsWith('video/')){if(!data.videos.some(v=>v.url===asset.public_url)){data.videos.push({title:asset.title||asset.file_name||'Video de Casa Luz',url:asset.public_url,link:asset.public_url})}continue;}
      if(used.has(asset.object_key))continue;
      const isPdf=asset.content_type==='application/pdf';
      const isImage=String(asset.content_type||'').startsWith('image/');
