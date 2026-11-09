@@ -40,3 +40,12 @@
 .r2-upload input[type=file]{width:min(100%,285px);box-sizing:border-box}
 @media(max-width:720px){.r2-asset-fields{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 @media(max-width:450px){.r2-asset-fields{grid-template-columns:minmax(0,1fr)}.r2-asset-fields label:first-child{grid-column:auto}}
+
+/* Verified Google Drive to R2 migration status */
+.r2-progress{background:#f5f0fa;border:1px solid #e3d5eb;border-radius:14px;padding:16px 19px;margin-bottom:18px;color:#371e50}
+.r2-progress-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:7px;font-size:14px}
+.r2-progress-header span{font-size:13px;font-weight:650;color:#604777}
+.r2-progress-track{height:10px;border-radius:20px;overflow:hidden;background:#e4d8ea;margin-top:12px;margin-bottom:10px}
+.r2-progress-track>div{height:100%;border-radius:20px;background:#4f9a70;transition:width 300ms ease}
+.r2-progress-groups{display:flex;flex-wrap:wrap;gap:7px 17px;font-size:12px;margin:6px 0}
+.r2-progress small{font-size:11px;line-height:1.5;color:#745f86}
