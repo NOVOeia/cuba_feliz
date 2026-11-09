@@ -31,7 +31,7 @@ function showItem(index){
  gallery.index=(index+gallery.items.length)%gallery.items.length;
  const body=$('#cl-modal-content');body.replaceChildren();
  if(gallery.kind==='video'){
-  if(/\\.(mp4|webm)(?:[?#]|$)/i.test(item.url)){
+  if(/\.(mp4|webm)(?:[?#]|$)/i.test(item.url)){
    const video=document.createElement('video');video.src=item.url;video.controls=true;video.playsInline=true;video.autoplay=true;video.preload='metadata';video.setAttribute('aria-label',item.title);body.appendChild(video);video.play().catch(()=>{});
   }else{
    const iframe=document.createElement('iframe');iframe.src=item.url;iframe.title=item.title;iframe.allow='autoplay; fullscreen; picture-in-picture';iframe.setAttribute('allowfullscreen','');iframe.referrerPolicy='strict-origin-when-cross-origin';body.appendChild(iframe);
@@ -99,7 +99,7 @@ async function init(){
     }
     for(const asset of assets){
      if(asset.content_type?.startsWith('video/')){
-      const driveId=String(asset.object_key||'').match(/([A-Za-z0-9_-]{20,})\\.(?:mp4|webm)$/i)?.[1];
+      const driveId=String(asset.object_key||'').match(/([A-Za-z0-9_-]{20,})\.(?:mp4|webm)$/i)?.[1];
       const existing=data.videos.find(v=>(driveId&&v.id===driveId)||v.url===asset.public_url);
       if(existing){existing.url=asset.public_url;existing.link=asset.public_url;}
       else data.videos.push({title:asset.title||asset.file_name||'Video de Casa Luz',url:asset.public_url,link:asset.public_url});
