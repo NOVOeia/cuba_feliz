@@ -32,6 +32,7 @@ style.textContent=[
 '#root .cf-gotas-submit{width:100%;background:#f5ca48;border:0;border-radius:12px;color:#31164b;cursor:pointer;font-size:14px;font-weight:800;padding:16px}',
 '#root .cf-gotas-submit:disabled{opacity:.65;cursor:not-allowed}',
 '#root .cf-gotas-status{font-size:12px;line-height:1.6;min-height:19px;color:#60376d}',
+'#root .cf-gotas-demo{padding:14px;border:1px solid #e4ce8d;background:#fff8dd;color:#49350c;border-radius:12px;font-size:12px;line-height:1.7;margin:15px 0}',
 '#root .cf-zelle-official{background:#f9f5fb;border:1px solid #e7daee;border-radius:14px;padding:16px;margin-top:18px}',
 '#root .cf-zelle-official .cf-zelle-line{display:flex;align-items:center;justify-content:space-between;gap:10px;overflow-wrap:anywhere}',
 '#root .cf-zelle-official .cf-zelle-copy{background:#fff;border:1px solid #d5c6dc;border-radius:8px;color:#49235f;padding:6px 9px;font-weight:700;cursor:pointer}',
@@ -122,8 +123,8 @@ function decorate(widget){
    zelleEnabled=zelleConfig.enabled===true&&zelleConfig.sms_enabled===true&&ready&&typeof window.CF_ZELLE_SEND_INSTRUCTIONS==='function';
    stripeEnabled=payments.stripe?.enabled===true&&typeof window.CF_STRIPE_CHECKOUT==='function';
   }catch(err){console.warn('Cuba Feliz: configuración de pagos no disponible');}
-  zelleButton.disabled=!zelleEnabled;zelleButton.querySelector('small').textContent=zelleEnabled?'Transferencia bancaria mediante Zelle':'Próximamente · en preparación';
-  stripeButton.disabled=!stripeEnabled;stripeButton.querySelector('small').textContent=stripeEnabled?'Pago seguro con tarjeta':'Próximamente · en preparación';
+  zelleButton.disabled=false;zelleButton.querySelector('small').textContent=zelleEnabled?'Transferencia bancaria mediante Zelle':'Probar Zelle (simulación)';
+  stripeButton.disabled=false;stripeButton.querySelector('small').textContent=stripeEnabled?'Pago seguro con tarjeta':'Ver ejemplo (sin cobro)';
   if(zelleEnabled)makeOfficialBox(zelleConfig,zellePane);
   function clear(){
    stage.hidden=true;zellePane.hidden=true;stripePane.hidden=true;
@@ -136,12 +137,18 @@ function decorate(widget){
    if(n===null){if(notice)notice.textContent='Selecciona un aporte válido de mínimo $1 USD, con hasta dos decimales.';return;}
    stage.hidden=false;
    stage.querySelector('.cf-gotas-summary').textContent='Tu Gota: $'+n.toFixed(2)+' USD';
-   if(notice)notice.textContent=(zelleEnabled||stripeEnabled)?'Elige la forma en que deseas aportar.':'Zelle y Stripe aún están desactivados. No se envían SMS ni se realizan cobros.';
+   if(notice)notice.textContent=(zelleEnabled||stripeEnabled)?'Elige la forma en que deseas aportar.':'Estás en modo demostración. No se envían SMS ni se realizan cobros.';
   });
   for(const button of buttons)button.addEventListener('click',()=>{
    if(button.disabled)return;
    for(const b of buttons){b.classList.toggle('is-selected',b===button);b.setAttribute('aria-pressed',String(b===button));}
    zellePane.hidden=button!==zelleButton;stripePane.hidden=button!==stripeButton;
+   if(button===zelleButton&&!zelleEnabled){
+     let preview=zellePane.querySelector('.cf-gotas-demo');
+     if(!preview){preview=document.createElement('div');preview.className='cf-gotas-demo';preview.setAttribute('role','note');zellePane.insertBefore(preview,zellePane.querySelector('form'));}
+     const amt=money(widget);
+     preview.textContent='SIMULACIÓN: no se enviará ningún SMS ni se realizará ningún cobro. Ejemplo del mensaje: ¡Gracias por ser parte de Cuba Feliz! Tu Gota de '+(amt===null?'[importe]':'$'+amt.toFixed(2)+' USD')+' nos llena de esperanza. Para enviarla mediante Zelle, busca al beneficiario [NOMBRE OFICIAL] utilizando [CORREO O TELÉFONO ZELLE]. Verifica los datos antes de transferir. QR: [ENLACE OFICIAL]. ¡Todo comienza conmigo!';
+   }
   });
   const form=stage.querySelector('form');
   form.addEventListener('submit',async event=>{
@@ -149,7 +156,7 @@ function decorate(widget){
    const result=form.querySelector('.cf-gotas-status'),fd=new FormData(form);
    const amount=money(widget),phone=parsePhone(fd.get('phone')),name=String(fd.get('full_name')||'').trim();
    const email=String(fd.get('email')||'').trim();
-   if(!zelleEnabled||typeof window.CF_ZELLE_SEND_INSTRUCTIONS!=='function'){result.textContent='La opción Zelle aún no está conectada. No se envió ningún SMS.';return;}
+   if(!zelleEnabled||typeof window.CF_ZELLE_SEND_INSTRUCTIONS!=='function'){result.textContent='Simulación completada. No se envió ningún SMS, no se almacenaron datos y no se realizó ninguna donación.';return;}
    if(amount===null){result.textContent='Revisa el monto de tu Gota.';return;}
    if(name.length<2){result.textContent='Escribe tu nombre completo.';return;}
    if(!phone){result.textContent='Introduce un celular válido con código de país, como +1 754 000 0000.';return;}
@@ -169,7 +176,7 @@ function decorate(widget){
   });
   stage.querySelector('[data-gotas-stripe-submit]').addEventListener('click',async()=>{
    const result=stripePane.querySelector('.cf-gotas-status'),amount=money(widget);
-   if(!stripeEnabled||typeof window.CF_STRIPE_CHECKOUT!=='function'){result.textContent='El pago con tarjeta todavía no está disponible.';return;}
+   if(!stripeEnabled||typeof window.CF_STRIPE_CHECKOUT!=='function'){result.textContent='Simulación: aquí abriríamos Stripe Checkout con tu importe. No se realizó ningún cobro.';return;}
    if(amount===null){result.textContent='Selecciona un monto válido.';return;}
    try{await window.CF_STRIPE_CHECKOUT({source:'cuba-feliz-web',purpose:'gota_de_felicidad',amount_usd:amount,currency:'USD'});}
    catch{result.textContent='No pudimos iniciar el pago con tarjeta.';}
