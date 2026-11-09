@@ -25,8 +25,9 @@ C.gallery=function(kind){
  if(!found.length)return '<section class="section band-soft cf-retreat-gallery" id="galeria"><div class="shell"><h2>Galería de experiencias</h2><p>Las fotografías se publicarán aquí cuando estén disponibles.</p></div></section>';
  return '<section class="section band-soft cf-retreat-gallery" id="galeria" aria-labelledby="cf-retreat-gallery-title"><div class="shell">'
  +'<div class="cf-retreat-gallery-heading"><div><span class="cf-retreat-gallery-kicker">MOMENTOS PARA RECORDAR · '+escape(galleryTitle)+'</span><h2 id="cf-retreat-gallery-title">Nuestra galería de experiencias</h2><p>Explora las fotografías sin recortes. Selecciona una para ampliarla y recorre las demás con las flechas.</p></div><span class="cf-retreat-photo-count">'+found.length+' '+(found.length===1?'fotografía':'fotografías')+'</span></div>'
- +'<div class="cf-retreat-gallery-grid">'+found.slice(0,6).map(card).join('')+'</div>'
- +(found.length>6?'<button type="button" class="cf-retreat-gallery-all" data-cf-photo="0">Ver todas las '+found.length+' fotografías <span aria-hidden="true">↗</span></button>':'<p class="cf-retreat-gallery-bottom">Pulsa cualquier fotografía para verlas todas en el visor.</p>')
+ +'<div class="cf-retreat-gallery-grid">'+found.slice(0,12).map(card).join('')+'</div>'
+ +(found.length>12?'<button type="button" class="cf-retreat-gallery-all" data-cf-more="12" aria-label="Mostrar doce fotografías más">Mostrar más fotografías · '+Math.min(12,found.length-12)+' siguientes <span aria-hidden="true">↓</span></button>':'<p class="cf-retreat-gallery-bottom">Pulsa cualquier fotografía para ampliar y recorrer todas.</p>')
+ +(found.length>12?'<button type="button" class="cf-retreat-gallery-all cf-retreat-gallery-all--viewer" data-cf-photo="0">Abrir visor de las '+found.length+' fotografías <span aria-hidden="true">↗</span></button>':'')
  +'</div></section>';
 };
 C.lightbox=function(){
@@ -82,6 +83,23 @@ C.bindGallery=function(){
   if(ev.target===dialog)close();
  });
  document.querySelectorAll('[data-cf-photo]').forEach(btn=>btn.addEventListener('click',()=>open(Number(btn.dataset.cfPhoto),btn)));
+ const galleryGrid=document.querySelector('.cf-retreat-gallery-grid');
+ const more=document.querySelector('[data-cf-more]');
+ if(galleryGrid&&more){
+   more.addEventListener('click',()=>{
+     const current=galleryGrid.querySelectorAll('[data-cf-photo]').length;
+     const next=Math.min(current+12,photos.length);
+     galleryGrid.insertAdjacentHTML('beforeend',photos.slice(current,next).map(card).join(''));
+     galleryGrid.querySelectorAll('[data-cf-photo]').forEach(btn=>{
+       if(btn.dataset.viewerBound==='1')return;
+       btn.dataset.viewerBound='1';
+       btn.addEventListener('click',()=>open(Number(btn.dataset.cfPhoto),btn));
+     });
+     if(next>=photos.length)more.remove();
+     else more.innerHTML='Mostrar más fotografías · '+Math.min(12,photos.length-next)+' siguientes <span aria-hidden="true">↓</span>';
+   });
+ }
+
  dialog.addEventListener('keydown',ev=>{
   if(ev.key==='ArrowRight'){ev.preventDefault();show(current+1);}
   if(ev.key==='ArrowLeft'){ev.preventDefault();show(current-1);}
