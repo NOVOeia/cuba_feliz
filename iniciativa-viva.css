@@ -31,3 +31,11 @@
     gap: 8px;
   }
 }
+
+/* Cuba Feliz: Cloudflare R2 video testimonials, lightweight and mobile friendly */
+.cf-testimony-intro{margin:-2px 0 24px;color:#685777;font-size:1rem;line-height:1.5;font-weight:600}
+.testimonial-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:22px}
+.testimonial-grid .testimonial{min-width:0;padding:17px;border-radius:20px;box-shadow:0 5px 22px rgba(49,22,75,.06)}
+.testimonial-grid .testimonial video{display:block;max-width:100%;width:100%;aspect-ratio:16/9;object-fit:contain;background:#24153a;border-radius:12px}
+.testimonial-grid .testimonial strong{display:block;margin-top:13px;padding:0 3px 3px;font-family:Outfit,sans-serif;font-size:1.06rem;line-height:1.4}
+@media(max-width:650px){.testimonial-grid{grid-template-columns:minmax(0,1fr);gap:16px}.testimonial-grid .testimonial{padding:12px}.cf-testimony-intro{font-size:.92rem}}
