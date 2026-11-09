@@ -75,7 +75,7 @@ function bind(){
 async function init(){
  bind();
  try{
-  const res=await fetch('casa-luz-media-20261108.json',{cache:'force-cache'});if(!res.ok)throw new Error('Catálogo no disponible');
+  const res=await fetch('casa-luz-media-20261108.json?v=20261109-video',{cache:'no-cache'});if(!res.ok)throw new Error('Catálogo no disponible');
   const catalog=await res.json();
   data={renders:catalog.renders||[],photos:catalog.photos||[],videos:catalog.videos||[],plans:catalog.plans||[]};
   try{
