@@ -48,7 +48,7 @@ function showItem(index){
 }
 function openViewer(kind,index,trigger){
  gallery={kind,items:lightboxItems(kind),index,trigger};if(!gallery.items.length)return;
- showItem(index);const dialog=$('#cl-lightbox');if(!dialog.open)dialog.showModal();
+ const dialog=$('#cl-lightbox');dialog.classList.toggle('cl-lightbox-video',kind==='video');showItem(index);if(!dialog.open)dialog.showModal();
 }
 function next(step){if(gallery.items.length)showItem(gallery.index+step)}
 function bind(){
