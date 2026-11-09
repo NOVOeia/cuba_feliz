@@ -23,20 +23,26 @@ function renderFilters(){
  $('#cl-photo-filters').innerHTML=categories.map(([value,label])=>'<button class="cl-filter" type="button" data-photo-filter="'+value+'" aria-pressed="'+(value===currentFilter)+'">'+esc(label)+'</button>').join('');
 }
 function renderVideos(){
- $('#cl-video-grid').innerHTML=data.videos.map((x,i)=>'<article class="cl-video-card"><div class="cl-video-stage" id="cl-video-stage-'+i+'"><button class="cl-video-play" type="button" data-video="'+i+'" aria-label="Ver video: '+esc(x.title)+'">▶</button></div><h4>'+esc(x.title)+'</h4><a href="'+esc(x.link)+'" target="_blank" rel="noopener noreferrer">Abrir en Google Drive ↗</a></article>').join('');
+ $('#cl-video-grid').innerHTML=data.videos.map((x,i)=>'<article class="cl-video-card"><button class="cl-video-stage cl-video-trigger" type="button" data-video="'+i+'" aria-label="Reproducir '+esc(x.title)+' en esta página"><span class="cl-video-play" aria-hidden="true">▶</span><span class="cl-video-hint">Ver video ampliado</span></button><h4>'+esc(x.title)+'</h4></article>').join('');
 }
-function lightboxItems(kind){return kind==='render'?data.renders:kind==='plan'?data.plans:group()}
+function lightboxItems(kind){return kind==='render'?data.renders:kind==='plan'?data.plans:kind==='video'?data.videos:group()}
 function showItem(index){
  const item=gallery.items[(index+gallery.items.length)%gallery.items.length];if(!item)return;
  gallery.index=(index+gallery.items.length)%gallery.items.length;
  const body=$('#cl-modal-content');body.replaceChildren();
- if(gallery.kind==='plan'){
+ if(gallery.kind==='video'){
+  if(/\\.(mp4|webm)(?:[?#]|$)/i.test(item.url)){
+   const video=document.createElement('video');video.src=item.url;video.controls=true;video.playsInline=true;video.autoplay=true;video.preload='metadata';video.setAttribute('aria-label',item.title);body.appendChild(video);video.play().catch(()=>{});
+  }else{
+   const iframe=document.createElement('iframe');iframe.src=item.url;iframe.title=item.title;iframe.allow='autoplay; fullscreen; picture-in-picture';iframe.setAttribute('allowfullscreen','');iframe.referrerPolicy='strict-origin-when-cross-origin';body.appendChild(iframe);
+  }
+ }else if(gallery.kind==='plan'){
   const iframe=document.createElement('iframe');iframe.title='Plano arquitectónico '+item.title;iframe.src=item.url+'#toolbar=1&navpanes=0';iframe.loading='lazy';body.appendChild(iframe);
  }else{
   const img=document.createElement('img');img.src=item.url;img.alt=item.title;img.decoding='async';body.appendChild(img);
  }
  $('#cl-modal-title').textContent=item.title;
- $('#cl-modal-kind').textContent=gallery.kind==='render'?'CASA LUZ · RENDER CONCEPTUAL':gallery.kind==='plan'?'CASA LUZ · PLANOS':'CASA LUZ · REGISTRO DE OBRA';
+ $('#cl-modal-kind').textContent=gallery.kind==='render'?'CASA LUZ · RENDER CONCEPTUAL':gallery.kind==='plan'?'CASA LUZ · PLANOS':gallery.kind==='video'?'CASA LUZ · VIDEO DE LA OBRA':'CASA LUZ · REGISTRO DE OBRA';
  $('#cl-modal-count').textContent=(gallery.index+1)+' / '+gallery.items.length;
  const single=gallery.items.length<2;$('#cl-modal-next').disabled=single;$('#cl-modal-prev').disabled=single;
 }
@@ -53,8 +59,7 @@ function bind(){
   if(filter){currentFilter=filter.dataset.photoFilter;visibleCount=6;renderFilters();renderPhotos();return}
   if(event.target.closest('#cl-more-photos')){visibleCount+=6;renderPhotos();return}
   const vid=event.target.closest('[data-video]');
-  if(vid){const i=Number(vid.dataset.video),v=data.videos[i],stage=$('#cl-video-stage-'+i);
-   if(/\.(mp4|webm)(?:[?#]|$)/i.test(v.url)){const el=document.createElement('video');el.src=v.url;el.controls=true;el.playsInline=true;el.preload='metadata';el.style.width='100%';stage.replaceChildren(el);el.play().catch(()=>{});}else{const frame=document.createElement('iframe');frame.src=v.url;frame.title=v.title;frame.loading='lazy';frame.referrerPolicy='strict-origin-when-cross-origin';frame.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';frame.setAttribute('allowfullscreen','');stage.replaceChildren(frame)}return}
+  if(vid){event.preventDefault();const i=Number(vid.dataset.video);openViewer('video',i,vid);return}
  });
  const dialog=$('#cl-lightbox');
  $('#cl-modal-close').addEventListener('click',()=>dialog.close());
@@ -93,7 +98,13 @@ async function init(){
      });
     }
     for(const asset of assets){
-     if(asset.content_type?.startsWith('video/')){if(!data.videos.some(v=>v.url===asset.public_url)){data.videos.push({title:asset.title||asset.file_name||'Video de Casa Luz',url:asset.public_url,link:asset.public_url})}continue;}
+     if(asset.content_type?.startsWith('video/')){
+      const driveId=String(asset.object_key||'').match(/([A-Za-z0-9_-]{20,})\\.(?:mp4|webm)$/i)?.[1];
+      const existing=data.videos.find(v=>(driveId&&v.id===driveId)||v.url===asset.public_url);
+      if(existing){existing.url=asset.public_url;existing.link=asset.public_url;}
+      else data.videos.push({title:asset.title||asset.file_name||'Video de Casa Luz',url:asset.public_url,link:asset.public_url});
+      continue;
+     }
      if(used.has(asset.object_key))continue;
      const isPdf=asset.content_type==='application/pdf';
      const isImage=String(asset.content_type||'').startsWith('image/');
