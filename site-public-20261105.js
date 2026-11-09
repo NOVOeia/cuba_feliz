@@ -181,17 +181,17 @@ function secHtml(s,i){if(s.status!=='published'||s.settings?.show_on_page===fals
  case 'cta':{
   const donationCard=(s.items||[])[0];
   const hasGotas=!!donationCard;
-  const values=(Array.isArray(s.settings?.donation_amounts)?s.settings.donation_amounts:String(s.settings?.donation_amounts||'1,3,5').split(','))
+  const values=(Array.isArray(s.settings?.donation_amounts)?s.settings.donation_amounts:String(s.settings?.donation_amounts||'11,22,33').split(','))
     .map(v=>Number(v)).filter(v=>Number.isFinite(v)&&v>0&&v<=100000).slice(0,5);
-  const amounts=[...new Set(values.length?values:[1,3,5])];
-  const selected=amounts.includes(3)?3:amounts[0];
+  const amounts=[...new Set(values.length?values:[11,22,33])];
+  const selected=amounts.includes(22)?22:amounts[0];
   const choices=amounts.map(v=>`<button class="cta-gota-option ${v===selected?'selected':''}" data-gota-value="${v}" aria-pressed="${v===selected?'true':'false'}" type="button">$${h(v)}</button>`).join('');
   const firstBtn=donationCard?.buttons?.[0];
   const goLabel=firstBtn?.label||'Quiero aportar';
   inner=`<div class="container cta-inner ${hasGotas?'cta-split':''}"><div class="cta-main reveal">${ey}<h2 class="headline">${headlineAccent(s)}</h2><p class="copy">${h(s.body)}</p>${b}</div>${hasGotas?`<aside class="cta-gotas-card reveal" aria-label="Gotas de Felicidad"><div class="cta-gotas-mark" aria-hidden="true">${window.CF_ASTERISK_SVG}</div><span class="cta-gotas-kicker">GOTAS DE FELICIDAD</span><h3>${h(donationCard.title||'Deja una Gota de Felicidad')}</h3><p>${h(donationCard.body||'Tu presencia ya es una contribución.')}</p><div class="cta-gotas-caption">ELIGE UN APORTE VOLUNTARIO · USD</div><div class="cta-gotas-amounts">${choices}<button class="cta-gota-option" type="button" data-gota-value="other" aria-pressed="false">Otro</button></div><label class="cta-gota-custom" hidden>Otro valor en USD<input type="number" min="1" step="0.01" inputmode="decimal" placeholder="Cantidad"></label><button class="cta-gota-go" data-gota-go="${h(firstBtn?.href||'gotas-de-felicidad.html')}" type="button">${h(goLabel)}<span aria-hidden="true">↗</span></button><p class="cta-gotas-disclaimer">La contribución es opcional. El pago en línea todavía no está habilitado.</p></aside>`:'<div class="cta-star">${window.CF_ASTERISK_SVG}</div>'}</div>`;
   break;
  }
- case 'donations':{const values=(Array.isArray(s.settings?.donation_amounts)?s.settings.donation_amounts:String(s.settings?.donation_amounts||'1,3,5').split(',')).map(Number).filter(v=>Number.isFinite(v)&&v>0&&v<100000).slice(0,5);const choices=[...new Set(values.length?values:[1,3,5])];const selected=choices.includes(3)?3:choices[0];inner=`<div class="container donation-layout"><div>${ey}<h2 class="headline">${headlineAccent(s)}</h2><p class="copy">${h(s.body)}</p></div><div class="donate-widget"><h3>Elige tu Gota</h3><p>Aporte voluntario \u00b7 USD</p><div class="amounts">${choices.map(v=>`<button type="button" data-amount="${v}" class="${v===selected?'selected':''}">$${v}</button>`).join('')}<button type="button" data-amount="other">Otro</button></div><label class="custom-amount" hidden>Cantidad en USD <input id="customDonation" type="number" min="1" step="0.01" placeholder="Cantidad"></label><button id="donateButton" class="cf-btn primary" type="button"><span>${h(s.buttons?.[0]?.label||'Quiero aportar')}</span><span class="btn-arrow">\u2197</span></button><div class="notice" id="donationNotice">La donaci\u00f3n requiere conectar el checkout real. Ning\u00fan cobro se realiza en esta demostraci\u00f3n.</div></div></div>`;break;}
+ case 'donations':{const values=(Array.isArray(s.settings?.donation_amounts)?s.settings.donation_amounts:String(s.settings?.donation_amounts||'11,22,33').split(',')).map(Number).filter(v=>Number.isFinite(v)&&v>0&&v<100000).slice(0,5);const choices=[...new Set(values.length?values:[11,22,33])];const selected=choices.includes(22)?22:choices[0];inner=`<div class="container donation-layout"><div>${ey}<h2 class="headline">${headlineAccent(s)}</h2><p class="copy">${h(s.body)}</p></div><div class="donate-widget"><h3>Elige tu Gota</h3><p>Aporte voluntario \u00b7 USD</p><div class="amounts">${choices.map(v=>`<button type="button" data-amount="${v}" class="${v===selected?'selected':''}">$${v}</button>`).join('')}<button type="button" data-amount="other">Otro</button></div><label class="custom-amount" hidden>Cantidad en USD <input id="customDonation" type="number" min="1" step="0.01" placeholder="Cantidad"></label><button id="donateButton" class="cf-btn primary" type="button"><span>${h(s.buttons?.[0]?.label||'Quiero aportar')}</span><span class="btn-arrow">\u2197</span></button><div class="notice" id="donationNotice">La donaci\u00f3n requiere conectar el checkout real. Ning\u00fan cobro se realiza en esta demostraci\u00f3n.</div></div></div>`;break;}
  case 'faq':inner=`<div class="container">${ey}<h2 class="headline">${headlineAccent(s)}</h2>${(s.items||[]).map(c=>`<details class="faq-row"><summary>${h(c.title)}</summary><p>${h(c.body)}</p></details>`).join('')}</div>`;break;
  case 'content':
   if(s.section_key==='camina-banner'){
@@ -245,7 +245,7 @@ function render(page,sections){const detailTitle=sections.find(s=>s.section_key=
    const options=[...widget.querySelectorAll('.cta-gota-option')];
    const custom=widget.querySelector('.cta-gota-custom');
    const customInput=custom.querySelector('input');
-   let selected=options.find(x=>x.classList.contains('selected'))?.dataset.gotaValue||'3';
+   let selected=options.find(x=>x.classList.contains('selected'))?.dataset.gotaValue||'22';
    options.forEach(option=>option.addEventListener('click',()=>{
      selected=option.dataset.gotaValue;
      options.forEach(b=>{const on=b===option;b.classList.toggle('selected',on);b.setAttribute('aria-pressed',String(on))});
