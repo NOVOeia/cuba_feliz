@@ -13,7 +13,7 @@ const style=document.createElement('style');
 style.id='cf-gotas-sms-ui';
 style.textContent=[
 '#root .cf-gotas-stage{border-top:1px solid #e8dfea;margin-top:24px;padding-top:22px}',
-'#root .cf-gotas-stage[hidden],#root .cf-gotas-sms[hidden],#root .cf-gotas-stripe[hidden]{display:none!important}',
+'#root .cf-gotas-stage[hidden],#root .cf-gotas-sms[hidden],#root .cf-gotas-stripe[hidden],#root .cf-gotas-sms-details[hidden]{display:none!important}',
 '#root .cf-gotas-stage h4{color:#381b53;font:700 21px Outfit,sans-serif;line-height:1.25;margin:0 0 8px}',
 '#root .cf-gotas-stage h5{color:#381b53;font:700 16px Outfit,sans-serif;margin:18px 0 8px}',
 '#root .cf-gotas-stage p{line-height:1.6;font-size:13px;color:#675576}',
@@ -37,6 +37,11 @@ style.textContent=[
 '#root .cf-zelle-official .cf-zelle-copy{background:#fff;border:1px solid #d5c6dc;border-radius:8px;color:#49235f;padding:6px 9px;font-weight:700;cursor:pointer}',
 '#root .cf-zelle-official img{display:block;max-width:min(100%,210px);aspect-ratio:1;object-fit:contain;border-radius:12px;margin:14px auto}',
 '#root .cf-zelle-official .cf-zelle-disclaimer{font-size:11px}',
+'#root .cf-gotas-sms-toggle{display:block;width:100%;margin-top:20px;padding:15px 16px;text-align:center;border:1.5px solid #bca6cc;border-radius:12px;background:#fff;color:#472160;font-weight:800;font-size:13px;cursor:pointer}',
+'#root .cf-gotas-sms-toggle:focus-visible{outline:3px solid #b18aca;outline-offset:2px}',
+'#root .cf-gotas-sms-details{border-top:1px solid #e8dfea;margin-top:18px;padding-top:15px}',
+'#root .cf-zelle-data-slot .cf-zelle-official{margin-top:12px}',
+'#root .cf-zelle-unavailable{padding:18px;border:1px solid #e8dfea;border-radius:12px;background:#faf8fc;color:#665772;font-size:13px;line-height:1.6;margin:12px 0}',
 '@media(max-width:540px){#root .cf-gotas-methods{grid-template-columns:1fr}#root .donate-widget{padding:22px}#root .cf-zelle-official .cf-zelle-line{flex-direction:column;align-items:flex-start}}'
 ].join('\n');
 document.head.appendChild(style);
@@ -94,16 +99,19 @@ function decorate(widget){
   stage.innerHTML='<h4>¿Cómo quieres aportar?</h4>'
    +'<div class="cf-gotas-summary" aria-live="polite"></div>'
    +'<div class="cf-gotas-methods" role="group" aria-label="Opciones para aportar">'
-   +'<button class="cf-gotas-method" data-gotas-method="zelle" type="button"><strong>Zelle</strong><small>Recibir instrucciones por SMS</small></button>'
+   +'<button class="cf-gotas-method" data-gotas-method="zelle" type="button"><strong>Zelle</strong><small>Datos y código QR</small></button>'
    +'<button class="cf-gotas-method" data-gotas-method="stripe" type="button"><strong>Tarjeta de crédito o débito</strong><small>Pago seguro con Stripe</small></button></div>'
-   +'<section class="cf-gotas-sms" hidden><h5>Recibe las instrucciones para Zelle por SMS</h5>'
-   +'<p>Si tienes una cuenta bancaria compatible con Zelle, recibe los datos para tu aporte directamente en tu celular.</p>'
+   +'<section class="cf-gotas-sms" hidden><h5>Datos para aportar con Zelle</h5>'
+   +'<p>Desde una cuenta bancaria compatible con Zelle, utiliza los siguientes datos para enviar tu Gota. No necesitas solicitar un SMS.</p>'
+   +'<div class="cf-zelle-data-slot"></div>'
+   +'<button type="button" class="cf-gotas-sms-toggle" aria-expanded="false">Recibir estas instrucciones por SMS (opcional)</button>'
+   +'<div class="cf-gotas-sms-details" hidden><h5>Recibe las instrucciones en tu celular</h5><p>Si lo prefieres, puedes solicitar un SMS con los datos del destinatario y el importe elegido.</p>'
    +'<form class="cf-gotas-sms-form"><label>Nombre completo<input type="text" name="full_name" autocomplete="name" placeholder="Nombre y apellido" maxlength="100" required></label>'
    +'<label>Tu celular para recibir el SMS<input type="tel" name="phone" autocomplete="tel" inputmode="tel" maxlength="25" placeholder="+1 754 000 0000" required></label>'
    +'<label>Correo electrónico (opcional)<input name="email" type="email" autocomplete="email" maxlength="150" placeholder="correo@ejemplo.com"></label>'
    +'<label class="cf-gotas-sms-consent"><input type="checkbox" name="sms_consent" required><span>Autorizo a Cuba Feliz a enviarme por SMS las instrucciones que solicito para este aporte. No acepto por ello mensajes promocionales.</span></label>'
    +'<button class="cf-gotas-submit" type="submit" disabled>Enviarme las instrucciones por SMS</button>'
-   +'<p class="cf-gotas-status" role="status" aria-live="polite"></p></form></section>'
+   +'<p class="cf-gotas-status" role="status" aria-live="polite"></p></form></div></section>'
    +'<section class="cf-gotas-stripe" hidden><h5>Pago seguro con tarjeta</h5>'
    +'<p>Realiza tu aporte con tarjeta de forma segura.</p>'
    +'<button class="cf-gotas-submit" type="button" data-gotas-stripe-submit disabled>Continuar a Stripe</button>'
@@ -112,19 +120,25 @@ function decorate(widget){
   const buttons=[...stage.querySelectorAll('[data-gotas-method]')];
   const zelleButton=stage.querySelector('[data-gotas-method=zelle]'),stripeButton=stage.querySelector('[data-gotas-method=stripe]');
   const zellePane=stage.querySelector('.cf-gotas-sms'),stripePane=stage.querySelector('.cf-gotas-stripe');
-  let zelleConfig={},zelleEnabled=false,stripeEnabled=false;
+  let zelleConfig={},zelleEnabled=false,zelleDetailsReady=false,stripeEnabled=false;
   try{
    const sections=await window.CFAPI.query('cf_sections','section_key=eq.gotas&status=eq.published&select=settings&limit=1');
    if(!widget.isConnected)return;
    const payments=sections?.[0]?.settings?.payment_methods||{};
    zelleConfig=payments.zelle||{};
    const ready=Boolean(String(zelleConfig.recipient_name||'').trim()&&String(zelleConfig.recipient_email||zelleConfig.recipient_phone||'').trim());
-   zelleEnabled=zelleConfig.enabled===true&&zelleConfig.sms_enabled===true&&ready&&typeof window.CF_ZELLE_SEND_INSTRUCTIONS==='function';
+   zelleDetailsReady=zelleConfig.enabled===true&&ready;
+   zelleEnabled=zelleDetailsReady&&zelleConfig.sms_enabled===true&&typeof window.CF_ZELLE_SEND_INSTRUCTIONS==='function';
    stripeEnabled=payments.stripe?.enabled===true&&typeof window.CF_STRIPE_CHECKOUT==='function';
   }catch(err){console.warn('Cuba Feliz: configuración de pagos no disponible');}
-  zelleButton.disabled=false;zelleButton.querySelector('small').textContent='Recibir instrucciones por SMS';
+  zelleButton.disabled=false;zelleButton.querySelector('small').textContent='Datos y código QR';
   stripeButton.disabled=false;stripeButton.querySelector('small').textContent='Pago seguro con Stripe';
-  if(zelleEnabled)makeOfficialBox(zelleConfig,zellePane);
+  const bankSlot=zellePane.querySelector('.cf-zelle-data-slot');
+  if(zelleDetailsReady)makeOfficialBox(zelleConfig,bankSlot);
+  else {const msg=document.createElement('p');msg.className='cf-zelle-unavailable';msg.textContent='Los datos de transferencia por Zelle estarán disponibles próximamente.';bankSlot.append(msg);}
+  const smsToggle=zellePane.querySelector('.cf-gotas-sms-toggle');
+  const smsDetails=zellePane.querySelector('.cf-gotas-sms-details');
+  smsToggle.addEventListener('click',()=>{const opening=smsDetails.hidden;smsDetails.hidden=!opening;smsToggle.setAttribute('aria-expanded',String(opening));});
   formSubmitDisabledUntilReady();
   function formSubmitDisabledUntilReady(){
    const zelleSubmit=stage.querySelector('.cf-gotas-sms-form button[type=submit]');
@@ -133,7 +147,7 @@ function decorate(widget){
    if(stripeSubmit)stripeSubmit.disabled=!stripeEnabled;
   }
   function clear(){
-   stage.hidden=true;zellePane.hidden=true;stripePane.hidden=true;
+   stage.hidden=true;zellePane.hidden=true;stripePane.hidden=true;smsDetails.hidden=true;smsToggle.setAttribute('aria-expanded','false');
    for(const b of buttons){b.classList.remove('is-selected');b.setAttribute('aria-pressed','false');}
   }
   for(const choice of widget.querySelectorAll('[data-amount]'))choice.addEventListener('click',clear);
