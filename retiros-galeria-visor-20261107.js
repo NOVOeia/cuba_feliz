@@ -15,9 +15,10 @@ function items(){
 }
 function card(x,i){
  const thumb=x.poster||(x.video?'':x.url);
- return '<button type="button" class="cf-retreat-gallery-card" data-cf-photo="'+i+'" aria-label="Abrir '+escape(x.title)+' y recorrer la galería">'
- +'<span class="cf-retreat-gallery-image">'+(thumb?'<img loading="lazy" decoding="async" src="'+escape(thumb)+'" alt="'+escape(x.title)+'">':'<span class="cf-retreat-gallery-video-mark">▶ Video</span>')+'</span>'
- +'<span class="cf-retreat-gallery-label"><strong>'+escape(x.title)+'</strong><span aria-hidden="true">Ampliar ↗</span></span></button>';
+ const displayTitle=x.video?x.title:'Fotografía '+(i+1)+' de '+galleryTitle;
+ return '<button type="button" class="cf-retreat-gallery-card" data-cf-photo="'+i+'" aria-label="Abrir '+escape(displayTitle)+' y recorrer la galería">'
+ +'<span class="cf-retreat-gallery-image">'+(thumb?'<img loading="lazy" decoding="async" src="'+escape(thumb)+'" alt="'+escape(displayTitle)+'">':'<span class="cf-retreat-gallery-video-mark">▶ Video</span>')+'</span>'
+ +(x.video?'<span class="cf-retreat-gallery-label"><strong>'+escape(x.title)+'</strong><span aria-hidden="true">Ampliar ↗</span></span>':'<span class="cf-retreat-gallery-label"><span aria-hidden="true">Ampliar ↗</span></span>')+'</button>';
 }
 C.gallery=function(kind){
  if(kind!=='galeria')return originalGallery(kind);
@@ -53,10 +54,10 @@ C.bindGallery=function(){
   const element=document.createElement(pic.video?'video':'img');
   element.src=pic.url;
   if(pic.video){element.controls=true;element.playsInline=true;element.preload='metadata';if(pic.poster)element.poster=pic.poster;}
-  else{element.alt=pic.title;element.decoding='async';}
+  else{element.alt='Fotografía '+(current+1)+' de '+galleryTitle;element.decoding='async';}
   element.className='cf-retreat-lightbox-photo';
   media.appendChild(element);
-  caption.textContent=pic.title;
+  caption.textContent=pic.video?pic.title:'';
   counter.textContent=(current+1)+' / '+photos.length;
   const around=[];
   for(let step=-2;step<=2;step++){
