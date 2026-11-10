@@ -53,6 +53,39 @@ try{
    sort_order:x.sort_order
   }));
   section.items=merged.concat(extra);
+  // Only Plétora and Eligiendo Milagros: keep each photo once across
+  // the original gallery and the R2 'galeria' / 'fotografias' imports.
+  if(['pletora','eligiendo-milagros'].includes(slug)){
+   const assetByUrl=new Map(library.map(asset=>[C.url(asset.public_url),asset]));
+   const uniquePhotos=[],seenPhotos=new Map();
+   const identity=(item)=>{
+    const url=C.url(item?.media?.url);
+    if(!url)return '';
+    if(item.media?.type==='video'||/\.(mp4|webm)(?:\?|$)/i.test(url))return '';
+    const asset=assetByUrl.get(url);
+    const filename=asset?.file_name||url.split('/').pop()?.split('?')[0]||'';
+    const stem=String(filename).replace(/\.[^.]+$/,'').toLowerCase()
+     .replace(/[^a-z0-9]/g,'').replace(/^xmg(?=\d)/,'mg');
+    return stem||url;
+   };
+   for(const item of section.items){
+    const key=identity(item);
+    if(!key){uniquePhotos.push(item);continue;}
+    if(!seenPhotos.has(key)){
+     seenPhotos.set(key,uniquePhotos.length);
+     uniquePhotos.push(item);
+     continue;
+    }
+    const previousIndex=seenPhotos.get(key),previous=uniquePhotos[previousIndex];
+    const newestAsset=assetByUrl.get(C.url(item?.media?.url));
+    const previousAsset=assetByUrl.get(C.url(previous?.media?.url));
+    // Prefer the full-size migrated photo without changing the original caption or ordering.
+    if(newestAsset?.category==='fotografias'&&previousAsset?.category!=='fotografias'){
+     uniquePhotos[previousIndex]={...previous,media:{...(previous.media||{}),url:item.media.url,type:'image'}};
+    }
+   }
+   section.items=uniquePhotos;
+  }
  }
 }catch(error){console.warn('Galería R2 no disponible, se conservan fotos originales',error)}
 const home=ss.find(x=>x.section_key==='iniciativas'&&Array.isArray(x.items)&&x.items.some(y=>y.key==='eligiendo-milagros'));C.homeItems=home?.items||[];if(!C.sections.length)throw Error('Sin secciones');root.innerHTML=C.header()+C.hero(C.wa())+C.render()+C.footer()+(slug==='meditacion-canonazo-de-las-9'?'':C.lightbox());C.bindGallery();if(C.initTimer)C.initTimer()}catch(err){console.error(err);root.innerHTML=C.header()+'<section class="section band-white"><div class="shell"><h2>No pudimos cargar esta página</h2><p>Comprueba tu conexión y vuelve a intentarlo.</p><button class="btn btn-purple" id="retry">Reintentar</button></div></section>'+C.footer();document.getElementById('retry').onclick=load}};
